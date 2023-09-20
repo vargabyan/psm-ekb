@@ -1,0 +1,131 @@
+body {
+    font-family: Gilroy;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.about-company {
+    margin-top: 89px;
+    border-radius: 40px;
+    background: #F1F8FF;
+    display: flex;
+    gap: 45px;
+    padding: 56px 57px 55px 62px;
+}
+
+.about-company_text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.about-company_header {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.about-company_text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+.about-company_img {
+    max-width: 325px;
+    width: 100%;
+    max-height: 509px;
+    height: 100%;
+    flex-shrink: 0;
+    border-radius: 20px;
+}
+
+
+.offer-elevator {
+    display: flex;
+    gap: 168px;
+    margin-top: 94px;
+}
+
+.offer-elevator_header {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 44px;
+}
+
+.offer-elevator_price {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 26px;
+    margin-top: 20px;
+}
+
+.offer-elevator_price span {
+    color: #ED4646;
+    line-height: 26px;
+}
+
+.offer-elevator_links-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 91px;
+}
+
+.offer-elevator_link-watch-catalog {
+    padding: 23px 43px;
+    border-radius: 10px;
+    background: #ED4646;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.offer-elevator_link-call {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+}
+
+.offer-elevator_link-call span {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    text-decoration-line: underline;
+}
+
+.offer-elevator_characteristics-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style-type: none;
+}
+
+.offer-elevator_characteristics-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.offer-elevator_characteristics-item::before {
+    display: block;
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='8' viewBox='0 0 7 8' fill='none'%3E%3Ccircle cx='3.5' cy='4' r='3.5' fill='%23ED4646'/%3E%3C/svg%3E");
+    width: 7px;
+    height: 7px;
+}

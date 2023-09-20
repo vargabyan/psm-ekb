@@ -356,3 +356,11 @@ if (array_key_exists($path, $redirectsMap)) {
 <!--        <div class="mobile-menu-content text-center">                <*?php wp_nav_menu(array('menu_class' => 'menu', 'theme_location' => 'top', 'after' => '', 'container' => '')); ?>            </div>-->
 <!--    </div>-->
 <!--</div>-->
+
+
+<?php
+    function test() {
+        echo 'test';
+    }
+
+?>

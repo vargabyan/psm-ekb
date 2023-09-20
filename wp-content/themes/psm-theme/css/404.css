@@ -1,0 +1,32 @@
+.content-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 40px 0 50px 0;
+}
+.big-img{
+    width: 380px;
+    object-fit: contain;
+}
+.title{
+    font-size: 100px;
+    font-weight: 600;
+    margin: 0 0 40px 0;
+}
+.txt{
+    font-size: 18px;
+    margin: 0 0 55px 0;
+}
+.to-home{
+    font-size: 17px;
+    background: #EB3223;
+    color: white;
+    border-radius: 4px;
+    padding: 10px;
+    min-width: 235px;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+}

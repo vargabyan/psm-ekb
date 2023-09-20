@@ -1,0 +1,58 @@
+body {
+    font-family: Gilroy;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+
+.elevator_header {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+}
+
+.elevator_content {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 27px;
+    row-gap: 40px;
+    margin-top: 57px;
+}
+
+.elevator_content-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    border: 1px solid #EDEDED;
+    max-width: 350px;
+    width: 100%;
+    height: 261px;
+}
+
+.elevator_content_img {
+    width: 100%;
+    height: 100%;
+    max-height: 197px;
+}
+
+.elevator_content_name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    margin-left: 25px;
+}
