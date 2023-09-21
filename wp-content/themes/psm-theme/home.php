@@ -193,7 +193,7 @@
     </div>
 </div>
 
-<DIV CLASS="our-truck-crane-block width-block">
+<DIV class="our-truck-crane-block width-block">
 
     <div class="top-box">
         <p>Наши автовышки используют для <span>разнообразных работ</span> <br> <span>и не только</span></p>

@@ -1,0 +1,88 @@
+body {
+    font-family: Gilroy !important;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.breadcrumbs {
+    background: white !important;
+}
+
+.our-works {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.our-works_header {
+    color: #303030;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.our-works_header span {
+    color: #3B8AF0;
+}
+
+.our-works_items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.our-works_item {
+    max-width: 350px;
+    border-radius: 20px;
+    background: #F5F5F5;
+}
+
+.our-works_item_img {
+    max-width: 350px;
+    width: 100%;
+    max-height: 257px;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.our-works_item_item_description {
+    padding: 24px 24px 26px 30px;
+    color: #303030;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.our-works_item_item_description span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+
+.question-and-answer-block {
+    display: none !important;
+}
+
+
+.contacts-block {
+    display: none !important;
+}

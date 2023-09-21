@@ -1,0 +1,84 @@
+body {
+    font-family: Gilroy !important;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+.breadcrumbs {
+    background: white !important;
+}
+
+.page-review {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.page-review_header {
+    font-size: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.page-review_items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.page-review_item {
+    max-width: 350px;
+    border-top: solid 2px #D9D9D9;
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.page-review_avatar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.page-review_item_img {
+    width: 66px;
+    height: 66px;
+    border-radius: 66px;
+}
+
+.page-review_name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px
+}
+
+.page-review_item_item_comments {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+
+.question-and-answer-block {
+    display: none !important;
+}
+
+
+.contacts-block {
+    display: none !important;
+}
