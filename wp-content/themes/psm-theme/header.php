@@ -357,10 +357,3 @@ if (array_key_exists($path, $redirectsMap)) {
 <!--    </div>-->
 <!--</div>-->
 
-
-<?php
-    function test() {
-        echo 'test';
-    }
-
-?>

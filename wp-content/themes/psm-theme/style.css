@@ -13951,13 +13951,10 @@ body {
 .header-block .contacts-info {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    padding-left: 9rem;
-    padding-right: 24rem;
-    margin-top: 10px;
+    padding-right: 180px;
     width: 100%;
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1110px;
+    margin: 18px auto 21px auto;
 }
 
 .header-block .contacts-info a {
@@ -14023,14 +14020,11 @@ body {
 
 .header-block .nav-bar {
     width: 100%;
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 50px;
-    padding-left: 9rem;
-    padding-right: 9rem;
+    max-width: 1110px;
+    min-height: 50px;
     display: grid;
     align-content: center;
+    margin: 0 auto;
 }
 
 .header-block .nav-bar > ul {
@@ -15342,6 +15336,8 @@ body {
     font-weight: 400;
     line-height: 24px;
 }
+
+
 
 
 @media (max-width: 1170px) {
