@@ -13944,15 +13944,13 @@ body {
 }
 
 .header-block .header {
-    max-width: 1440px;
+    max-width: 1110px;
     margin: auto;
     min-height: 50px;
     display: grid;
     grid-template-columns: auto auto;
     align-content: center;
     justify-content: space-between;
-    padding-left: 9rem;
-    padding-right: 9rem;
 }
 
 .header-block .your-city {
