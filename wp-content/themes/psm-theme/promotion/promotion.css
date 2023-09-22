@@ -1,0 +1,128 @@
+body {
+    font-family: Gilroy !important;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+
+.breadcrumbs {
+    background: white !important;
+}
+
+
+.promotion-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.promotion-page_header {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+
+.promotion-page_description {
+    font-size: 16px;
+    line-height: 26px
+}
+
+.promotion-page_offer-wrapper {
+    padding: 28px 76px 29px 28px;
+    border-radius: 20px;
+    border: 1px solid #EDEDED;
+    max-width: 540px;
+    display: flex;
+    flex-direction: column;
+}
+
+.promotion-page_offer {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.promotion-page_offer span {
+    color: #3B8AF0;
+    text-overflow: ellipsis;
+}
+
+.promotion-page_tel {
+    color: #ED4646;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 26px;
+    margin-top: 23px;
+}
+
+.promotion-page_tel:hover {
+    color: #ED4646;
+}
+
+.promotion-page_leave-review {
+    padding: 14px 23px;
+    border-radius: 10px;
+    background: #E6F2FE;
+    color: #3B8AF0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    width: max-content;
+    margin-top: 29px;
+}
+
+.promotion-page_leave-review:hover {
+    color: #3B8AF0;
+}
+
+
+.work-steps-block {
+    margin-top: 80px !important;
+}
+
+
+.about-company_button-go-to-category-elevator {
+    padding: 15px 34px;
+    border-radius: 10px;
+    border: 1px solid #3B8AF0;
+    color: #3B8AF0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    margin: 50px auto;
+    display: block;
+    width: max-content;
+}
+
+.about-company_button-go-to-category-elevator:hover {
+    color: #3B8AF0;
+}
+
+
+.question-and-answer-block {
+    display: none !important;
+}
+
+
+.contacts-block {
+    display: none !important;
+}

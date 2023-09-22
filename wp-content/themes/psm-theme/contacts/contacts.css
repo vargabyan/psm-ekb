@@ -1,0 +1,213 @@
+body {
+    font-family: Gilroy !important;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+
+.breadcrumbs {
+    background: white !important;
+}
+
+
+.contacts-page {
+    margin-top: 50px;
+}
+
+.contacts-page_header {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+
+.contacts-page_description {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.contacts-page_description span {
+    color: #9B9B9B;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.contacts-page_items-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-top: 22px;
+}
+
+.contacts-page_item {
+    max-width: 350px;
+    max-height: 163px;
+    padding: 28px;
+    border-radius: 20px;
+    border: 1px solid #E1E1E1;
+}
+
+.contacts-page_city {
+    color: #3B8AF0;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px
+}
+
+.contacts-page_tel {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 26px;
+    margin-top: 26px;
+    color: #303030;
+    display: block;
+}
+
+.contacts-page_tel:hover {
+    color: #303030;
+}
+
+.contacts-page_item_messengers-wrapper {
+    display: flex;
+    gap: 6px;
+    margin-top: 19px;
+}
+
+.contacts-page_messengers-icons {
+    width: 30px;
+    height: 30px;
+    display: block;
+    content: '';
+}
+
+.contacts-page_telegram {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' fill='none'%3E%3Ccircle cx='15' cy='15' r='15' fill='%2354CC61'/%3E%3Cpath d='M7.83233 14.2221C11.6101 12.7777 22.499 8.33325 22.499 8.33325L20.3323 20.8888C20.2212 21.4999 19.499 21.7221 19.0546 21.3333L15.6657 18.4999L13.2768 20.7221L13.6657 16.9999L20.8879 10.1666L11.999 15.7221L12.5546 18.8888L10.7212 15.9444L7.94344 15.0555C7.49899 14.8888 7.44344 14.3333 7.83233 14.2221Z' fill='%2354CC61' stroke='white' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.contacts-page_whatsapp {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' fill='none'%3E%3Ccircle cx='15' cy='15' r='15' fill='%233B8AF0'/%3E%3Cpath d='M11.2773 21.6667C10.8329 21.3889 8.66623 23.0001 8.3329 22.6112C7.99957 22.2778 9.44401 20.0001 9.16623 19.6112C8.27734 18.3889 7.77734 16.8889 7.77734 15.2778C7.77734 11.1667 11.1107 7.77783 15.2773 7.77783C19.444 7.77783 22.7773 11.1667 22.7773 15.2778C22.7773 19.3889 19.444 22.7778 15.2773 22.7778C14.7218 22.7778 14.2218 22.7223 13.7218 22.6112' fill='%233B8AF0'/%3E%3Cpath d='M11.2773 21.6667C10.8329 21.3889 8.66623 23.0001 8.3329 22.6112C7.99957 22.2778 9.44401 20.0001 9.16623 19.6112C8.27734 18.3889 7.77734 16.8889 7.77734 15.2778C7.77734 11.1667 11.1107 7.77783 15.2773 7.77783C19.444 7.77783 22.7773 11.1667 22.7773 15.2778C22.7773 19.3889 19.444 22.7778 15.2773 22.7778C14.7218 22.7778 14.2218 22.7223 13.7218 22.6112' stroke='white' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M13.7199 11.4999L14.3866 13.1666C14.4421 13.2777 14.3866 13.3888 14.2755 13.4444C13.9977 13.611 13.6088 13.9999 14.0533 14.611C14.6088 15.3888 16.1088 17.3333 17.331 16.0555C17.3866 15.9999 17.4977 15.9444 17.6088 15.9999L19.3866 16.7777C19.4977 16.8333 19.5533 16.9999 19.4977 17.111C19.1088 17.8888 17.6088 19.9444 13.8866 16.7222C10.1088 13.4444 12.5533 11.8333 13.3866 11.4444C13.4977 11.2777 13.6644 11.3333 13.7199 11.4999Z' fill='%233B8AF0' stroke='white' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.contacts-additional {
+    margin-top: 63px;
+    display: flex;
+    gap: 50px;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+
+.contacts-page_map {
+    margin-top: 22px;
+}
+
+
+.requisites {
+    margin-top: 74px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+.requisites_header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.requisites_header {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 108.836%;
+    text-transform: uppercase;
+}
+
+.requisites_PDF:before {
+    width: 40px;
+    height: 40px;
+    display: block;
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='41' viewBox='0 0 40 41' fill='none'%3E%3Cg clip-path='url(%23clip0_659_236)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M26.25 16.75V13L18.75 4.25H5.00376C4.67464 4.25033 4.3488 4.31548 4.04486 4.44173C3.74091 4.56799 3.46481 4.75287 3.23231 4.98583C2.99982 5.21879 2.81548 5.49526 2.68984 5.79946C2.56419 6.10366 2.49969 6.42962 2.50002 6.75875V35.4912C2.49886 35.82 2.56256 36.1457 2.68744 36.4498C2.81233 36.7539 2.99596 37.0303 3.22782 37.2633C3.45969 37.4964 3.73523 37.6814 4.03868 37.8078C4.34214 37.9342 4.66754 37.9995 4.99627 38H23.7538C24.4141 37.9993 25.0473 37.7373 25.5151 37.2712C25.9828 36.8051 26.247 36.1728 26.25 35.5125V33H36.2413C36.7342 33.0007 37.2225 32.9042 37.6781 32.7162C38.1338 32.5281 38.548 32.2522 38.897 31.9041C39.2461 31.556 39.5231 31.1425 39.7124 30.6874C39.9016 30.2322 39.9994 29.7442 40 29.2512V20.5C40.0007 20.0066 39.9038 19.518 39.7151 19.0621C39.5263 18.6063 39.2493 18.1922 38.9 17.8438C38.5508 17.4953 38.1361 17.2193 37.6798 17.0316C37.2235 16.8439 36.7346 16.7482 36.2413 16.75H26.25ZM25 33V35.5088C24.9987 35.8391 24.8663 36.1553 24.6319 36.3881C24.3975 36.6208 24.0803 36.751 23.75 36.75H5.00002C4.31877 36.75 3.75002 36.1925 3.75002 35.5062V6.74375C3.75002 6.06875 4.30752 5.5 4.99502 5.5H17.5V11.7425C17.5 13.1425 18.6175 14.25 19.9975 14.25H25V16.75H15.0088C14.5158 16.7493 14.0276 16.8458 13.5719 17.0338C13.1162 17.2219 12.702 17.4978 12.353 17.8459C12.004 18.194 11.7269 18.6075 11.5377 19.0626C11.3484 19.5178 11.2507 20.0058 11.25 20.4987V29.25C11.2494 29.7434 11.3462 30.232 11.535 30.6879C11.7237 31.1437 12.0007 31.5578 12.35 31.9062C12.6993 32.2547 13.114 32.5307 13.5702 32.7184C14.0265 32.9061 14.5154 33.0018 15.0088 33H25ZM18.75 6.125V11.7388C18.75 12.435 19.3125 13 19.9963 13H24.625L18.75 6.125ZM14.9938 18C13.6163 18 12.5 19.125 12.5 20.49V29.26C12.5027 29.9202 12.7664 30.5526 13.2336 31.0191C13.7008 31.4856 14.3335 31.7484 14.9938 31.75H36.2563C37.6338 31.75 38.75 30.625 38.75 29.26V20.49C38.7474 19.8298 38.4837 19.1974 38.0165 18.7309C37.5493 18.2644 36.9165 18.0016 36.2563 18H14.9938ZM31.25 24.25V21.75H36.25V20.5H30V29.25H31.25V25.5H35V24.25H31.25ZM15 23V29.25H16.25V25.5H18.7438C19.4068 25.5 20.0427 25.2366 20.5115 24.7678C20.9804 24.2989 21.2438 23.663 21.2438 23C21.2438 22.337 20.9804 21.7011 20.5115 21.2322C20.0427 20.7634 19.4068 20.5 18.7438 20.5H15V23ZM16.25 21.75V24.25H18.7513C18.9155 24.2503 19.0781 24.2182 19.2298 24.1555C19.3816 24.0928 19.5194 24.0007 19.6354 23.8845C19.7515 23.7684 19.8434 23.6304 19.906 23.4786C19.9686 23.3269 20.0005 23.1642 20 23C20 22.31 19.4463 21.75 18.7513 21.75H16.25ZM22.5 20.5V29.25H26.2438C26.5733 29.2512 26.8998 29.1871 27.2045 29.0615C27.5092 28.9358 27.786 28.7512 28.019 28.5181C28.2519 28.285 28.4365 28.0081 28.562 27.7034C28.6874 27.3986 28.7513 27.0721 28.75 26.7425V23.0075C28.7505 22.6782 28.686 22.352 28.5603 22.0476C28.4345 21.7433 28.2499 21.4667 28.0171 21.2338C27.7843 21.0008 27.5078 20.8161 27.2035 20.6902C26.8992 20.5643 26.5731 20.4997 26.2438 20.5H22.5ZM23.75 21.75V28H26.2513C26.4154 28.0003 26.5781 27.9682 26.7298 27.9055C26.8816 27.8428 27.0194 27.7507 27.1354 27.6345C27.2515 27.5184 27.3434 27.3804 27.406 27.2286C27.4686 27.0769 27.5005 26.9142 27.5 26.75V23C27.5 22.31 26.9463 21.75 26.2513 21.75H23.75Z' fill='%232C2C2C'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_659_236'%3E%3Crect width='40' height='40' fill='white' transform='translate(0 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+
+.requisites_PDF {
+   display: flex;
+    gap: 10px;
+}
+
+.requisites_PDF_text {
+    display: flex;
+    flex-direction: column;
+    font-family: SF Pro Display;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.requisites_PDF_text span {
+    color: #9E9E9E;
+    font-size: 10px;
+    line-height: 165%;
+    font-family: SF Pro Display;
+}
+
+.requisites_details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.requisites_details_items-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.requisites_details_names-wrapper {
+    color: #626262;
+    max-width: 350px;
+    width: 100%;
+}
+
+.requisites_details_values-wrapper {
+    color: black;
+    max-width: 730px;
+    width: 100%;
+}
+
+.requisites_details_item {
+    max-height: 69px;
+    border-radius: 15px;
+    background: #F8F8F8;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 108.836%;
+    padding: 26px 30px;
+}
+
+
+.question-and-answer-block {
+    display: none !important;
+}
+
+
+.contacts-block {
+    display: none !important;
+}
