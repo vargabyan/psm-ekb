@@ -19,6 +19,11 @@ add_filter( 'mime_types', 'webp_upload_mimes' );
 add_filter('use_block_editor_for_post', '__return_false');
 
 add_action( 'widgets_init', 'register_my_widgets' );
+
+//убрать лишние теги br и p в WordPress
+remove_filter( 'the_content', 'wpautop' );// для контента
+remove_filter( 'the_excerpt', 'wpautop' );// для анонсов
+remove_filter( 'comment_text', 'wpautop' );// для комментарий
 function register_my_widgets(){
     register_sidebar( array(
         'name'          => '4 колонка футера',

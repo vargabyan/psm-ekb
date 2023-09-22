@@ -2,6 +2,9 @@
 <link rel="stylesheet" href="/wp-content/themes/psm-theme/promotion/promotion.css">
 <link rel="stylesheet" href="/wp-content/themes/psm-theme/style.css">
 
+
+<?php breadcrumbs() ?>
+
 <div class="container-width1110">
 
     <div class="promotion-page">
