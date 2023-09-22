@@ -13887,11 +13887,45 @@ a.callback {
 
 body {
     font-family: Gilroy;
+    color: #303030;
 }
 
 .width-block {
     max-width: 1234px;
     margin: auto;
+}
+
+
+.breadcrumbs {
+    background: white;
+    color: #68687D;
+    font-family: Manrope;
+    font-size: 14px;
+
+}
+
+.breadcrumbs .container {
+    max-width: 1110px;
+    width: 100%;
+    padding: 0;
+}
+
+.breadcrumbs .breadcrumbs__link span {
+    color: #A7A7A7;
+}
+
+.breadcrumbs .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.breadcrumbs .breadcrumbs__separator {
+    display: block;
+    width: 14px;
+    height: 2px;
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='1' viewBox='0 0 14 1' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='14' height='1' fill='%23D9D9D9'/%3E%3C/svg%3E%0A");
 }
 
 
