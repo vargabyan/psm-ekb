@@ -31,7 +31,7 @@
                             </svg>
                         </div>
                         <div>
-                            <button>Получить персональное предложение</button>
+                            <button class="button-red" data-call="callback">Получить персональное предложение</button>
                             <p>Оператор перезвонит Вам и подберет машину под Вашу заявку, а также согласует цену.</p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
     <h2>Наши машины</h2>
 
     <div class="category-box">
-        <div class="category-swiper-button-prev">
+        <div class="category-swiper-button-prev swiper-button">
             <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 9L1 5L5 1" stroke="white"/>
             </svg>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="category-swiper-button-next">
+        <div class="category-swiper-button-next swiper-button">
             <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 1L5 5L1 9" stroke="white"/>
             </svg>
@@ -189,7 +189,7 @@
         </div>
     </div>
     <div class="button-box">
-        <button>Смотреть каталог автовышек</button>
+        <button class="button-red">Смотреть каталог автовышек</button>
     </div>
 </div>
 
@@ -294,14 +294,14 @@
         <p>Наши клиенты</p>
     </div>
     <div class="right-box">
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/mesto.jpg" alt="logo" /></div>
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/megafon.jpg" alt="logo" /></div>
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/logo.png" alt="logo" /></div>
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/kvazar_logo.jpg" alt="logo" /></div>
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/free-vector-tele2_041367_tele2.png" alt="logo" /></div>
-        <div><img loading="lazy" class="alignnone size-full wp-image-238" src="http://psm-ekb96.ru/wp-content/uploads/2019/11/02-222x65_crop.png" alt="" width="222" height="65" /></div>
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/70234_54eefa1d5fd5d54eefa1d5fd94.jpeg" alt="logo" /></div>
-        <div><img loading="lazy" src="/wp-content/uploads/2019/10/1200px-logotip_russkaja_mednaja_kompanija.svg_.png" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/mesto.jpg" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/megafon.jpg" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/logo.png" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/kvazar_logo.jpg" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/free-vector-tele2_041367_tele2.png" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" class="alignnone size-full wp-image-238" src="http://psm-ekb96.ru/wp-content/uploads/2019/11/02-222x65_crop.png" alt="" width="222" height="65" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/70234_54eefa1d5fd5d54eefa1d5fd94.jpeg" alt="logo" /></div>
+        <div><img class="our-client_item_img" loading="lazy" src="/wp-content/uploads/2019/10/1200px-logotip_russkaja_mednaja_kompanija.svg_.png" alt="logo" /></div>
     </div>
 </div>
 

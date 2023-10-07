@@ -7,7 +7,7 @@
             <p class="part-1">Не нашли ответ на свой вопрос?</p>
             <p class="part-2">Задайте его нам напрямую! Мы свяжемся с Вами в течении 10 минут и проконсультируем ;)</p>
             <div class="item-1">
-                <a href="/">Задать вопрос</a>
+                <a class="button-blue" href="/">Задать вопрос</a>
                 <DIV>
                     <P class="work-schedule">пн-пт 10:00 - 19:00</P>
                     <a class="tel-link" href="tel:+79089060719">8 908 906 07 19</a>
@@ -319,16 +319,21 @@
 <div data-modal="callback" class="modalwindow">
     <div class="modal-overflow"></div>
     <div class="modal-content">
-        <div class="modal-close">X</div>
+        <div class="modal-close"></div>
         <form class="callbackform" onsubmit="return callbacksend()">
-            <div class="g-recaptcha" id="recaptcha1" data-size="invisible"></div>
-            <input type="text" name="name" placeholder="Ваше имя">
-            <input type="text" name="tel" placeholder="Телефон">
-            <input type="checkbox" name="policy">
-            <div><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span></div>
-            <br>
-            <button type="submit"> Отправить</button>
-            <div class="output-form"></div>
+            <p class="modalwindow_header">Заказать звонок</p>
+            <label class="modalwindow_label">
+                Имя
+                <input class="modalwindow_input" type="text" name="name" placeholder="Иван Иванов Иванович">
+            </label>
+            <label class="modalwindow_label">
+                Номер телефона
+                <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
+            </label>
+            <div  class="modalwindow_button-wrapper">
+                <button class="modalwindow_button button-red" type="submit"> Отправить</button>
+                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных данных</div>
+            </div>
         </form>
     </div>
 </div>
@@ -338,16 +343,19 @@
     <div class="modal-content">
         <div class="modal-close">X</div>
         <form class="callbackform" onsubmit="return answersend();">
-
-            <div class="g-recaptcha" id="recaptcha2" data-size="invisible"></div>
-
-            <input type="text" name="name" placeholder="Ваше имя">
-            <input type="text" name="tel" placeholder="Телефон">
-            <input placeholder="Ваш вопрос" name="descr" type="text">
-            <div><input type="checkbox" name="policy"><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span></div>
-            <br>
-            <button type="submit"> Отправить</button>
-            <div class="output-form"></div>
+            <p class="modalwindow_header">помощь менеджера</p>
+            <label class="modalwindow_label">
+                Имя
+                <input class="modalwindow_input" type="text" name="name" placeholder="Иван Иванов Иванович">
+            </label>
+            <label class="modalwindow_label">
+                Номер телефона
+                <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
+            </label>
+            <div  class="modalwindow_button-wrapper">
+                <button class="modalwindow_button button-red" type="submit"> Отправить</button>
+                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных данных</div>
+            </div>
         </form>
     </div>
 </div>
@@ -378,15 +386,19 @@
     <div class="modal-content">
         <div class="modal-close">X</div>
         <form class="callbackform" onsubmit="return autosend()">
-
-            <div class="g-recaptcha" id="recaptcha4" data-size="invisible"></div>
-
-            <input type="text" name="name" placeholder="Ваше имя">
-            <input type="text" name="tel" placeholder="Телефон">
-            <div><input type="checkbox" name="policy"><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span></div>
-            <br>
-            <button type="submit"> Отправить</button>
-            <div class="output-form"></div>
+            <p class="modalwindow_header">Оставить заявку</p>
+            <label class="modalwindow_label">
+                Имя
+                <input class="modalwindow_input" type="text" name="name" placeholder="Иван Иванов Иванович">
+            </label>
+            <label class="modalwindow_label">
+                Номер телефона
+                <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
+            </label>
+            <div  class="modalwindow_button-wrapper">
+                <button class="modalwindow_button button-red" type="submit"> Отправить</button>
+                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных данных</div>
+            </div>
         </form>
     </div>
 </div>

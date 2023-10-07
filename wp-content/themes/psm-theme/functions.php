@@ -72,8 +72,8 @@ function get_auto(){
         $content .='<div class="card-descr"><a href="'.$url.'"><span>'.get_post_meta($post->ID,'meta1_field_6', true).'</span></a></div>';
         $content .='</div>';
         $content .='<div class="button-box">';
-        $content .='<a class="meake-order" onclick="yaCounter47702209.reachGoal(`zakaz-s-listinga`);" data-auto="'.$post->post_title.'" data-call="auto" href="javascript:void(0);">Заказать</a>';
-        $content .='<a class="product-description" href="'.$url.'">Условия аренды</a>';
+        $content .='<a class="meake-order button-red" onclick="yaCounter47702209.reachGoal(`zakaz-s-listinga`);" data-auto="'.$post->post_title.'" data-call="auto" href="javascript:void(0);">Заказать</a>';
+        $content .='<a class="product-description button-blue" href="'.$url.'">Условия аренды</a>';
         $content .='</div>';
         $content .='</div>';
 

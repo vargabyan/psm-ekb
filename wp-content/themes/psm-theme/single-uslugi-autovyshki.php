@@ -171,8 +171,8 @@ if($term) {
                     </div>
                 </div>
                 <div class="box_3">
-                    <a class="part_1" href="#">Заказать автовышку</a>
-                    <a class="part_2" href="#">Помощь менеджера</a>
+                    <a class="part_1" onclick="yaCounter47702209.reachGoal(`zakaz-s-listinga`);" data-auto="'.$post->post_title.'" data-call="auto" href="javascript:void(0);">Заказать автовышку</a>
+                    <a class="part_2" onclick="yaCounter47702209.reachGoal('zakazat-zvonok');" data-auto="'.$post->post_title.'" data-call="answer" href="javascript:void(0);">Помощь менеджера</a>
                 </div>
             </div>
 
