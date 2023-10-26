@@ -1,4 +1,4 @@
-<?php function cp_elevator_services () { ?>
+
 
     <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
     <link rel="stylesheet" href="/wp-content/themes/psm-theme/cp-elevator-services/elevator-services.css">
@@ -18,6 +18,4 @@
 
     </div>
 
-<?php } ?>
 
-<?php cp_elevator_services() ?>

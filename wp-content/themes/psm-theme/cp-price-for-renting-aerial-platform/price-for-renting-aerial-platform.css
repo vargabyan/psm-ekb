@@ -1,0 +1,353 @@
+body {
+    font-family: Gilroy;
+    color: #303030;
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+
+.container-width1110 {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+
+.price-for-renting {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    margin-top: 99px;
+}
+
+.price-for-renting_description-wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.price-for-renting_description {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-for-renting_header {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+
+.price-for-renting_author-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 66px;
+}
+
+.price-for-renting_avatar {
+    max-width: 91px;
+    width: 100%;
+    max-height: 91px;
+    border-radius: 91px;
+}
+
+.price-for-renting_author {
+    color: #A3A7B3;
+    font-size: 10px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.price-for-renting_author span {
+    color: #757985;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.price-for-renting_img {
+    max-width: 445px;
+    width: 100%;
+    max-height: 260px;
+    border-radius: 20px;
+}
+
+
+.price-for-renting_following-wrapper {
+    display: grid;
+    grid-template-columns: max-content 1fr max-content;
+    color: #757985;
+    font-size: 12px;
+    line-height: 18px;
+    border-bottom: solid 1px #D4D4D4;
+    padding-bottom: 15px;
+    gap: 130px;
+}
+
+.price-for-renting_date {
+    display: flex;
+    gap: 28px;
+}
+
+.price-for-renting_date span {
+    display: flex;
+    gap: 6px;
+}
+
+.price-for-renting_date span:before {
+    display: block;
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cg clip-path='url(%23clip0_924_1466)'%3E%3Cpath d='M6.9987 3C4.08203 3 1.5912 4.81417 0.582031 7.375C1.5912 9.93583 4.08203 11.75 6.9987 11.75C9.91536 11.75 12.4062 9.93583 13.4154 7.375C12.4062 4.81417 9.91536 3 6.9987 3ZM6.9987 10.2917C5.3887 10.2917 4.08203 8.985 4.08203 7.375C4.08203 5.765 5.3887 4.45833 6.9987 4.45833C8.6087 4.45833 9.91536 5.765 9.91536 7.375C9.91536 8.985 8.6087 10.2917 6.9987 10.2917ZM6.9987 5.625C6.03036 5.625 5.2487 6.40667 5.2487 7.375C5.2487 8.34333 6.03036 9.125 6.9987 9.125C7.96703 9.125 8.7487 8.34333 8.7487 7.375C8.7487 6.40667 7.96703 5.625 6.9987 5.625Z' fill='%23F7B65A'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_924_1466'%3E%3Crect width='14' height='14' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+
+.price-for-renting_time {
+    display: flex;
+    gap: 10px;
+}
+
+.price-for-renting_time span {
+    color: #F7B65A;
+}
+
+.price-for-renting_following {
+    display: flex;
+    gap: 10px;
+}
+
+.price-for-renting_following:after {
+    display: block;
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cg clip-path='url(%23clip0_924_1461)'%3E%3Cpath d='M12 10.7199C11.4933 10.7199 11.04 10.9199 10.6933 11.2333L5.94 8.46659C5.97333 8.31325 6 8.15992 6 7.99992C6 7.83992 5.97333 7.68659 5.94 7.53325L10.64 4.79325C11 5.12659 11.4733 5.33325 12 5.33325C13.1067 5.33325 14 4.43992 14 3.33325C14 2.22659 13.1067 1.33325 12 1.33325C10.8933 1.33325 10 2.22659 10 3.33325C10 3.49325 10.0267 3.64659 10.06 3.79992L5.36 6.53992C5 6.20659 4.52667 5.99992 4 5.99992C2.89333 5.99992 2 6.89325 2 7.99992C2 9.10659 2.89333 9.99992 4 9.99992C4.52667 9.99992 5 9.79325 5.36 9.45992L10.1067 12.2333C10.0733 12.3733 10.0533 12.5199 10.0533 12.6666C10.0533 13.7399 10.9267 14.6133 12 14.6133C13.0733 14.6133 13.9467 13.7399 13.9467 12.6666C13.9467 11.5933 13.0733 10.7199 12 10.7199Z' fill='%23F7B65A'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_924_1461'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+
+
+.price-for-renting_article {
+    display: flex;
+    gap: 125px;
+    margin-top: 71px;
+}
+
+.price-for-renting_article_include-article {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.price-for-renting_article_include-article_header {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.price-for-renting_article_include-article_subtitle {
+    color: #727272;
+    font-size: 14px;
+    line-height: 23px;
+    text-decoration-line: underline;
+}
+
+.price-for-renting_article_description {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 787px;
+}
+
+.price-for-renting_article_description_header {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.price-for-renting_article_description_text {
+    color: #757985;
+    font-size: 16px;
+    line-height: 26px;
+}
+
+
+.price-for-renting_swiper-block {
+    margin-top: 152px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.price-for-renting_swiper-block_header-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-for-renting_swiper-block_header {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+
+.price-for-renting_swiper-block_button-wrapper {
+    display: flex;
+    gap: 16px;
+}
+
+.price-for-renting_swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.price-for-renting_swiper-button-prev,
+.price-for-renting_swiper-button-next {
+    width: 46px;
+    height: 46px;
+    border: solid 1px #ED4646;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-for-renting_swiper-button-prev:after {
+    display: block;
+    content: '';
+    width: 6px;
+    height: 11px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='13' viewBox='0 0 8 13' fill='none'%3E%3Cpath d='M6.70508 12L1.29331 6.58824L6.70508 1.17647' stroke='%23ED4646' stroke-width='1.35294'/%3E%3C/svg%3E");
+}
+
+.price-for-renting_swiper-button-next {
+    background: #ED4646;
+}
+
+.price-for-renting_swiper-button-next:after {
+    display: block;
+    content: '';
+    width: 6px;
+    height: 11px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='13' viewBox='0 0 8 13' fill='none'%3E%3Cpath d='M1.29492 1L6.70669 6.41176L1.29492 11.8235' stroke='white' stroke-width='1.35294'/%3E%3C/svg%3E");
+}
+
+.swiper-button-red-hover:hover {
+    background: white;
+}
+
+.swiper-button-red-hover:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='12' viewBox='0 0 8 12' fill='none'%3E%3Cpath d='M1.29492 0.588135L6.70669 5.9999L1.29492 11.4117' stroke='%23ED4646' stroke-width='1.35294'/%3E%3C/svg%3E");
+}
+
+.swiper-button-white-hover:hover {
+    background: #ED4646;
+}
+
+.swiper-button-white-hover:hover::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='13' viewBox='0 0 8 13' fill='none'%3E%3Cpath d='M6.70508 12L1.29331 6.58824L6.70508 1.17647' stroke='%23ffff' stroke-width='1.35294'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+    .container-width1110 {
+        max-width: 318px;
+        margin: 0 auto;
+    }
+
+    .price-for-renting {
+        margin-top: 36px;
+    }
+
+    .price-for-renting_description-wrapper {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    .price-for-renting_header {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 34px;
+    }
+
+    .price-for-renting_following-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        border: none;
+    }
+
+    .price-for-renting_time {
+        border-bottom: solid 1px #D4D4D4;
+        padding-bottom: 15px;
+    }
+
+    .price-for-renting_author-wrapper {
+        margin-top: 30px;
+    }
+
+
+    .price-for-renting_article {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 32px;
+    }
+
+    .price-for-renting_article_include-article {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .price-for-renting_article_description {
+        gap: 15px;
+    }
+
+    .price-for-renting_article_description_header {
+        font-size: 16px;
+    }
+
+    .price-for-renting_article_description_text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+
+    .price-for-renting_swiper-block {
+        margin-top: 60px;
+        gap: 40px;
+        position: relative;
+        padding-bottom: 80px;
+    }
+
+    .price-for-renting_swiper-block_header-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .price-for-renting_swiper-block_header {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .price-for-renting_swiper-block_button-wrapper {
+        display: flex;
+        gap: 16px;
+        position: absolute;
+        bottom: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .price-for-renting_swiper .article-pages_item_img img {
+        max-width: 249px;
+        min-height: 123px;
+    }
+}

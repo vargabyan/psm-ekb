@@ -19,6 +19,10 @@ a {
 }
 
 
+.prices {
+    margin-top: 45px;
+}
+
 .prices_header {
     font-size: 30px;
     font-weight: 700;
@@ -29,12 +33,18 @@ a {
 .prices_content {
     display: flex;
     flex-direction: column;
+    gap: 18px;
     margin-top: 103px;
+}
+
+.prices_content_item-wrapper {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
 .prices_content_headers {
-    display: flex;
+    display: none;
     font-weight: 600;
     line-height: 22px;
     font-size: 14px;
@@ -45,19 +55,19 @@ a {
 }
 
 .prices_content_headers p:nth-child(2) {
-    margin-left: 93px;
+    margin-left: 106px;
 }
 
 .prices_content_headers p:nth-child(3) {
-    margin-left: 85px;
+    margin-left: 99px;
 }
 
 .prices_content_headers p:nth-child(4) {
-    margin-left: 82px;
+    margin-left: 97px;
 }
 
 .prices_content_headers p:nth-child(5) {
-    margin-left: 111px;
+    margin-left: 123px;
 }
 
 .prices_content_item {
@@ -68,12 +78,12 @@ a {
     padding: 12px 13px;
 }
 
-.prices_content_item-without-color {
-    background: white;
+.prices_content_item-wrapper:nth-child(2n-1) .prices_content_item {
+    background: #F1F8FF;
 }
 
-.prices_content_item-color {
-    background: #F1F8FF;
+.prices_content_item-wrapper:nth-child(1) .prices_content_headers {
+    display: flex;
 }
 
 .prices_meter {
@@ -115,6 +125,158 @@ a {
     background: white;
 }
 
-.prices_time-background-color {
+.prices_content_item-wrapper:nth-child(2n) .prices_time {
     background: #F1F8FF;
+}
+
+
+.help-block {
+    margin-top: 99px !important;
+}
+
+.question-and-answer-block {
+    display: none !important;
+}
+
+
+.contacts-block {
+    display: none !important;
+}
+
+
+@media (max-width: 768px) {
+
+
+    .container-width1110 {
+        max-width: 312px;
+    }
+
+    .prices_header {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .prices_content {
+        overflow: scroll;
+        overflow-y: hidden;
+        margin-top: 22px;
+    }
+
+    .prices_content_item-wrapper {
+        width: 491px;
+    }
+
+    .prices_content_headers {
+        white-space: nowrap;
+        width: 100%;
+        margin-bottom: 15px;
+        z-index: 1;
+        display: grid !important;
+        grid-template-columns: min-content min-content min-content min-content;
+        grid-template-areas:
+            'a b c d'
+            'e b c d';
+        font-size: 12px;
+        line-height: 20px
+    }
+
+    .prices_content_headers p {
+        display: grid;
+        margin-bottom: -190px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 20px;
+    }
+
+    .prices_content_headers p:nth-child(1) {
+        margin-left: 16px;
+        margin-top: 66px;
+        color: #B0B0B0;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 12px
+    }
+
+    .prices_content_headers p:nth-child(2) {
+        margin-left: 35px;
+    }
+
+    .prices_content_headers p:nth-child(3) {
+        margin-left: 45px;
+    }
+
+    .prices_content_headers p:nth-child(4) {
+        margin-left: 51px;
+    }
+
+    .prices_content_headers p:nth-child(5) {
+        margin-left: 16px;
+        grid: 'e';
+        margin-top: 138px;
+        white-space: break-spaces;
+        color: #B0B0B0;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 12px
+    }
+
+    .prices_meter {
+        font-size: 22px;
+    }
+
+    .prices_content_item {
+        width: 100%;
+        background: #F1F8FF;
+        padding: 16px;
+        display: grid;
+        align-items: flex-start;
+        justify-content: start;
+        grid-template-columns: min-content min-content min-content min-content;
+        grid-template-areas:
+            'a b c d'
+            'e b c d';
+    }
+
+    .prices_params:nth-child(2) {
+        margin-left: 29px;
+    }
+
+    .prices_params {
+        display: grid;
+        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+    }
+
+    .prices_params:first-child {
+        grid: 'a';
+        margin-left: 0;
+        margin-top: 15px;
+        font-size: 12px;
+        line-height: 16px
+    }
+
+    .prices_params_item {
+        padding: 14px;
+    }
+
+    .prices_border-line {
+        border-bottom: solid 1px #DADADA;
+    }
+
+    .prices_time {
+        min-width: 100%;
+        width: 100%;
+        min-height: 100%;
+        height: 100%;
+        margin-top: -28px;
+        padding: 0;
+        margin-left: 0;
+        grid: 'e';
+
+        font-size: 24px;
+        line-height: 30px;
+        white-space: nowrap;
+    }
 }

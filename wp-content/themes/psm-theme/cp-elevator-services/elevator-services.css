@@ -22,6 +22,7 @@ a {
 .elevator-services {
     display: flex;
     gap: 64px;
+    margin-top: 50px;
 }
 
 .elevator-services_img {
@@ -48,4 +49,43 @@ a {
     color: #757985;
     font-size: 16px;
     line-height: 24px;
+}
+
+
+@media (max-width: 768px) {
+    .container-width1110 {
+        max-width: 318px;
+    }
+
+
+    .elevator-services {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .elevator-services_img {
+        max-width: 445px;
+        max-height: 252px;
+        flex-shrink: 0;
+        border-radius: 20px;
+    }
+
+    .elevator-services_text {
+        gap: 16px;
+    }
+
+    .elevator-services_header {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .elevator-services_description {
+        color: #757985;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 24px;
+    }
+
 }

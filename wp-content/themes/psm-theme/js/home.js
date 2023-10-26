@@ -12,27 +12,40 @@ function ready(){
 
     new Swiper('.category-swiper', {
 
-        direction: 'horizontal',
-
         navigation: {
             nextEl: '.category-swiper-button-next',
             prevEl: '.category-swiper-button-prev',
         },
 
-        slidesPerView: 6,
+        slidesPerView: 'auto',
+        spaceBetween: 16,
 
     });
 
     new Swiper('.our-truck-crane-swiper', {
-
-        direction: 'horizontal',
 
         navigation: {
             nextEl: '.our-truck-crane-swiper-button-next',
             prevEl: '.our-truck-crane-swiper-button-prev',
         },
 
-        slidesPerView: 1,
+        slidesPerView: 3,
+        spaceBetween: 30,
+
+        breakpoints: {
+            318: {
+                slidesPerView: 1,
+                spaceBetween: 0
+            },
+            992: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1060: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            },
+        }
 
     });
 
@@ -59,14 +72,24 @@ function ready(){
 
     new Swiper('.review-swiper', {
 
-        direction: 'horizontal',
-
         navigation: {
             nextEl: '.review-swiper-button-next',
             prevEl: '.review-swiper-button-prev',
         },
 
-        slidesPerView: 1,
+        slidesPerView: 2,
+        spaceBetween: 30,
+
+        breakpoints: {
+            318: {
+                slidesPerView: 1,
+                spaceBetween: 0
+            },
+            992: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+        }
 
     });
 }

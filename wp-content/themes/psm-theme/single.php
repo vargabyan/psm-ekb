@@ -3,7 +3,7 @@
 Template Post Type: auto
 */?>
 
-<?php get_header(); ?>
+<?php get_header();  ?>
 <?php
 // Retrieves the stored value from the database
 $meta_url = get_post_meta( get_the_ID(), 'links-news-original', true );

@@ -95,7 +95,7 @@ function get_cat(){
 
     $cat = '';
     foreach( $categories as $category ){
-        $cat .= '<a class="swiper-slide" href="' . get_category_link( $category->term_id ) .  '">' . $category->name.'</a>';
+        $cat .= '<div class="swiper-slide"><a class="category_swiper-slide_item" href="' . get_category_link( $category->term_id ) .  '">' . $category->name.'</a></div>';
     }
     return $cat;
 }
@@ -1088,16 +1088,8 @@ function reviews_func(){
         <div class="top-box">
             <p>Что о нас говорят клиенты</p>
             <div class="button-box">
-                <div class="review-swiper-prev">
-                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.70508 11.4121L1.29331 6.00035L6.70508 0.58858" stroke="#ED4646" stroke-width="1.35294"/>
-                    </svg>
-                </div>
-                <div class="review-swiper-next next-box">
-                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.29492 0.587891L6.70669 5.99965L1.29492 11.4114" stroke="white" stroke-width="1.35294"/>
-                    </svg>
-                </div>
+                <div class="review-swiper-prev swiper-button-prev-white"></div>
+                <div class="review-swiper-next next-box swiper-button-next-red"></div>
             </div>
         </div>
 
@@ -1106,12 +1098,14 @@ function reviews_func(){
               <div class="swiper-wrapper">';
         foreach ($reviews as $review) {
             $result .= '
-                    <div class="swiper-slide person-box">
-                        <div>
-                            <img loading="lazy" src="'.wp_get_attachment_url($review['img']).'" alt="'.htmlspecialchars($review['name']).'" />
-                            <p class="person-name">'.$review['name'].'</p>
+                    <div class="swiper-slide">
+                        <div class="person-box">
+                            <div>
+                                <img loading="lazy" src="'.wp_get_attachment_url($review['img']).'" alt="'.htmlspecialchars($review['name']).'" />
+                                <p class="person-name">'.$review['name'].'</p>
+                            </div>
+                            <div class="person-comment">'.$review['txt'].'</div>
                         </div>
-                        <div class="person-comment">'.$review['txt'].'</div>
                     </div>';
             }
         unset($review);
