@@ -53,31 +53,9 @@
 <div class="product-showcase width-block">
     <h2>Наши машины</h2>
 
-    <div class="category-box">
-        <div class="category-swiper-button-prev swiper-button">
-            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 9L1 5L5 1" stroke="white"/>
-            </svg>
-        </div>
+    <?= do_shortcode('[cat]'); ?>
 
-        <div class="category-swiper">
-            <div class="swiper-wrapper category-swiper-wrapper">
-
-                <?= do_shortcode('[cat]'); ?>
-
-            </div>
-        </div>
-
-        <div class="category-swiper-button-next swiper-button">
-            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L5 5L1 9" stroke="white"/>
-            </svg>
-        </div>
-    </div>
-
-    <div class="products-box">
-        <?= do_shortcode('[auto]'); ?>
-    </div>
+    <?= do_shortcode('[auto]'); ?>
 
     <div class="product-showcase_button-show-more-wrapper">
         <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>

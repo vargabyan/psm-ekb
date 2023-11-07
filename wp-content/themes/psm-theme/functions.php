@@ -1,143 +1,85 @@
 <?
 register_nav_menus(array(
-    'top'    => 'top menu',    //Название месторасположения меню в шаблоне
+    'top' => 'top menu',    //Название месторасположения меню в шаблоне
     'footer-menu1' => 'footer 1st column',
     'footer-menu2' => 'footer 2nd column',
     'footer-menu3' => 'footer 3rd column'
 ));
 
 //разрешить загрузку webp
-function webp_upload_mimes( $existing_mimes ) {
+function webp_upload_mimes($existing_mimes)
+{
     // add webp to the list of mime types
     $existing_mimes['webp'] = 'image/webp';
 
     // return the array back to the function with our added mime type
     return $existing_mimes;
 }
-add_filter( 'mime_types', 'webp_upload_mimes' );
+
+add_filter('mime_types', 'webp_upload_mimes');
 
 add_filter('use_block_editor_for_post', '__return_false');
 
-add_action( 'widgets_init', 'register_my_widgets' );
+add_action('widgets_init', 'register_my_widgets');
 
 //убрать лишние теги br и p в WordPress
-remove_filter( 'the_content', 'wpautop' );// для контента
-remove_filter( 'the_excerpt', 'wpautop' );// для анонсов
-remove_filter( 'comment_text', 'wpautop' );// для комментарий
-function register_my_widgets(){
-    register_sidebar( array(
-        'name'          => '4 колонка футера',
-        'id'            => "4th_column_footer",
-        'description'   => 'descr',
-        'class'         => '4th_column',
+remove_filter('the_content', 'wpautop');// для контента
+remove_filter('the_excerpt', 'wpautop');// для анонсов
+remove_filter('comment_text', 'wpautop');// для комментарий
+function register_my_widgets()
+{
+    register_sidebar(array(
+        'name' => '4 колонка футера',
+        'id' => "4th_column_footer",
+        'description' => 'descr',
+        'class' => '4th_column',
         'before_widget' => '<div>',
-        'after_widget'  => "</div>",
-        'before_title'  => '<span>',
-        'after_title'   => "</span>",
-    ) );
-}
-add_theme_support( 'post-thumbnails' ); // для всех типов постов
-
-
-function get_auto(){
-    global $post;
-    $args = array(
-        'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
-        'posts_per_page' => 10,
-    );
-
-    $p = get_posts( $args );
-    $content='';
-    $i=0;
-    foreach ( $p as $post ) {
-        //$cost=get_post_custom_values('Стоимость');
-        //setup_postdata( $post );
-//        $url = get_permalink($post->ID);
-//        $content .='<div class="col-sm-6 col-md-3">';
-//        $content .='<div class="product-card">';
-//        $content .='<div class="product-image"><img loading="lazy" src="'.get_the_post_thumbnail_url($post->ID, 'medium').'" alt="'.$post->post_title.'"></div>';
-//        $content .='<div class="product-title"><a href="'.$url.'">'.$post->post_title.'</a></div>';
-//        $content .='<div class="card-descr"><a href="'.$url.'"><span>'.get_post_meta($post->ID,'meta1_field_6', true).'</span></a></div>';
-//        $content .='<a class="product-description" href="'.$url.'">Условия аренды</a>';
-//        $content .='<a onclick="yaCounter47702209.reachGoal(`zakaz-s-listinga`);" data-auto="'.$post->post_title.'" data-call="auto" href="javascript:void(0);">Заказать</a>';
-//        $content .='</div>';
-//        $content .='</div>';
-
-        $url = get_permalink($post->ID);
-
-        $content .='<div class="product-card-box">';
-        $content .='<div class="img-box"><img loading="lazy" src="'.get_the_post_thumbnail_url($post->ID, 'medium').'" alt="'.$post->post_title.'"></div>';
-        $content .='<div class="description-box">';
-        $content .='<div class="title-box"><a href="'.$url.'">'.$post->post_title.'</a></div>';
-        $content .='<div class="card-descr"><a href="'.$url.'"><span>'.get_post_meta($post->ID,'meta1_field_6', true).'</span></a></div>';
-        $content .='</div>';
-        $content .='<div class="button-box">';
-        $content .='<a class="meake-order button-red" onclick="yaCounter47702209.reachGoal(`zakaz-s-listinga`);" data-auto="'.$post->post_title.'" data-call="auto" href="javascript:void(0);">Заказать</a>';
-        $content .='<a class="product-description button-blue" href="'.$url.'">Условия аренды</a>';
-        $content .='</div>';
-        $content .='</div>';
-
-
-    }
-    wp_reset_postdata();
-    return $content;
-}
-add_shortcode('auto','get_auto');
-
-function get_cat(){
-    global $post;
-    $categories = get_categories(array(
-        'taxonomy' => 'arenda-autovyshek',
-        'type' => 'uslugi-autovyshki',
-        'orderby' => 'name',
-        'order' => 'ASC'
+        'after_widget' => "</div>",
+        'before_title' => '<span>',
+        'after_title' => "</span>",
     ));
-
-    $cat = '';
-    foreach( $categories as $category ){
-        $cat .= '<div class="swiper-slide"><a class="category_swiper-slide_item" href="' . get_category_link( $category->term_id ) .  '">' . $category->name.'</a></div>';
-    }
-    return $cat;
 }
 
-add_shortcode('cat','get_cat');
+add_theme_support('post-thumbnails'); // для всех типов постов
 
-function breadcrumbs() {
+
+function breadcrumbs()
+{
 
     /* === ОПЦИИ === */
-    $text['home']     = 'Главная'; // текст ссылки "Главная"
+    $text['home'] = 'Главная'; // текст ссылки "Главная"
     $text['category'] = '%s'; // текст для страницы рубрики
-    $text['search']   = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
-    $text['tag']      = 'Записи с тегом "%s"'; // текст для страницы тега
-    $text['author']   = 'Статьи автора %s'; // текст для страницы автора
-    $text['404']      = 'Ошибка 404'; // текст для страницы 404
-    $text['page']     = 'Страница %s'; // текст 'Страница N'
-    $text['cpage']    = 'Страница комментариев %s'; // текст 'Страница комментариев N'
+    $text['search'] = 'Результаты поиска по запросу "%s"'; // текст для страницы с результатами поиска
+    $text['tag'] = 'Записи с тегом "%s"'; // текст для страницы тега
+    $text['author'] = 'Статьи автора %s'; // текст для страницы автора
+    $text['404'] = 'Ошибка 404'; // текст для страницы 404
+    $text['page'] = 'Страница %s'; // текст 'Страница N'
+    $text['cpage'] = 'Страница комментариев %s'; // текст 'Страница комментариев N'
 
-    $wrap_before    = '<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
-    $wrap_after     = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
-    $sep            = '<span class="breadcrumbs__separator"></span>'; // разделитель между "крошками"
-    $before         = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
-    $after          = '</span>'; // тег после текущей "крошки"
+    $wrap_before = '<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">'; // открывающий тег обертки
+    $wrap_after = '</div><!-- .breadcrumbs -->'; // закрывающий тег обертки
+    $sep = '<span class="breadcrumbs__separator"></span>'; // разделитель между "крошками"
+    $before = '<span class="breadcrumbs__current">'; // тег перед текущей "крошкой"
+    $after = '</span>'; // тег после текущей "крошки"
 
-    $show_on_home   = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
+    $show_on_home = 0; // 1 - показывать "хлебные крошки" на главной странице, 0 - не показывать
     $show_home_link = 1; // 1 - показывать ссылку "Главная", 0 - не показывать
-    $show_current   = 1; // 1 - показывать название текущей страницы, 0 - не показывать
-    $show_last_sep  = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
+    $show_current = 1; // 1 - показывать название текущей страницы, 0 - не показывать
+    $show_last_sep = 1; // 1 - показывать последний разделитель, когда название текущей страницы не отображается, 0 - не показывать
     /* === КОНЕЦ ОПЦИЙ === */
 
     global $post;
-    $home_url       = home_url('/');
-    $link           = '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
-    $link          .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
-    $link          .= '<meta itemprop="position" content="%3$s" />';
-    $link          .= '</span>';
-    $parent_id      = ( $post ) ? $post->post_parent : '';
-    $home_link      = sprintf( $link, $home_url, $text['home'], 1 );
+    $home_url = home_url('/');
+    $link = '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
+    $link .= '<a class="breadcrumbs__link" href="%1$s" itemprop="item"><span itemprop="name">%2$s</span></a>';
+    $link .= '<meta itemprop="position" content="%3$s" />';
+    $link .= '</span>';
+    $parent_id = ($post) ? $post->post_parent : '';
+    $home_link = sprintf($link, $home_url, $text['home'], 1);
 
-    if ( is_home() || is_front_page() ) {
+    if (is_home() || is_front_page()) {
 
-        if ( $show_on_home ) echo $wrap_before . $home_link . $wrap_after;
+        if ($show_on_home) echo $wrap_before . $home_link . $wrap_after;
 
     } else {
 
@@ -145,168 +87,170 @@ function breadcrumbs() {
 
         echo $wrap_before;
 
-        if ( $show_home_link ) {
+        if ($show_home_link) {
             $position += 1;
             echo $home_link;
         }
 
-        if ( is_category() ) {
-            $parents = get_ancestors( get_query_var('cat'), 'category' );
-            foreach ( array_reverse( $parents ) as $cat ) {
+        if (is_category()) {
+            $parents = get_ancestors(get_query_var('cat'), 'category');
+            foreach (array_reverse($parents) as $cat) {
                 $position += 1;
-                if ( $position > 1 ) echo $sep;
-                echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+                if ($position > 1) echo $sep;
+                echo sprintf($link, get_category_link($cat), get_cat_name($cat), $position);
             }
-            if ( get_query_var( 'paged' ) ) {
+            if (get_query_var('paged')) {
                 $position += 1;
                 $cat = get_query_var('cat');
-                echo $sep . sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
-                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+                echo $sep . sprintf($link, get_category_link($cat), get_cat_name($cat), $position);
+                echo $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
             } else {
-                if ( $show_current ) {
-                    if ( $position >= 1 ) echo $sep;
-                    echo $before . sprintf( $text['category'], single_cat_title( '', false ) ) . $after;
-                } elseif ( $show_last_sep ) echo $sep;
+                if ($show_current) {
+                    if ($position >= 1) echo $sep;
+                    echo $before . sprintf($text['category'], single_cat_title('', false)) . $after;
+                } elseif ($show_last_sep) echo $sep;
             }
 
-        } elseif ( is_search() ) {
-            if ( get_query_var( 'paged' ) ) {
+        } elseif (is_search()) {
+            if (get_query_var('paged')) {
                 $position += 1;
-                if ( $show_home_link ) echo $sep;
-                echo sprintf( $link, $home_url . '?s=' . get_search_query(), sprintf( $text['search'], get_search_query() ), $position );
-                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+                if ($show_home_link) echo $sep;
+                echo sprintf($link, $home_url . '?s=' . get_search_query(), sprintf($text['search'], get_search_query()), $position);
+                echo $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
             } else {
-                if ( $show_current ) {
-                    if ( $position >= 1 ) echo $sep;
-                    echo $before . sprintf( $text['search'], get_search_query() ) . $after;
-                } elseif ( $show_last_sep ) echo $sep;
+                if ($show_current) {
+                    if ($position >= 1) echo $sep;
+                    echo $before . sprintf($text['search'], get_search_query()) . $after;
+                } elseif ($show_last_sep) echo $sep;
             }
 
-        } elseif ( is_year() ) {
-            if ( $show_home_link && $show_current ) echo $sep;
-            if ( $show_current ) echo $before . get_the_time('Y') . $after;
-            elseif ( $show_home_link && $show_last_sep ) echo $sep;
+        } elseif (is_year()) {
+            if ($show_home_link && $show_current) echo $sep;
+            if ($show_current) echo $before . get_the_time('Y') . $after;
+            elseif ($show_home_link && $show_last_sep) echo $sep;
 
-        } elseif ( is_month() ) {
-            if ( $show_home_link ) echo $sep;
+        } elseif (is_month()) {
+            if ($show_home_link) echo $sep;
             $position += 1;
-            echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position );
-            if ( $show_current ) echo $sep . $before . get_the_time('F') . $after;
-            elseif ( $show_last_sep ) echo $sep;
+            echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y'), $position);
+            if ($show_current) echo $sep . $before . get_the_time('F') . $after;
+            elseif ($show_last_sep) echo $sep;
 
-        } elseif ( is_day() ) {
-            if ( $show_home_link ) echo $sep;
+        } elseif (is_day()) {
+            if ($show_home_link) echo $sep;
             $position += 1;
-            echo sprintf( $link, get_year_link( get_the_time('Y') ), get_the_time('Y'), $position ) . $sep;
+            echo sprintf($link, get_year_link(get_the_time('Y')), get_the_time('Y'), $position) . $sep;
             $position += 1;
-            echo sprintf( $link, get_month_link( get_the_time('Y'), get_the_time('m') ), get_the_time('F'), $position );
-            if ( $show_current ) echo $sep . $before . get_the_time('d') . $after;
-            elseif ( $show_last_sep ) echo $sep;
+            echo sprintf($link, get_month_link(get_the_time('Y'), get_the_time('m')), get_the_time('F'), $position);
+            if ($show_current) echo $sep . $before . get_the_time('d') . $after;
+            elseif ($show_last_sep) echo $sep;
 
-        } elseif ( is_single() && ! is_attachment() ) {
-            if ( get_post_type() != 'post' ) {
+        } elseif (is_single() && !is_attachment()) {
+            if (get_post_type() != 'post') {
                 $position += 1;
-                $post_type = get_post_type_object( get_post_type() );
-                if ( $position > 1 ) echo $sep;
-                echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->labels->name, $position );
-                if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-                elseif ( $show_last_sep ) echo $sep;
+                $post_type = get_post_type_object(get_post_type());
+                if ($position > 1) echo $sep;
+                echo sprintf($link, get_post_type_archive_link($post_type->name), $post_type->labels->name, $position);
+                if ($show_current) echo $sep . $before . get_the_title() . $after;
+                elseif ($show_last_sep) echo $sep;
             } else {
-                $cat = get_the_category(); $catID = $cat[0]->cat_ID;
-                $parents = get_ancestors( $catID, 'category' );
-                $parents = array_reverse( $parents );
+                $cat = get_the_category();
+                $catID = $cat[0]->cat_ID;
+                $parents = get_ancestors($catID, 'category');
+                $parents = array_reverse($parents);
                 $parents[] = $catID;
-                foreach ( $parents as $cat ) {
+                foreach ($parents as $cat) {
                     $position += 1;
-                    if ( $position > 1 ) echo $sep;
-                    echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+                    if ($position > 1) echo $sep;
+                    echo sprintf($link, get_category_link($cat), get_cat_name($cat), $position);
                 }
-                if ( get_query_var( 'cpage' ) ) {
+                if (get_query_var('cpage')) {
                     $position += 1;
-                    echo $sep . sprintf( $link, get_permalink(), get_the_title(), $position );
-                    echo $sep . $before . sprintf( $text['cpage'], get_query_var( 'cpage' ) ) . $after;
+                    echo $sep . sprintf($link, get_permalink(), get_the_title(), $position);
+                    echo $sep . $before . sprintf($text['cpage'], get_query_var('cpage')) . $after;
                 } else {
-                    if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-                    elseif ( $show_last_sep ) echo $sep;
+                    if ($show_current) echo $sep . $before . get_the_title() . $after;
+                    elseif ($show_last_sep) echo $sep;
                 }
             }
 
-        } elseif ( is_post_type_archive() ) {
-            $post_type = get_post_type_object( get_post_type() );
-            if ( get_query_var( 'paged' ) ) {
+        } elseif (is_post_type_archive()) {
+            $post_type = get_post_type_object(get_post_type());
+            if (get_query_var('paged')) {
                 $position += 1;
-                if ( $position > 1 ) echo $sep;
-                echo sprintf( $link, get_post_type_archive_link( $post_type->name ), $post_type->label, $position );
-                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+                if ($position > 1) echo $sep;
+                echo sprintf($link, get_post_type_archive_link($post_type->name), $post_type->label, $position);
+                echo $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
             } else {
-                if ( $show_home_link && $show_current ) echo $sep;
-                if ( $show_current ) echo $before . $post_type->label . $after;
-                elseif ( $show_home_link && $show_last_sep ) echo $sep;
+                if ($show_home_link && $show_current) echo $sep;
+                if ($show_current) echo $before . $post_type->label . $after;
+                elseif ($show_home_link && $show_last_sep) echo $sep;
             }
 
-        } elseif ( is_attachment() ) {
-            $parent = get_post( $parent_id );
-            $cat = get_the_category( $parent->ID ); $catID = $cat[0]->cat_ID;
-            $parents = get_ancestors( $catID, 'category' );
-            $parents = array_reverse( $parents );
+        } elseif (is_attachment()) {
+            $parent = get_post($parent_id);
+            $cat = get_the_category($parent->ID);
+            $catID = $cat[0]->cat_ID;
+            $parents = get_ancestors($catID, 'category');
+            $parents = array_reverse($parents);
             $parents[] = $catID;
-            foreach ( $parents as $cat ) {
+            foreach ($parents as $cat) {
                 $position += 1;
-                if ( $position > 1 ) echo $sep;
-                echo sprintf( $link, get_category_link( $cat ), get_cat_name( $cat ), $position );
+                if ($position > 1) echo $sep;
+                echo sprintf($link, get_category_link($cat), get_cat_name($cat), $position);
             }
             $position += 1;
-            echo $sep . sprintf( $link, get_permalink( $parent ), $parent->post_title, $position );
-            if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-            elseif ( $show_last_sep ) echo $sep;
+            echo $sep . sprintf($link, get_permalink($parent), $parent->post_title, $position);
+            if ($show_current) echo $sep . $before . get_the_title() . $after;
+            elseif ($show_last_sep) echo $sep;
 
-        } elseif ( is_page() && ! $parent_id ) {
-            if ( $show_home_link && $show_current ) echo $sep;
-            if ( $show_current ) echo $before . get_the_title() . $after;
-            elseif ( $show_home_link && $show_last_sep ) echo $sep;
+        } elseif (is_page() && !$parent_id) {
+            if ($show_home_link && $show_current) echo $sep;
+            if ($show_current) echo $before . get_the_title() . $after;
+            elseif ($show_home_link && $show_last_sep) echo $sep;
 
-        } elseif ( is_page() && $parent_id ) {
-            $parents = get_post_ancestors( get_the_ID() );
-            foreach ( array_reverse( $parents ) as $pageID ) {
+        } elseif (is_page() && $parent_id) {
+            $parents = get_post_ancestors(get_the_ID());
+            foreach (array_reverse($parents) as $pageID) {
                 $position += 1;
-                if ( $position > 1 ) echo $sep;
-                echo sprintf( $link, get_page_link( $pageID ), get_the_title( $pageID ), $position );
+                if ($position > 1) echo $sep;
+                echo sprintf($link, get_page_link($pageID), get_the_title($pageID), $position);
             }
-            if ( $show_current ) echo $sep . $before . get_the_title() . $after;
-            elseif ( $show_last_sep ) echo $sep;
+            if ($show_current) echo $sep . $before . get_the_title() . $after;
+            elseif ($show_last_sep) echo $sep;
 
-        } elseif ( is_tag() ) {
-            if ( get_query_var( 'paged' ) ) {
+        } elseif (is_tag()) {
+            if (get_query_var('paged')) {
                 $position += 1;
-                $tagID = get_query_var( 'tag_id' );
-                echo $sep . sprintf( $link, get_tag_link( $tagID ), single_tag_title( '', false ), $position );
-                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+                $tagID = get_query_var('tag_id');
+                echo $sep . sprintf($link, get_tag_link($tagID), single_tag_title('', false), $position);
+                echo $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
             } else {
-                if ( $show_home_link && $show_current ) echo $sep;
-                if ( $show_current ) echo $before . sprintf( $text['tag'], single_tag_title( '', false ) ) . $after;
-                elseif ( $show_home_link && $show_last_sep ) echo $sep;
+                if ($show_home_link && $show_current) echo $sep;
+                if ($show_current) echo $before . sprintf($text['tag'], single_tag_title('', false)) . $after;
+                elseif ($show_home_link && $show_last_sep) echo $sep;
             }
 
-        } elseif ( is_author() ) {
-            $author = get_userdata( get_query_var( 'author' ) );
-            if ( get_query_var( 'paged' ) ) {
+        } elseif (is_author()) {
+            $author = get_userdata(get_query_var('author'));
+            if (get_query_var('paged')) {
                 $position += 1;
-                echo $sep . sprintf( $link, get_author_posts_url( $author->ID ), sprintf( $text['author'], $author->display_name ), $position );
-                echo $sep . $before . sprintf( $text['page'], get_query_var( 'paged' ) ) . $after;
+                echo $sep . sprintf($link, get_author_posts_url($author->ID), sprintf($text['author'], $author->display_name), $position);
+                echo $sep . $before . sprintf($text['page'], get_query_var('paged')) . $after;
             } else {
-                if ( $show_home_link && $show_current ) echo $sep;
-                if ( $show_current ) echo $before . sprintf( $text['author'], $author->display_name ) . $after;
-                elseif ( $show_home_link && $show_last_sep ) echo $sep;
+                if ($show_home_link && $show_current) echo $sep;
+                if ($show_current) echo $before . sprintf($text['author'], $author->display_name) . $after;
+                elseif ($show_home_link && $show_last_sep) echo $sep;
             }
 
-        } elseif ( is_404() ) {
-            if ( $show_home_link && $show_current ) echo $sep;
-            if ( $show_current ) echo $before . $text['404'] . $after;
-            elseif ( $show_last_sep ) echo $sep;
+        } elseif (is_404()) {
+            if ($show_home_link && $show_current) echo $sep;
+            if ($show_current) echo $before . $text['404'] . $after;
+            elseif ($show_last_sep) echo $sep;
 
-        } elseif ( has_post_format() && ! is_singular() ) {
-            if ( $show_home_link && $show_current ) echo $sep;
-            echo get_post_format_string( get_post_format() );
+        } elseif (has_post_format() && !is_singular()) {
+            if ($show_home_link && $show_current) echo $sep;
+            echo get_post_format_string(get_post_format());
         }
 
         echo $wrap_after;
@@ -317,49 +261,50 @@ function breadcrumbs() {
 //CREATE CUSTOM POST TYPE
 
 // Регистрация новой таксономии:
-add_action( 'init', 'create_cat_auto', 0 );
-function create_cat_auto () {
+add_action('init', 'create_cat_auto', 0);
+function create_cat_auto()
+{
     $args = array(
         // Название таксономии
-        'label' => _x( 'Категории', 'taxonomy general name' ),
+        'label' => _x('Категории', 'taxonomy general name'),
 
         // Значения таксономии в админ-панели:
         'labels' => array(
             // Общее название таксономии (множественное число).
             // По умолчанию: 'МеткИ' или 'РубрикИ'
-            'name' => _x( 'Категории', 'taxonomy general name' ),
+            'name' => _x('Категории', 'taxonomy general name'),
             // Название таксономии (единственное число).
             // По умолчанию: 'МеткА' или 'РубрикА'
-            'singular_name' => _x( 'Аренда автовышек', 'taxonomy singular name' ),
+            'singular_name' => _x('Аренда автовышек', 'taxonomy singular name'),
             // Название таксономии в пункте меню.
-            'menu_name' => __( 'Категории' ),
+            'menu_name' => __('Категории'),
             // По умолчанию: 'Все метки' или 'Все рубрики'
-            'all_items' => __( 'Все Машины' ),
+            'all_items' => __('Все Машины'),
             // Текст изменения таксономии на странице редактирования.
             // По умолчанию: 'Изменить метку' или 'Изменить рубрику'
-            'edit_item' => __( 'Изменить машину' ),
+            'edit_item' => __('Изменить машину'),
             // Текст в админ-панели на странице редактирования данной таксономии.
             // По умолчанию: 'Просмотреть метку' или 'Просмотреть рубрику'
-            'view_item' => __( 'Просмотреть машины' ),
+            'view_item' => __('Просмотреть машины'),
             // Текст обновления таксономии во вкладке свойства.
             // По умолчанию: 'Обновить метку' или 'Обновить рубрику'
-            'update_item' => __( 'Обновить машину' ),
+            'update_item' => __('Обновить машину'),
             // Текст добавления новой таксономии при ее создании.
             // По умолчанию: 'Добавить новую метку' или 'Добавить новую рубрику'
-            'add_new_item' => __( 'Добавить категорию' ),
+            'add_new_item' => __('Добавить категорию'),
             // Название таксономии при ее создании и редактировании.
             // По умолчанию: 'Название'
-            'new_item_name' => __( 'Название' ),
+            'new_item_name' => __('Название'),
             // Текст родительской таксономии при создании и редактировании.
             // Для древовидных таксономий.
             // По умолчанию: Родительская.
-            'parent_item' => __( 'Родительская' ),
+            'parent_item' => __('Родительская'),
             // То же, что и parent_item, но с добавлением двоеточия.
             // По умолчанию: 'Родительская:'
-            'parent_item_colon' => __( 'Родительская:' ),
+            'parent_item_colon' => __('Родительская:'),
             // Текст в кнопке поиска на странице всех таксономий.
             // По умолчанию: 'Поиск меток' или 'Поиск рубрик'
-            'search_items' => __( 'Поиск машины' ),
+            'search_items' => __('Поиск машины'),
 
             // ЧЕТЫРЕ НИЖНИХ параметра НЕ используется для древовидных таксономий:
             // Надпись популярных таксономий (на странице всех таксономий).
@@ -377,7 +322,7 @@ function create_cat_auto () {
 
             // Текст в случае, если запрашиваемая таксономия не найдена.
             // По умолчанию: 'Меток не найдено. или 'Рубрик не найдено.
-            'not_found' => __( 'Категорий не найдено.' ),
+            'not_found' => __('Категорий не найдено.'),
         ),
         // Если true, то таксономия становится доступной для использования.
         'public' => true,
@@ -445,90 +390,91 @@ function create_cat_auto () {
         '_builtin' => false,
     );
     // Названия типов записей к которым будет привязана таксономия
-    register_taxonomy( 'arenda-autovyshek', array('uslugi-autovyshki'), $args );
+    register_taxonomy('arenda-autovyshek', array('uslugi-autovyshki'), $args);
 }
 
 
 // Регистрация пользовательского типа записи:
-add_action( 'init', 'register_post_auto', 0 );
-function register_post_auto() {
+add_action('init', 'register_post_auto', 0);
+function register_post_auto()
+{
     $args = array(
         // Название пользовательского типа записи во множественном числе.
         // По умолчанию: значение аргумента 'name' массива 'labels'.
-        'label'  => _x( 'Аренда автовышек', 'Post Type General Name', 'text_domain' ),
+        'label' => _x('Аренда автовышек', 'Post Type General Name', 'text_domain'),
         'labels' => array(
             // Общее название пользовательского типа записи во множественном числе.
             // Переопределяет значение 'label'.
             // По умолчанию: 'Записи' или 'Страницы'
-            'name' => _x( 'Аренда автовышек', 'Post Type General Name', 'text_domain' ),
+            'name' => _x('Аренда автовышек', 'Post Type General Name', 'text_domain'),
             // Название пользовательского типа записи в единственном числе.
             // По умолчанию: 'Запись' или 'Страница'
-            'singular_name' => _x( 'Машина', 'Post Type Singular Name', 'text_domain' ),
+            'singular_name' => _x('Машина', 'Post Type Singular Name', 'text_domain'),
             // Текст добавления нового объекта типа записи в разделе 'Записи'/'Страницы' в админ-панели.
             // По умолчанию: 'Добавить новую'
-            'add_new' => __( 'Добавить машину', 'text_domain' ),
+            'add_new' => __('Добавить машину', 'text_domain'),
             // Текст добавления нового объекта типа записи на странице создания.
             // По умолчанию: 'Добавить запись' или 'Добавить страницу'
-            'add_new_item' => __( 'Добавить машину', 'text_domain' ),
+            'add_new_item' => __('Добавить машину', 'text_domain'),
             // Текст редактирования объекта типа записи на странице редактирования.
             // По умолчанию: 'Редактировать запись' или Редактировать страницу
-            'edit_item' => __( 'Редактировать машину', 'text_domain' ),
+            'edit_item' => __('Редактировать машину', 'text_domain'),
             // Текст новой объекта типа записи.
             // По умолчанию: Новая запись или Новая страница
-            'new_item' => __( 'Новая машина', 'text_domain' ),
+            'new_item' => __('Новая машина', 'text_domain'),
             // Текст просмотра типа записи в админ-баре.
             // По умолчанию: 'Просмотреть запись' или 'Просмотреть страницу'
-            'view_item' => __( 'Просмотреть машину', 'text_domain' ),
+            'view_item' => __('Просмотреть машину', 'text_domain'),
             // Текст на кнопке поиска объектов данного типа записи.
             // По умолчанию: 'Поиск записей' или 'Поиск страниц'
-            'search_items' => __( 'Поиск машин', 'text_domain' ),
+            'search_items' => __('Поиск машин', 'text_domain'),
             // Текст в случае отрицательного результата поиска объектов данного типа записи.
             // По умолчанию: 'Записей не найдено' или 'Страниц не найдено'
-            'not_found' => __( 'Машин не найдено', 'text_domain' ),
+            'not_found' => __('Машин не найдено', 'text_domain'),
             // Текст в случае отрицательного результата поиска объектов данного типа записи в корзине.
             // По умолчанию: 'Записей в корзине не найдено' или 'Страниц в корзине не найдено'
-            'not_found_in_trash' => __( 'Машин в корзине не найдено', 'text_domain' ),
+            'not_found_in_trash' => __('Машин в корзине не найдено', 'text_domain'),
             // Текст при выборе родительской страницы.
             // Данный аргумент применяется только для древовидных типов записи.
             // По умолчанию: __( 'Родительская:', 'text_domain' ).
             'parent_item_colon' => null,
             // Текст всех объектов типа записи в подменю.
             // По умолчанию: 'Все записи' или 'Все страницы
-            'all_items' => __( 'Все машины', 'text_domain' ),
+            'all_items' => __('Все машины', 'text_domain'),
             // Текст архивов типа записи.
             // По умолчанию: 'Архивы записей' или 'Архивы страниц'
-            'archives' => __( 'Архивы машин', 'text_domain' ),
+            'archives' => __('Архивы машин', 'text_domain'),
             // Текст добавления медиафайлов в объект типа записи во вкладке 'Добавить медиазапись'.
             // По умолчанию: 'Вставить в запись' или 'Вставить в страницу'
-            'insert_into_item' => __( 'Вставить в новость', 'text_domain' ),
+            'insert_into_item' => __('Вставить в новость', 'text_domain'),
             // Используется при просотре медиафайлов, прикрепленных к данному типу записи.
             // По умолчанию: _x( 'Загружен для:', 'text_domain' ).
-            'uploaded_to_this_item' => _x( 'Загружен для:', 'text_domain' ),
+            'uploaded_to_this_item' => _x('Загружен для:', 'text_domain'),
             // Текст в метабоксе миниатюры на странице редактирования типа записи.
             // По умолчанию: 'Миниатюра записи'
-            'featured_image' => __( 'Миниатюра машины', 'text_domain' ),
+            'featured_image' => __('Миниатюра машины', 'text_domain'),
             // Текст для загрузки миниатюры.
             // По умолчанию: 'Задать миниатюру'
-            'set_featured_image' => __( 'Задать миниатюру', 'text_domain' ),
+            'set_featured_image' => __('Задать миниатюру', 'text_domain'),
             // Текст для удаления миниатюры.
             // По умолчанию: 'Удалить миниатюру'
-            'remove_featured_image' => __( 'Удалить миниатюру', 'text_domain' ),
+            'remove_featured_image' => __('Удалить миниатюру', 'text_domain'),
             // По умолчанию: 'Использовать миниатюру'
-            'use_featured_image' => __( 'Использовать миниатюру', 'text_domain' ),
+            'use_featured_image' => __('Использовать миниатюру', 'text_domain'),
             // Текст в пункте меню. По умолчанию: значение аргумента 'name'.
-            'menu_name' => __( 'Машины', 'text_domain' ),
+            'menu_name' => __('Машины', 'text_domain'),
             // Текст в админ-баре во вкладке 'Добавить'.
             // По умолчанию: значение аргумента 'singular_name'.
-            'name_admin_bar' => __( 'Машина', 'text_domain' ),
+            'name_admin_bar' => __('Машина', 'text_domain'),
             // Текст Screen reader в заголовке в разделе всех записей/страниц.
             // По умолчанию: 'Список записей' или 'Список страниц'
-            'items_list' => __( 'Список машин', 'text_domain' ),
+            'items_list' => __('Список машин', 'text_domain'),
             // Текст Screen reader для постраничной навигации в разделе всех записей/страниц.
             // По умолчанию: 'Постраничная навигация'
-            'items_list_navigation' => __( 'Постраничная навигация', 'text_domain' ),
+            'items_list_navigation' => __('Постраничная навигация', 'text_domain'),
             // Текст Screen reader для фильтра в разделе всех записей/страниц.
             // По умолчанию: 'Фильтр'
-            'filter_items_list' => __( 'Фильтр', 'text_domain' ),
+            'filter_items_list' => __('Фильтр', 'text_domain'),
         ),
         // Короткое описание записи/страницы. По умолчанию: ''.
         'description' => '',
@@ -660,70 +606,103 @@ function register_post_auto() {
         //  Рекомендация: не использовать этот аргумент при регистрации собственного типа сообщения. По умолчанию: false.
         '_builtin' => false,
     );
-    register_post_type( 'uslugi-autovyshki', $args );
+    register_post_type('uslugi-autovyshki', $args);
 }
 
 
-class trueMetaBox {
-    function __construct($options) {
+class trueMetaBox
+{
+    function __construct($options)
+    {
         $this->options = $options;
-        $this->prefix = $this->options['id'] .'_';
-        add_action( 'add_meta_boxes', array( &$this, 'create' ) );
-        add_action( 'save_post', array( &$this, 'save' ), 1, 2 );
+        $this->prefix = $this->options['id'] . '_';
+        add_action('add_meta_boxes', array(&$this, 'create'));
+        add_action('save_post', array(&$this, 'save'), 1, 2);
     }
-    function create() {
+
+    function create()
+    {
         foreach ($this->options['post'] as $post_type) {
-            if (current_user_can( $this->options['cap'])) {
+            if (current_user_can($this->options['cap'])) {
                 add_meta_box($this->options['id'], $this->options['name'], array(&$this, 'fill'), $post_type, $this->options['pos'], $this->options['pri']);
             }
         }
     }
-    function fill(){
-        global $post; $p_i_d = $post->ID;
-        wp_nonce_field( $this->options['id'], $this->options['id'].'_wpnonce', false, true );
+
+    function fill()
+    {
+        global $post;
+        $p_i_d = $post->ID;
+        wp_nonce_field($this->options['id'], $this->options['id'] . '_wpnonce', false, true);
         ?>
-        <table class="form-table"><tbody><?php
-        foreach ( $this->options['args'] as $param ) {
-            if (current_user_can( $param['cap'])) {
-                ?><tr><?php
-                if(!$value = get_post_meta($post->ID, $this->prefix .$param['id'] , true)) $value = $param['std'];
-                switch ( $param['type'] ) {
-                    case 'text':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+        <table class="form-table">
+        <tbody><?php
+        foreach ($this->options['args'] as $param) {
+            if (current_user_can($param['cap'])) {
+                ?>
+                <tr><?php
+                if (!$value = get_post_meta($post->ID, $this->prefix . $param['id'], true)) $value = $param['std'];
+                switch ($param['type']) {
+                    case 'text':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <input name="<?php echo $this->prefix .$param['id'] ?>" type="<?php echo $param['type'] ?>" id="<?php echo $this->prefix .$param['id'] ?>" value="<?php echo $value ?>" placeholder="<?php echo $param['placeholder'] ?>" class="regular-text" /><br />
+                            <input name="<?php echo $this->prefix . $param['id'] ?>" type="<?php echo $param['type'] ?>"
+                                   id="<?php echo $this->prefix . $param['id'] ?>" value="<?php echo $value ?>"
+                                   placeholder="<?php echo $param['placeholder'] ?>" class="regular-text"/><br/>
                             <span class="description"><?php echo $param['desc'] ?></span>
                         </td>
                         <?php
                         break;
                     }
-                    case 'textarea':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+                    case 'textarea':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <textarea name="<?php echo $this->prefix .$param['id'] ?>" type="<?php echo $param['type'] ?>" id="<?php echo $this->prefix .$param['id'] ?>" value="<?php echo $value ?>" placeholder="<?php echo $param['placeholder'] ?>" class="large-text" /><?php echo $value ?></textarea><br />
+                            <textarea name="<?php echo $this->prefix . $param['id'] ?>"
+                                      type="<?php echo $param['type'] ?>"
+                                      id="<?php echo $this->prefix . $param['id'] ?>" value="<?php echo $value ?>"
+                                      placeholder="<?php echo $param['placeholder'] ?>"
+                                      class="large-text"/><?php echo $value ?></textarea><br/>
                             <span class="description"><?php echo $param['desc'] ?></span>
                         </td>
                         <?php
                         break;
                     }
-                    case 'checkbox':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+                    case 'checkbox':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <label for="<?php echo $this->prefix .$param['id'] ?>"><input name="<?php echo $this->prefix .$param['id'] ?>" type="<?php echo $param['type'] ?>" id="<?php echo $this->prefix .$param['id'] ?>"<?php echo ($value=='on') ? ' checked="checked"' : '' ?> />
+                            <label for="<?php echo $this->prefix . $param['id'] ?>"><input
+                                        name="<?php echo $this->prefix . $param['id'] ?>"
+                                        type="<?php echo $param['type'] ?>"
+                                        id="<?php echo $this->prefix . $param['id'] ?>"<?php echo ($value == 'on') ? ' checked="checked"' : '' ?> />
                                 <?php echo $param['desc'] ?></label>
                         </td>
                         <?php
                         break;
                     }
-                    case 'select':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+                    case 'select':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <label for="<?php echo $this->prefix .$param['id'] ?>">
-                                <select name="<?php echo $this->prefix .$param['id'] ?>" id="<?php echo $this->prefix .$param['id'] ?>"><option>...</option><?php
-                                    foreach($param['args'] as $val=>$name){
-                                        ?><option value="<?php echo $val ?>"<?php echo ( $value == $val ) ? ' selected="selected"' : '' ?>><?php echo $name ?></option><?php
+                            <label for="<?php echo $this->prefix . $param['id'] ?>">
+                                <select name="<?php echo $this->prefix . $param['id'] ?>"
+                                        id="<?php echo $this->prefix . $param['id'] ?>">
+                                    <option>...</option><?php
+                                    foreach ($param['args'] as $val => $name) {
+                                        ?>
+                                        <option value="<?php echo $val ?>"<?php echo ($value == $val) ? ' selected="selected"' : '' ?>><?php echo $name ?></option><?php
                                     }
-                                    ?></select></label><br />
+                                    ?></select></label><br/>
                             <span class="description"><?php echo $param['desc'] ?></span>
                         </td>
                         <?php
@@ -736,16 +715,17 @@ class trueMetaBox {
         ?></tbody></table><?php
     }
 
-    function save($post_id, $post){
-        if ( !wp_verify_nonce( $_POST[ $this->options['id'].'_wpnonce' ], $this->options['id'] ) ) return;
-        if ( !current_user_can( 'edit_post', $post_id ) ) return;
-        if ( !in_array($post->post_type, $this->options['post'])) return;
-        foreach ( $this->options['args'] as $param ) {
-            if ( current_user_can( $param['cap'] ) ) {
-                if ( isset( $_POST[ $this->prefix . $param['id'] ] ) && trim( $_POST[ $this->prefix . $param['id'] ] ) ) {
-                    update_post_meta( $post_id, $this->prefix . $param['id'], trim($_POST[ $this->prefix . $param['id'] ]) );
+    function save($post_id, $post)
+    {
+        if (!wp_verify_nonce($_POST[$this->options['id'] . '_wpnonce'], $this->options['id'])) return;
+        if (!current_user_can('edit_post', $post_id)) return;
+        if (!in_array($post->post_type, $this->options['post'])) return;
+        foreach ($this->options['args'] as $param) {
+            if (current_user_can($param['cap'])) {
+                if (isset($_POST[$this->prefix . $param['id']]) && trim($_POST[$this->prefix . $param['id']])) {
+                    update_post_meta($post_id, $this->prefix . $param['id'], trim($_POST[$this->prefix . $param['id']]));
                 } else {
-                    delete_post_meta( $post_id, $this->prefix . $param['id'] );
+                    delete_post_meta($post_id, $this->prefix . $param['id']);
                 }
             }
         }
@@ -755,52 +735,52 @@ class trueMetaBox {
 
 $options = array(
     array( // первый метабокс
-        'id'	=>	'meta1', // ID метабокса, а также префикс названия произвольного поля
-        'name'	=>	'Стоимость услуг', // заголовок метабокса
-        'post'	=>	array('uslugi-autovyshki'), // типы постов для которых нужно отобразить метабокс
-        'pos'	=>	'normal', // расположение, параметр $context функции add_meta_box()
-        'pri'	=>	'high', // приоритет, параметр $priority функции add_meta_box()
-        'cap'	=>	'edit_posts', // какие права должны быть у пользователя
-        'args'	=>	array(
+        'id' => 'meta1', // ID метабокса, а также префикс названия произвольного поля
+        'name' => 'Стоимость услуг', // заголовок метабокса
+        'post' => array('uslugi-autovyshki'), // типы постов для которых нужно отобразить метабокс
+        'pos' => 'normal', // расположение, параметр $context функции add_meta_box()
+        'pri' => 'high', // приоритет, параметр $priority функции add_meta_box()
+        'cap' => 'edit_posts', // какие права должны быть у пользователя
+        'args' => array(
             array(
-                'id'			=>	'field_1', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Цена за час', // лейбл поля
-                'type'			=>	'text', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_1', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Цена за час', // лейбл поля
+                'type' => 'text', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => '', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_2', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Цена за смену', // лейбл поля
-                'type'			=>	'text', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_2', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Цена за смену', // лейбл поля
+                'type' => 'text', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => '', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_6', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Описание карточки на листинге', // лейбл поля
-                'type'			=>	'textarea', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'Описание карточки на листинге', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_6', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Описание карточки на листинге', // лейбл поля
+                'type' => 'textarea', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => 'Описание карточки на листинге', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_7', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Описание стоимости услуг в карточке товара', // лейбл поля
-                'type'			=>	'textarea', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'Описание стоимости услуг в карточке товара', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_7', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Описание стоимости услуг в карточке товара', // лейбл поля
+                'type' => 'textarea', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => 'Описание стоимости услуг в карточке товара', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_8', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Сео текст', // лейбл поля
-                'type'			=>	'textarea', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'Сео текст', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_8', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Сео текст', // лейбл поля
+                'type' => 'textarea', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => 'Сео текст', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             )
         )
     ),
@@ -809,9 +789,11 @@ $options = array(
  * Update CSS within in Admin
  */
 
-function admin_style() {
+function admin_style()
+{
     wp_enqueue_style('admin-styles', get_stylesheet_directory_uri() . '/admin.css');
 }
+
 add_action('admin_enqueue_scripts', 'admin_style');
 
 
@@ -819,11 +801,12 @@ foreach ($options as $option) {
     $truemetabox = new trueMetaBox($option);
 }
 
-add_shortcode('add_map','add_map');
+add_shortcode('add_map', 'add_map');
 
-function add_map(){
+function add_map()
+{
     if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false):
-        return'<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A348a0927ae0668a65e36f3b50454940061a1401427de5208dea2b9a777869f54&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>';
+        return '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A348a0927ae0668a65e36f3b50454940061a1401427de5208dea2b9a777869f54&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>';
     endif;
 
 }
@@ -831,66 +814,99 @@ function add_map(){
 
 // start 11111
 
-class trueMetaBoxx {
-    function __construct($options) {
+class trueMetaBoxx
+{
+    function __construct($options)
+    {
         $this->options = $options;
-        $this->prefix = $this->options['id'] .'_';
-        add_action( 'add_meta_boxes', array( &$this, 'create' ) );
-        add_action( 'save_post', array( &$this, 'save' ), 1, 2 );
+        $this->prefix = $this->options['id'] . '_';
+        add_action('add_meta_boxes', array(&$this, 'create'));
+        add_action('save_post', array(&$this, 'save'), 1, 2);
     }
-    function create() {
+
+    function create()
+    {
         foreach ($this->options['post'] as $post_type) {
-            if (current_user_can( $this->options['cap'])) {
+            if (current_user_can($this->options['cap'])) {
                 add_meta_box($this->options['id'], $this->options['name'], array(&$this, 'fill'), $post_type, $this->options['pos'], $this->options['pri']);
             }
         }
     }
-    function fill(){
-        global $post; $p_i_d = $post->ID;
-        wp_nonce_field( $this->options['id'], $this->options['id'].'_wpnonce', false, true );
+
+    function fill()
+    {
+        global $post;
+        $p_i_d = $post->ID;
+        wp_nonce_field($this->options['id'], $this->options['id'] . '_wpnonce', false, true);
         ?>
-        <table class="form-table"><tbody><?php
-        foreach ( $this->options['args'] as $param ) {
-            if (current_user_can( $param['cap'])) {
-                ?><tr><?php
-                if(!$value = get_post_meta($post->ID, $this->prefix .$param['id'] , true)) $value = $param['std'];
-                switch ( $param['type'] ) {
-                    case 'text':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+        <table class="form-table">
+        <tbody><?php
+        foreach ($this->options['args'] as $param) {
+            if (current_user_can($param['cap'])) {
+                ?>
+                <tr><?php
+                if (!$value = get_post_meta($post->ID, $this->prefix . $param['id'], true)) $value = $param['std'];
+                switch ($param['type']) {
+                    case 'text':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <input name="<?php echo $this->prefix .$param['id'] ?>" type="<?php echo $param['type'] ?>" id="<?php echo $this->prefix .$param['id'] ?>" value="<?php echo $value ?>" placeholder="<?php echo $param['placeholder'] ?>" class="regular-text" /><br />
+                            <input name="<?php echo $this->prefix . $param['id'] ?>" type="<?php echo $param['type'] ?>"
+                                   id="<?php echo $this->prefix . $param['id'] ?>" value="<?php echo $value ?>"
+                                   placeholder="<?php echo $param['placeholder'] ?>" class="regular-text"/><br/>
                             <span class="description"><?php echo $param['desc'] ?></span>
                         </td>
                         <?php
                         break;
                     }
-                    case 'textarea':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+                    case 'textarea':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <textarea name="<?php echo $this->prefix .$param['id'] ?>" type="<?php echo $param['type'] ?>" id="<?php echo $this->prefix .$param['id'] ?>" value="<?php echo $value ?>" placeholder="<?php echo $param['placeholder'] ?>" class="large-text" /><?php echo $value ?></textarea><br />
+                            <textarea name="<?php echo $this->prefix . $param['id'] ?>"
+                                      type="<?php echo $param['type'] ?>"
+                                      id="<?php echo $this->prefix . $param['id'] ?>" value="<?php echo $value ?>"
+                                      placeholder="<?php echo $param['placeholder'] ?>"
+                                      class="large-text"/><?php echo $value ?></textarea><br/>
                             <span class="description"><?php echo $param['desc'] ?></span>
                         </td>
                         <?php
                         break;
                     }
-                    case 'checkbox':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+                    case 'checkbox':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <label for="<?php echo $this->prefix .$param['id'] ?>"><input name="<?php echo $this->prefix .$param['id'] ?>" type="<?php echo $param['type'] ?>" id="<?php echo $this->prefix .$param['id'] ?>"<?php echo ($value=='on') ? ' checked="checked"' : '' ?> />
+                            <label for="<?php echo $this->prefix . $param['id'] ?>"><input
+                                        name="<?php echo $this->prefix . $param['id'] ?>"
+                                        type="<?php echo $param['type'] ?>"
+                                        id="<?php echo $this->prefix . $param['id'] ?>"<?php echo ($value == 'on') ? ' checked="checked"' : '' ?> />
                                 <?php echo $param['desc'] ?></label>
                         </td>
                         <?php
                         break;
                     }
-                    case 'select':{ ?>
-                        <th scope="row"><label for="<?php echo $this->prefix .$param['id'] ?>"><?php echo $param['title'] ?></label></th>
+                    case 'select':
+                    { ?>
+                        <th scope="row"><label
+                                    for="<?php echo $this->prefix . $param['id'] ?>"><?php echo $param['title'] ?></label>
+                        </th>
                         <td>
-                            <label for="<?php echo $this->prefix .$param['id'] ?>">
-                                <select name="<?php echo $this->prefix .$param['id'] ?>" id="<?php echo $this->prefix .$param['id'] ?>"><option>...</option><?php
-                                    foreach($param['args'] as $val=>$name){
-                                        ?><option value="<?php echo $val ?>"<?php echo ( $value == $val ) ? ' selected="selected"' : '' ?>><?php echo $name ?></option><?php
+                            <label for="<?php echo $this->prefix . $param['id'] ?>">
+                                <select name="<?php echo $this->prefix . $param['id'] ?>"
+                                        id="<?php echo $this->prefix . $param['id'] ?>">
+                                    <option>...</option><?php
+                                    foreach ($param['args'] as $val => $name) {
+                                        ?>
+                                        <option value="<?php echo $val ?>"<?php echo ($value == $val) ? ' selected="selected"' : '' ?>><?php echo $name ?></option><?php
                                     }
-                                    ?></select></label><br />
+                                    ?></select></label><br/>
                             <span class="description"><?php echo $param['desc'] ?></span>
                         </td>
                         <?php
@@ -902,16 +918,18 @@ class trueMetaBoxx {
         }
         ?></tbody></table><?php
     }
-    function save($post_id, $post){
-        if ( !wp_verify_nonce( $_POST[ $this->options['id'].'_wpnonce' ], $this->options['id'] ) ) return;
-        if ( !current_user_can( 'edit_post', $post_id ) ) return;
-        if ( !in_array($post->post_type, $this->options['post'])) return;
-        foreach ( $this->options['args'] as $param ) {
-            if ( current_user_can( $param['cap'] ) ) {
-                if ( isset( $_POST[ $this->prefix . $param['id'] ] ) && trim( $_POST[ $this->prefix . $param['id'] ] ) ) {
-                    update_post_meta( $post_id, $this->prefix . $param['id'], trim($_POST[ $this->prefix . $param['id'] ]) );
+
+    function save($post_id, $post)
+    {
+        if (!wp_verify_nonce($_POST[$this->options['id'] . '_wpnonce'], $this->options['id'])) return;
+        if (!current_user_can('edit_post', $post_id)) return;
+        if (!in_array($post->post_type, $this->options['post'])) return;
+        foreach ($this->options['args'] as $param) {
+            if (current_user_can($param['cap'])) {
+                if (isset($_POST[$this->prefix . $param['id']]) && trim($_POST[$this->prefix . $param['id']])) {
+                    update_post_meta($post_id, $this->prefix . $param['id'], trim($_POST[$this->prefix . $param['id']]));
                 } else {
-                    delete_post_meta( $post_id, $this->prefix . $param['id'] );
+                    delete_post_meta($post_id, $this->prefix . $param['id']);
                 }
             }
         }
@@ -921,52 +939,52 @@ class trueMetaBoxx {
 
 $optionss = array(
     array( // первый метабокс
-        'id'	=>	'meta1', // ID метабокса, а также префикс названия произвольного поля
-        'name'	=>	'Стоимость услуг', // заголовок метабокса
-        'post'	=>	array('auto'), // типы постов для которых нужно отобразить метабокс
-        'pos'	=>	'normal', // расположение, параметр $context функции add_meta_box()
-        'pri'	=>	'high', // приоритет, параметр $priority функции add_meta_box()
-        'cap'	=>	'edit_posts', // какие права должны быть у пользователя
-        'args'	=>	array(
+        'id' => 'meta1', // ID метабокса, а также префикс названия произвольного поля
+        'name' => 'Стоимость услуг', // заголовок метабокса
+        'post' => array('auto'), // типы постов для которых нужно отобразить метабокс
+        'pos' => 'normal', // расположение, параметр $context функции add_meta_box()
+        'pri' => 'high', // приоритет, параметр $priority функции add_meta_box()
+        'cap' => 'edit_posts', // какие права должны быть у пользователя
+        'args' => array(
             array(
-                'id'			=>	'field_1', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Цена за час', // лейбл поля
-                'type'			=>	'text', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_1', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Цена за час', // лейбл поля
+                'type' => 'text', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => '', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_2', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Цена за смену', // лейбл поля
-                'type'			=>	'text', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_2', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Цена за смену', // лейбл поля
+                'type' => 'text', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => '', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_6', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Описание карточки на листинге', // лейбл поля
-                'type'			=>	'textarea', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'Описание карточки на листинге', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_6', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Описание карточки на листинге', // лейбл поля
+                'type' => 'textarea', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => 'Описание карточки на листинге', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_7', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Описание стоимости услуг в карточке товара', // лейбл поля
-                'type'			=>	'textarea', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'Описание стоимости услуг в карточке товара', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_7', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Описание стоимости услуг в карточке товара', // лейбл поля
+                'type' => 'textarea', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => 'Описание стоимости услуг в карточке товара', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             ),
             array(
-                'id'			=>	'field_8', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
-                'title'			=>	'Сео текст', // лейбл поля
-                'type'			=>	'textarea', // тип, в данном случае обычное текстовое поле
-                'placeholder'		=>	'', // атрибут placeholder
-                'desc'			=>	'Сео текст', // что-то типа пояснения, подписи к полю
-                'cap'			=>	'edit_posts'
+                'id' => 'field_8', // атрибуты name и id без префикса, например с префиксом будет meta1_field_1
+                'title' => 'Сео текст', // лейбл поля
+                'type' => 'textarea', // тип, в данном случае обычное текстовое поле
+                'placeholder' => '', // атрибут placeholder
+                'desc' => 'Сео текст', // что-то типа пояснения, подписи к полю
+                'cap' => 'edit_posts'
             )
         )
     ),
@@ -978,14 +996,17 @@ foreach ($optionss as $option) {
 
 // stop 11111
 
-function setup_theme() {
-    add_theme_support( 'title-tag' );
+function setup_theme()
+{
+    add_theme_support('title-tag');
 }
-add_action( 'after_setup_theme', 'setup_theme' );
 
-add_filter( 'document_title_parts', 'mytheme_remove_title' );
-function mytheme_remove_title( $title ){
-    if ( !is_home() ) {
+add_action('after_setup_theme', 'setup_theme');
+
+add_filter('document_title_parts', 'mytheme_remove_title');
+function mytheme_remove_title($title)
+{
+    if (!is_home()) {
         $title['site'] = '';
     }
     return $title;
@@ -994,8 +1015,9 @@ function mytheme_remove_title( $title ){
 wp_deregister_style('wp-block-library');
 
 
-add_shortcode( 'aerial_platform_form', 'aerial_platform_form_func' );
-function aerial_platform_form_func( $atts ){
+add_shortcode('aerial_platform_form', 'aerial_platform_form_func');
+function aerial_platform_form_func($atts)
+{
     return '<div class="col-xs-12 order-form">
         <div class="h2">Нужна автовышка для мойки окон?</div>
         <form>
@@ -1015,75 +1037,16 @@ function aerial_platform_form_func( $atts ){
     </div>';
 }
 
-add_shortcode( 'aerial_platform_list', 'aerial_platform_list_func' );
-function aerial_platform_list_func( $atts ){
-    $pages = get_field('uslugi', get_the_ID());
-    if (empty($pages)){
-        $pages = get_pages([
-            'child_of'     => 351,
-            'post_type'    => 'page',
-            'post_status'  => 'publish',
-        ]);
-    }
-    $result = '';
-    if(!empty($pages)) {
-        $result = '<div class="row">
-            <div class="text-center h2">Вам также может понадобиться автовышка:</div>
-            <div class="aerial_platform_list">';
-        foreach ($pages as $page) {
-            $page_url = get_permalink($page->ID);
-            $result .= '<div class="advantages-card">
-                <div class="h3">
-                    <a href="' . $page_url . '">
-                        <img class="alignnone wp-image-483 size-full" src="' . get_the_post_thumbnail_url($page->ID) . '" alt="' . $page->post_title . '" width="280" height="150" />
-                    </a>
-                </div>
-                <div class="advantages-title">
-                    <div class="h3"><a href="' . $page_url . '">' . $page->post_title . '</a></div>
-                </div>
-            </div>';
-        }
-        $result .= '</div>
-        </div>';
-    }
-    return $result;
-}
-
-add_shortcode( 'work_steps', 'work_steps_func' );
-function work_steps_func( $atts ){
-    return '<div class="stage-section">
-        <div class="text-center h2">Этапы работ</div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                <div class="stage-card"><img loading="lazy" class="alignnone ls-is-cached" src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto1.png" data-src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto1.png" alt="Аренда автовышки" width="188" height="116"></div>
-                <div class="text-center h3">Ваш звонок</div>
-                </div>
-                <div class="col-sm-3">
-                <div class="stage-card"><img loading="lazy" class="alignnone ls-is-cached" src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto2.png" data-src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto2.png" alt="Аренда автовышки" width="188" height="116"></div>
-                <div class="text-center h3">Ответ диспетчера</div>
-                </div>
-                <div class="col-sm-3">
-                <div class="stage-card"><img loading="lazy" class="alignnone ls-is-cached" src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto13-1.png" data-src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto13-1.png" alt="Аренда автовышки" width="188" height="116"></div>
-                <div class="text-center h3">Подписываем договор</div>
-                </div>
-                <div class="col-sm-3">
-                <div class="last-stage-card"><img loading="lazy" class="alignnone ls-is-cached" src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto4.png" data-src="/wp-content/uploads/2019/10/arenda-avtovyshki-foto4.png" alt="Аренда автовышки" width="188" height="116"></div>
-                <div class="text-center h3">Отличный результат!</div>
-                </div>
-            </div>
-        </div>
-    </div>';
-}
 
 add_shortcode('reviews', 'reviews_func');
-function reviews_func(){
+function reviews_func()
+{
     $result = '';
     $reviews = get_field('reviews', get_the_ID());
-    if (!$reviews){
+    if (!$reviews) {
         $reviews = get_field('reviews', 7);
     }
-    if ($reviews){
+    if ($reviews) {
         $result = '
         <div class="top-box">
             <p>Что о нас говорят клиенты</p>
@@ -1101,13 +1064,13 @@ function reviews_func(){
                     <div class="swiper-slide">
                         <div class="person-box">
                             <div>
-                                <img loading="lazy" src="'.wp_get_attachment_url($review['img']).'" alt="'.htmlspecialchars($review['name']).'" />
-                                <p class="person-name">'.$review['name'].'</p>
+                                <img loading="lazy" src="' . wp_get_attachment_url($review['img']) . '" alt="' . htmlspecialchars($review['name']) . '" />
+                                <p class="person-name">' . $review['name'] . '</p>
                             </div>
-                            <div class="person-comment">'.$review['txt'].'</div>
+                            <div class="person-comment">' . $review['txt'] . '</div>
                         </div>
                     </div>';
-            }
+        }
         unset($review);
         $result .= '          
               </div>
@@ -1191,7 +1154,8 @@ function reviews_func(){
 }
 
 add_shortcode('delivery_rent', 'delivery_rent_func');
-function delivery_rent_func(){
+function delivery_rent_func()
+{
     return '<div class="work-section">
     <div class="container">
         <div class="row">
@@ -1207,5 +1171,194 @@ function delivery_rent_func(){
     </div>
 </div>';
 }
+
+?>
+
+<!--new code -->
+
+<?php
+add_shortcode('aerial_platform_list', function ($atts) {
+    $pages = get_field('uslugi', get_the_ID());
+    if (empty($pages)) {
+        $pages = get_pages([
+            'child_of' => 351,
+            'post_type' => 'page',
+            'post_status' => 'publish',
+        ]);
+    }
+
+    if (!empty($pages)) { ?>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+        <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
+        <link rel="stylesheet" href="/wp-content/themes/psm-theme/cp-cars-you-will-need/cars-you-will-need.css">
+
+        <div class="container-width1110">
+            <div class="cars-you-will-need">
+                <p class="cars-you-will-need_header">Вам также может <br> понадобиться автовышка</p>
+                <div class="cars-you-will-need_items-wrapper">
+
+                    <?php foreach ($pages as $page) {
+                        $page_url = get_permalink($page->ID); ?>
+                        <div class="cars-you-will-need_item">
+                            <img class="cars-you-will-need_img"
+                                 src="<?php echo get_the_post_thumbnail_url($page->ID) ?>"
+                                 alt="<?php echo $page->post_title ?>">
+                            <a class="cars-you-will-need_description"
+                               href="<?php echo $page_url ?>"><?php echo $page->post_title ?></a>
+                        </div>
+                    <?php } ?>
+
+                </div>
+
+                <div class="swiper cars-you-will-need_swiper">
+                    <div class="swiper-wrapper">
+
+                        <?php foreach ($pages as $page) {
+                            $page_url = get_permalink($page->ID); ?>
+                            <div class="swiper-slide">
+                                <div class="cars-you-will-need_item">
+                                    <img class="cars-you-will-need_img"
+                                         src="<?php echo get_the_post_thumbnail_url($page->ID) ?>"
+                                         alt="<?php echo $page->post_title ?>">
+                                    <a class="cars-you-will-need_description"
+                                       href="<?php echo $page_url ?>"><?php echo $page->post_title ?></a>
+                                </div>
+                            </div>
+                        <?php } ?>
+
+                    </div>
+                    <div class="cars-you-will-need_swiper-buttons">
+                        <div class="cars-you-will-need-swiper_swiper-button-prev"></div>
+                        <div class="cars-you-will-need-swiper_swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="/wp-content/themes/psm-theme/cp-cars-you-will-need/scripts.js"></script>
+
+    <?php }
+})
+?>
+
+<?php
+add_shortcode('work_steps', function ($atts) {
+    ?>
+    <div class="work-steps-block width-block">
+        <div class="header-box">
+            <p>Как мы <span>работаем</span></p>
+        </div>
+        <div class="work-steps-box">
+            <div>
+                <p class="part-1">/01</p>
+                <p class="part-2">Ваш звонок</p>
+                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+            </div>
+            <div>
+                <p class="part-1">/02</p>
+                <p class="part-2">ответ диспетчера</p>
+                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+            </div>
+            <div>
+                <p class="part-1">/03</p>
+                <p class="part-2">подписываем договор</p>
+                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+            </div>
+            <div>
+                <p class="part-1">/04</p>
+                <p class="part-2">отличный результат!</p>
+                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+            </div>
+        </div>
+        <div class="button-box">
+            <button class="button-red">Смотреть каталог автовышек</button>
+        </div>
+    </div>
+<?php }) ?>
+
+<?php
+add_shortcode('cat', function () {
+
+    $categories = get_categories(array(
+        'taxonomy' => 'arenda-autovyshek',
+        'type' => 'uslugi-autovyshki',
+        'orderby' => 'name',
+        'order' => 'ASC'
+    )); ?>
+
+    <div class="category-box">
+        <div class="category-swiper-button-prev swiper-button">
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 9L1 5L5 1" stroke="white"/>
+            </svg>
+        </div>
+
+        <div class="category-swiper">
+            <div class="swiper-wrapper category-swiper-wrapper">
+
+                <?php foreach ($categories as $category) { ?>
+                    <div class="swiper-slide">
+                        <a class="category_swiper-slide_item"
+                           href="<?php echo get_category_link($category->term_id) ?>"> <?php echo $category->name ?> </a>
+                    </div>
+                <?php } ?>
+
+            </div>
+        </div>
+
+        <div class="category-swiper-button-next swiper-button">
+            <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L1 9" stroke="white"/>
+            </svg>
+        </div>
+    </div>
+
+<?php }) ?>
+
+
+<?php
+add_shortcode('auto', function () {
+    global $post;
+    $args = array(
+        'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
+        'posts_per_page' => 10,
+    );
+
+    $p = get_posts($args);
+    ?>
+    <div class="products-box">
+
+        <?php foreach ($p as $post) {
+            $url = get_permalink($post->ID);
+            ?>
+            <div class="product-card-box">
+                <div class="img-box">
+                    <img loading="lazy" src="<?php echo get_the_post_thumbnail_url($post->ID, 'medium') ?>"
+                         alt="<?php echo $post->post_title ?>"">
+                </div>
+                <div class="description-box">
+                    <div class="title-box"><a href="<?php echo $url ?>"><?php echo $post->post_title ?>"</a></div>
+                    <div class="card-descr"><a
+                                href="<?php echo $url ?>"><span><?php echo get_post_meta($post->ID, 'meta1_field_6', true) ?></span></a>
+                    </div>
+                </div>
+                <div class="button-box">
+                    <a class="meake-order button-red" onclick="yaCounter47702209.reachGoal(`zakaz-s-listinga`);"
+                       data-auto="<?php echo $post->post_title ?>" data-call="auto"
+                       href="javascript:void(0);">Заказать</a>
+                    <a class="product-description button-blue" href="<?php echo $url ?>">Условия аренды</a>
+                </div>
+            </div>
+        <?php } ?>
+
+    </div>
+
+    <?php
+    wp_reset_postdata();
+}) ?>
+
+
 
 

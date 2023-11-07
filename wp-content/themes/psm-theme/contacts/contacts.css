@@ -211,3 +211,117 @@ a {
 .contacts-block {
     display: none !important;
 }
+
+
+@media (max-width: 768px) {
+    .contacts-page {
+        margin-top: 30px;
+    }
+
+    .contacts-page_header {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .contacts-page_description {
+        margin-top: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+    }
+
+    .contacts-page_description span {
+
+    }
+
+    .contacts-page_items-wrapper {
+        flex-direction: column;
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .contacts-page_item {
+        max-width: 290px;
+        padding: 24px 24px 26px 24px;
+    }
+
+    .contacts-page_city {
+        font-size: 14px;
+    }
+
+    .contacts-page_tel {
+        font-size: 24px;
+        margin-top: 18px;
+    }
+
+    .contacts-page_tel:hover {
+        color: #303030;
+    }
+
+    .contacts-page_item_messengers-wrapper {
+        gap: 10px;
+        margin-top: 14px;
+    }
+
+
+    .contacts-additional {
+        margin-top: 30px;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+
+    .contacts-page_map {
+        margin-top: 30px;
+        border-radius: 29px;
+        max-width: 290px;
+        max-height: 192px;
+        position: relative;
+    }
+
+    .contacts-page_map iframe {
+        height: 100%;
+        width: 100%;
+    }
+
+
+    .requisites {
+        margin-top: 60px;
+        gap: 24px;
+        position: relative;
+        padding-bottom: 29px;
+        margin-bottom: 100px;
+    }
+
+    .requisites_header-wrapper {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .requisites_header {
+        font-size: 24px;
+        line-height: 30px
+    }
+
+    .requisites_PDF {
+        position: absolute;
+        bottom: 0;
+        top: 100%;
+    }
+
+    .requisites_details {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .requisites_details_values-wrapper {
+        color: #626262;
+    }
+
+    .requisites_details_item {
+        padding: 18px;
+        font-size: 14px;
+    }
+}

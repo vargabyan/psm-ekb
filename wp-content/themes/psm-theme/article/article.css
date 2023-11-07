@@ -84,6 +84,11 @@ a {
     display: block;
     width: min-content;
     white-space: nowrap;
+
+    color: #3B8AF0;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
 }
 
 .article-pages_item_link:hover {

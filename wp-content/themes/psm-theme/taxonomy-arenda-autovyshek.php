@@ -10,6 +10,48 @@
     </div>
 </div>
 
+<div class="breadcrumb_block">
+
+    <?php if ( function_exists( 'breadcrumbs' ) ) breadcrumbs(); ?>
+
+</div>
+
+655
+
+<div class="maxwidth-1110px">
+    <div class="block_container_3">
+
+        <div class="product-showcase width-block">
+            <h2><? the_field( "tax_h1" ); ?></h2>
+
+            <div class="category-box">
+                <div class="category-swiper-button-prev">
+                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 9L1 5L5 1" stroke="white"/>
+                    </svg>
+                </div>
+
+                <div class="category-swiper">
+                    <div class="swiper-wrapper category-swiper-wrapper">
+
+                        <?= do_shortcode('[cat]'); ?>
+
+                    </div>
+                </div>
+
+                <div class="category-swiper-button-next">
+                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L5 5L1 9" stroke="white"/>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="products-box">
+                <?= do_shortcode('[auto]'); ?>
+            </div>
+        </div>
+    </div>
+
 <div class="product-section">
     <h1 class="text-center"><? the_field( "tax_h1" ); ?></h1>
     <div class="container">
@@ -61,6 +103,10 @@
         </div>
     </div>
 </div>
+
+
+33262
+
 <div class="cat-section">
     <div class="container">
         <div class="row">

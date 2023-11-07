@@ -196,3 +196,115 @@ a {
     display: none !important;
 }
 
+@media (max-width: 768px) {
+    .breadcrumbs {
+        background: white !important;
+    }
+
+
+    .about-company {
+        margin-top: 36px;
+        border-radius: 20px;
+        gap: 14px;
+        padding: 26px 28px 26px 26px;
+    }
+
+    .about-company_text-wrapper {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /*white-space: nowrap;*/
+    }
+
+    .about-company_header {
+        font-size: 24px;
+        line-height: 32px;
+        text-transform: uppercase;
+    }
+
+    .about-company_text {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .about-company_img {
+        display: none;
+    }
+
+
+    .offer-elevator {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 60px;
+    }
+
+    .offer-elevator_header-wrapper {
+        max-width: 577px;
+        width: 100%;
+    }
+
+    .offer-elevator_header {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .offer-elevator_price {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin-top: 16px;
+    }
+
+    .offer-elevator_price span {
+        line-height: 20px;
+    }
+
+    .offer-elevator_links-wrapper {
+        gap: 17px;
+        margin-top: 34px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .offer-elevator_link-watch-catalog {
+        padding: 13px 40px;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+
+    .offer-elevator_link-call {
+        line-height: 22px;
+    }
+
+    .offer-elevator_link-call_tel {
+        line-height: 22px;
+    }
+
+    .offer-elevator_characteristics-items-wrapper {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .offer-elevator_characteristics-item {
+        align-items: baseline;
+        max-width: 275px;
+    }
+
+    .offer-elevator_characteristics-item br {
+        display: none;
+    }
+
+
+    .about-company_button-go-to-category-elevator {
+        padding: 15px 34px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-top: 30px;
+    }
+
+    .about-company_button-go-to-category-elevator:hover {
+        color: #3B8AF0;
+    }
+
+}
+

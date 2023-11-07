@@ -173,6 +173,7 @@ if (array_key_exists($path, $redirectsMap)) {
     });
 </script>
 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <div id="preloader" class="preloader"></div>
 
 

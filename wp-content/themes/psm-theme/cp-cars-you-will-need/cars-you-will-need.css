@@ -46,7 +46,8 @@ a {
     border-radius: 20px;
     border: 1px solid #EDEDED;
     background: #FFF;
-    width: fit-content;
+    max-width: 350px;
+    width: 100%;
 }
 
 .cars-you-will-need_img {
@@ -61,6 +62,7 @@ a {
     font-weight: 600;
     line-height: 22px;
     padding: 0 25px 22px 25px;
+    color: #303030;
 }
 
 
@@ -131,6 +133,7 @@ a {
 
     .cars-you-will-need_items-wrapper {
         display: none;
+        max-width: 100%;
     }
 
 

@@ -11,7 +11,7 @@
 </div>
 
 <div class="product-section">
-            <h1 class="text-center">Наши машины</h1>
+            <h1 class="text-center">другая спец техника</h1>
                 <div class="container">
                     <div class="row">
 
