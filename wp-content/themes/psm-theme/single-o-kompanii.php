@@ -77,41 +77,8 @@ get_header();
     </div>
 </div>
 
-<div class="help-block width-block">
-    <div class="left-box">
-        <div class="part-1">
+<?php do_shortcode('[help_in_different_ways]'); ?>
 
-            Поможем подобрать оборудование
-
-        </div>
-        <div class="part-2">
-            <div><img src="/wp-content/uploads/2023/07/Ellipse%2086.png" alt=""/></div>
-            Ответим на все ваши вопросы и поможем выбрать оборудование
-
-        </div>
-
-        <div class="part-4">
-            <div class="icon-messenger"></div>
-            <div class="icon-box_description">Пишите нашему менеджеру в Whatsapp</div>
-        </div>
-    </div>
-    <div class="line"></div>
-    <div class="right-box"><label> Имя <input type="text" placeholder="Иван"/> </label> <label class="number-label">
-            Номер телефона <input type="text" placeholder="8 900 000 00 00"/> </label>
-        <button class="button-black">Заказать дом мечты</button>
-        Я даю свое согласие на обработку персональных данных
-
-    </div>
-    <div class="hidden-part">
-
-        Не любите говорить по телефону? Пишите в месенджеры
-        <div class="icon-box">
-            <div><img src="/wp-content/uploads/2023/07/Ellipse%2086.png" alt=""/></div>
-            <div></div>
-            <div class="telegram-icon-box"></div>
-        </div>
-    </div>
-</div>
 <script src="/wp-content/themes/psm-theme/js/home.js"></script>
 
 <?php get_footer() ?>

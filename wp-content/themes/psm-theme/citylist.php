@@ -1,5 +1,6 @@
 <!--noindex-->
-    <select>
+<label  class="header_you-city_select-label">
+    <select class="header_you-city_select">
         <option>Свердловская область</option>
         <option>Алапаевск</option>
         <option>Арамиль</option>
@@ -14,7 +15,7 @@
         <option>Верхотурье</option>
         <option>Волчанск</option>
         <option>Дегтярск</option>
-        <option selected>Екатеринбург </option>
+        <option selected>Екатеринбург</option>
         <option>Заречный</option>
         <option>Ивдель</option>
         <option>Ирбит</option>
@@ -78,7 +79,7 @@
 
         <option>Челябинская область</option>
         <option>Аша</option>
-        <option>Бакал </option>
+        <option>Бакал</option>
         <option>Верхнеуральск</option>
         <option>Верхний Уфалей</option>
         <option>Еманжелинск</option>
@@ -117,7 +118,7 @@
         <option>Нефтеюганск</option>
         <option>Нижневартовск</option>
         <option>Новый Уренгой</option>
-        <option>Ноябрьск </option>
+        <option>Ноябрьск</option>
         <option>Нягань</option>
         <option>Покачи</option>
         <option>Пыть-Ях</option>
@@ -133,4 +134,5 @@
         <option>Югорск</option>
         <option>Ялуторовск</option>
     </select>
+</label>
 <!--/noindex-->

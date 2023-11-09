@@ -130,19 +130,6 @@ a {
 }
 
 
-.help-block {
-    margin-top: 99px !important;
-}
-
-.question-and-answer-block {
-    display: none !important;
-}
-
-
-.contacts-block {
-    display: none !important;
-}
-
 
 @media (max-width: 768px) {
 

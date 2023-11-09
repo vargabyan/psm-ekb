@@ -28,13 +28,14 @@ if($term) {
 <!--MY code start ************************************************-->
 
 <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
-<link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
+<!--<link-->
+<!--        rel="stylesheet"-->
+<!--        href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"-->
+<!--/>-->
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
 <link rel="stylesheet" href="/wp-content/themes/psm-theme/single-uslugi-autovyshki.css">
+<link rel="stylesheet" href="/wp-content/themes/psm-theme/style.css">
 
 <div class="maxwidth-1110px">
 
@@ -233,127 +234,23 @@ if($term) {
 </div>
 
 <div class="maxwidth-1110px">
-    <div class="block_container_3">
-
-        <div class="product-showcase width-block">
+    <div class="product-showcase width-block">
         <h2>другая спец техника</h2>
 
-            <div class="category-box">
-                <div class="category-swiper-button-prev">
-                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 9L1 5L5 1" stroke="white"/>
-                    </svg>
-                </div>
+        <?php do_shortcode('[cat]') ?>
 
-                <div class="category-swiper">
-                    <div class="swiper-wrapper category-swiper-wrapper">
+        <?php do_shortcode('[auto]') ?>
 
-                        <?= do_shortcode('[cat]'); ?>
-
-                    </div>
-                </div>
-
-                <div class="category-swiper-button-next">
-                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L5 5L1 9" stroke="white"/>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="products-box">
-                <?= do_shortcode('[auto]'); ?>
-            </div>
+        <div class="product-showcase_button-show-more-wrapper">
+            <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>
         </div>
     </div>
 
-    <div class="question-block">
-        <p class="core-title">Ответы на вопросы</p>
-        <div class="contact-box">
-            <div class="left-box">
-                <p class="core-title">Не нашли то, <br class="br-1"> что <br class="br-2"> искали?</p>
-                <div class="avatar-box">
-                    <img src="/wp-content/uploads/2023/07/Ellipse%2086.png" alt="">
-                    <P>Оставьте заявку и  мы подберем для вас подходящий вариант</P>
-                </div>
-                <a class="order-button" href="#">Оставить заявку</a>
-                <div class="hidden-contact-box">
-                    <p>
-                        Если у вас есть вопрос,
-                        то звоните нам по номеру
-                    </p>
-                    <a href="tel:88003017391">8 800 301 73 91</a>
-                </div>
-            </div>
-
-            <div class="right-box">
-                <p class="core-title-hidden">Ответы <span>на вопросы</span></p>
-
-                <div class="accordion_wrapper">
-
-                    <div class="accordion_item">
-                        <div class="accordion_heading">
-                            <p>
-                                Вопрос клиента, вопрос клиента, вопрос клиента?
-                            </p>
-                            <svg class="accordion_heading_svg"  width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z" fill="#3B8AF0"/>
-                            </svg>
-                        </div>
-                        <p class="accordion_content close">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                        </p>
-                    </div>
-
-                    <div class="accordion_item">
-                        <div class="accordion_heading">
-                            <p>
-                                Вопрос клиента, вопрос клиента, вопрос клиента?
-                            </p>
-                            <svg class="accordion_heading_svg"  width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z" fill="#3B8AF0"/>
-                            </svg>
-                        </div>
-                        <p class="accordion_content close">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                        </p>
-                    </div>
-
-                    <div class="accordion_item">
-                        <div class="accordion_heading">
-                            <p>
-                                Вопрос клиента, вопрос клиента, вопрос клиента?
-                            </p>
-                            <svg class="accordion_heading_svg"  width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z" fill="#3B8AF0"/>
-                            </svg>
-                        </div>
-                        <p class="accordion_content close">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                        </p>
-                    </div>
-
-                    <div class="accordion_item">
-                        <div class="accordion_heading">
-                            <p>
-                                Вопрос клиента, вопрос клиента, вопрос клиента?
-                            </p>
-                            <svg class="accordion_heading_svg"  width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z" fill="#3B8AF0"/>
-                            </svg>
-                        </div>
-                        <p class="accordion_content close">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php do_shortcode('[question_and_answer]'); ?>
 </div>
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script src="/wp-content/themes/psm-theme/js/single-uslugi-autovyshki.js"></script>
 
 

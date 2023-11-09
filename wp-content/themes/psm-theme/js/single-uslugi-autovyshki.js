@@ -1,15 +1,4 @@
-new Swiper('.category-swiper', {
 
-    direction: 'horizontal',
-
-    navigation: {
-        nextEl: '.category-swiper-button-next',
-        prevEl: '.category-swiper-button-prev',
-    },
-
-    slidesPerView: 6,
-
-});
 
 action()
 window.addEventListener('resize', action )

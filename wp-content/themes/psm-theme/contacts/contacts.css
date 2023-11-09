@@ -203,15 +203,6 @@ a {
 }
 
 
-.question-and-answer-block {
-    display: none !important;
-}
-
-
-.contacts-block {
-    display: none !important;
-}
-
 
 @media (max-width: 768px) {
     .contacts-page {

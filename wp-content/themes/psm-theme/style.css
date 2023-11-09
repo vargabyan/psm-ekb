@@ -13998,14 +13998,48 @@ body {
 
 .header-block .your-city {
     font-size: 12px;
-    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.header-block .your-city select {
+.header_you-city_select {
+    padding: 0 7px;
+    border: 0;
+    appearance: none;            /* remove arrow        */
+    -webkit-appearance: none;    /* remove arrow Chrome */
+    -moz-appearance: none;       /* remove arrow FF     */
     border: none;
+    background: unset;
     color: #3B8AF0;
-    background: #F4F4F4;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+    cursor: pointer;
 }
+
+.header_you-city_select::-ms-expand{
+    display: none;             /* remove arrow IE     */
+}
+
+.header_you-city_select-label {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    position: relative;
+}
+
+.header_you-city_select-label:after {
+    display: block;
+    content: '';
+    width: 8px;
+    height: 5px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='5' viewBox='0 0 7 5' fill='none'%3E%3Cpath d='M1 1L3.5 4L6 1' stroke='%23303030'/%3E%3C/svg%3E");
+    position: absolute;
+    right: 0;
+    z-index: 0;
+}
+
 
 .header-block .contact-address {
     font-size: 14px;
@@ -16037,6 +16071,21 @@ ul.sub-menu a:hover {
         background: unset;
         max-width: 290px;
         margin: 0 auto;
+    }
+
+    .header-block .your-city {
+        color: #8B8B8B;
+        font-size: 10px;
+        line-height: 22px
+    }
+
+    .header_you-city_select-label:after {
+        display: none;
+    }
+
+    .header_you-city_select {
+        color: #ED4646;
+        font-size: 12px;
     }
 
     .header-block .contact-address {
