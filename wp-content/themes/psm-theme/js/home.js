@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", ready);
 
-function ready(){
+function ready() {
     let portfolioSlider = new Swiper(".portfolio-slider", {
         navigation: {
             nextEl: ".portfolio-slider_nav-btn.next",
@@ -61,8 +61,7 @@ function ready(){
             review_swiper_button_prev[0].classList.add('review-swiper-button-prev');
             review_swiper_button_next[1].classList.remove('review-swiper-button-next');
             review_swiper_button_prev[1].classList.remove('review-swiper-button-prev');
-        }
-        else {
+        } else {
             review_swiper_button_next[1].classList.add('review-swiper-button-next');
             review_swiper_button_prev[1].classList.add('review-swiper-button-prev');
             review_swiper_button_next[0].classList.remove('review-swiper-button-next');
@@ -93,3 +92,23 @@ function ready(){
 
     });
 }
+
+document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('[data-naw-menu-mobile_toggle]');
+
+    if (toggle) {
+        const wrapperMenu = toggle.closest('[data-nav-menu-mobile]');
+        const menu = wrapperMenu.querySelector('[data-nav-bar-mobile-wrapper]');
+
+        menu.style['display'] = 'flex';
+        toggle.classList.remove('naw-menu-mobile_toggle-close')
+        toggle.classList.add('naw-menu-mobile_toggle-open')
+    } else {
+        const buttonToggle = document.querySelector('[data-naw-menu-mobile_toggle]');
+        const menu = document.querySelector('[data-nav-bar-mobile-wrapper]');
+
+        menu.style['display'] = 'none';
+        buttonToggle.classList.remove('naw-menu-mobile_toggle-open')
+        buttonToggle.classList.add('naw-menu-mobile_toggle-close')
+    }
+})

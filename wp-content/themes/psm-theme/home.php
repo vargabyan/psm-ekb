@@ -154,36 +154,7 @@
     </div>
 </div>
 
-<div class="work-steps-block width-block">
-    <div class="header-box">
-        <p>Как мы <span>работаем</span></p>
-    </div>
-    <div class="work-steps-box">
-        <div>
-            <p class="part-1">/01</p>
-            <p class="part-2">Ваш звонок</p>
-            <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
-        </div>
-        <div>
-            <p class="part-1">/02</p>
-            <p class="part-2">ответ диспетчера</p>
-            <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
-        </div>
-        <div>
-            <p class="part-1">/03</p>
-            <p class="part-2">подписываем договор</p>
-            <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
-        </div>
-        <div>
-            <p class="part-1">/04</p>
-            <p class="part-2">отличный результат!</p>
-            <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
-        </div>
-    </div>
-    <div class="button-box">
-        <button class="button-red">Смотреть каталог автовышек</button>
-    </div>
-</div>
+<?php do_shortcode('[work_steps]') ?>
 
 <DIV class="our-truck-crane-block width-block">
 
@@ -221,7 +192,7 @@
                 <div class="info-box">
                     <a href="https://psm-ekb96.ru/foto/avtovyshka-dlya-montazha-fasada-klubnogo-doma-tihvin-g-ekaterinburg/">Вид
                         АГП: Вышка 45 м телескопическая</a>
-                    <a href="https://psm-ekb96.ru/foto/avtovyshka-dlya-montazha-fasada-klubnogo-doma-tihvin-g-ekaterinburg/">ОБЪЕКТ: 
+                    <a href="https://psm-ekb96.ru/foto/avtovyshka-dlya-montazha-fasada-klubnogo-doma-tihvin-g-ekaterinburg/">ОБЪЕКТ:
                         клубный дом Тихвин г. Екатеринбург, ООО Технология. С помощью АГП 45 м выполняется работа
                         художников по фасаду, высота здания 45 м.</a>
                 </div>
@@ -312,7 +283,7 @@
 
 </DIV>
 
-<?php require __DIR__ . "/../psm-theme/cp-help-block/index.php" ?>
+<?php do_shortcode('[help_block]'); ?>
 
 <div class="block-for-our-clients">
     <div class="left-box">

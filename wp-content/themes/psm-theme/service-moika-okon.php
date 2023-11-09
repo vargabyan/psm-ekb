@@ -50,11 +50,11 @@ if ($term) {
 </div>
 
 
-<?php do_shortcode('work_steps'); ?>
+<?php do_shortcode('[work_steps]'); ?>
 
 <?php require __DIR__ . '/cp-help-block/index.php' ?>
 
 <script src="/wp-content/themes/psm-theme/js/home.js"></script>
-<? get_footer(); ?>
+<?php get_footer(); ?>
 
 

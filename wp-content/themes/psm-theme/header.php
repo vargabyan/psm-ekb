@@ -281,9 +281,53 @@ if (array_key_exists($path, $redirectsMap)) {
         </div>
     </div>
 
+
+    <div class="nav-menu-mobile-background-wrapper">
+        <div class="nav-menu-mobile" data-nav-menu-mobile>
+            <a class="naw-menu-mobile_header-link" href="/">
+                <p class="naw-menu-mobile_header">Предприятие <br> Строительных <br> Машин</p>
+            </a>
+            <div class="naw-menu-mobile_tell-wrapper">
+                <a class="naw-menu-mobile_tell" href="tel:+7 (908) 906-07-19">+7 (908) 906-07-19</a>
+                <p class="naw-menu-mobile_tell-description">Заказать звонок</p>
+            </div>
+            <button class="naw-menu-mobile_toggle naw-menu-mobile_toggle-close" data-naw-menu-mobile_toggle></button>
+
+            <div class="nav-bar-mobile-wrapper" data-nav-bar-mobile-wrapper>
+                <div class="nav-bar-mobile">
+                    <?php
+                    wp_nav_menu(array(
+                        'menu_class' => 'menu',
+                        'theme_location' => 'top',
+                        'after' => '',
+                        'container' => ''
+                    ));
+                    ?>
+                </div>
+                <div class="nav-bar-mobile_tell-item">
+                    <a class="nav-bar-mobile_tell_number" href="tel:+7 (343) 206-26-30">+7 (343) 206-26-30</a>
+                    <div class="nav-bar-mobile_tell_messengers">
+                        <div class="nav-bar-mobile_tell_whatsapp"></div>
+                        <div class="nav-bar-mobile_tell_telegram"></div>
+                    </div>
+                </div>
+                <div class="nav-bar-mobile_tell-item">
+                    <p class="nav-bar-mobile_tell_description">для регионов</p>
+                    <a class="nav-bar-mobile_tell_number" href="tel:+7 (343) 206-26-30">+7 (343) 206-26-30</a>
+                </div>
+                <p class="nav-bar-mobile_location">
+                    г. Екатеринбург, <br>
+                    ул. Маневровая, д. 31
+                </p>
+                <a href="#" class="nav-bar-mobile_button-call" onclick="yaCounter47702209.reachGoal('zakazat-zvonok');" data-call="callback">Заказать звонок</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
+<script src="/wp-content/themes/psm-theme/js/home.js"></script>
 
 <!---->
 <!--<div id="header">-->
