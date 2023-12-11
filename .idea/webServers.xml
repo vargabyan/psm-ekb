@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ac2a8875-3496-494d-b59a-5658a0d0f1db" name="psm-ekb96" url="http://vm-9aa0b6b3.na4u.ru/">
+        <fileTransfer rootFolder="/var/www/web/sites/vm-9aa0b6b3.na4u.ru" accessType="SFTP" host="213.189.220.240" port="22" sshConfigId="351e9371-7a4d-4de8-90dd-f25b4aa23351" sshConfig="web@213.189.220.240:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

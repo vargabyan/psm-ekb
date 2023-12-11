@@ -22,11 +22,27 @@ get_header();
 <?php do_shortcode('[work_steps]'); ?>
 
     <div class="product-showcase width-block">
-        <h2>другая спец техника</h2>
+        <h2>Наши машины</h2>
 
-        <?= do_shortcode('[cat]'); ?>
+        <?php
+        $categories = [
+            'taxonomy' => 'arenda-autovyshek',
+            'type' => 'uslugi-autovyshki',
+            'orderby' => 'name',
+            'order' => 'ASC'
+        ];
 
-        <?= do_shortcode('[auto]'); ?>
+        component_get_cat($categories);
+        ?>
+
+        <?php
+        $args = [
+            'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
+            'posts_per_page' => 3,
+        ];
+
+        component_get_auto($args);
+        ?>
 
         <div class="product-showcase_button-show-more-wrapper">
             <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>

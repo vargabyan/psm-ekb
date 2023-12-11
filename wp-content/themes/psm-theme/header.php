@@ -31,151 +31,27 @@ if (array_key_exists($path, $redirectsMap)) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <? wp_head(); ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="/wp-content/uploads/2019/10/arenda-avtovyshki.png"/>
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta property="og:image" content="/wp-content/uploads/2019/10/arenda-avtovyshki.png"/>-->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <style>
-        .preloader {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background: #fff;
-            top: 0;
-            left: 0;
-            z-index: 99999;
-        }
-    </style>
-
     <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/swiper-bundle.min.css">
     <script src="/wp-content/themes/psm-theme/js/swiper-bundle.min.js"></script>
-
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        /*(function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-        ym(91868462, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });*/
-    </script>
-    <!-- /Yandex.Metrika counter -->
-
-    <!-- Google tag (gtag.js) -->
-    <!--<script async src="https://www.googletagmanager.com/gtag/js?id=G-6XMPF08CWF"></script>
-    <script> window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-        gtag('config', 'G-6XMPF08CWF'); </script>-->
-    <!-- Google tag (gtag.js) -->
+    <? wp_head(); ?>
 </head>
 <body>
-<? //echo get_the_ID() ?>
-<!-- Yandex.Metrika counter -->
+
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/91868462" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
-<!-- /Yandex.Metrika counter -->
 
-<script>
-    document.addEventListener("DOMContentLoaded", function (event) {
-        setTimeout(function () {
-            //отложенная вставка сторонних скриптов
-            let yandexScript = document.createElement('script')
-            yandexScript.textContent = `(function (m, e, t, r, i, k, a) {
-                m[i] = m[i] || function () {
-                    (m[i].a = m[i].a || []).push(arguments)
-                };
-                m[i].l = 1 * new Date();
-                for (var j = 0; j < document.scripts.length; j++) {
-                    if (document.scripts[j].src === r) {
-                        return;
-                    }
-                }
-                k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-            })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-            ym(91868462, "init", {
-                clickmap: true,
-                trackLinks: true,
-                accurateTrackBounce: true
-            });`
-            document.head.appendChild(yandexScript)
 
-            let googleScriptCdn = document.createElement('script')
-            googleScriptCdn.src = 'https://www.googletagmanager.com/gtag/js?id=G-6XMPF08CWF'
-            document.head.appendChild(googleScriptCdn)
-
-            let googleScript = document.createElement('script')
-            googleScript.textContent = `window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag('js', new Date());
-            gtag('config', 'G-6XMPF08CWF');`
-            document.head.appendChild(googleScript)
-
-            //добавление сео целей
-            let phone1 = document.querySelector('#header-phone_1')
-            let phone2 = document.querySelector('#header-phone_2')
-            let phone3 = document.querySelector('#header-phone_3')
-            let email = document.querySelector('#header-email')
-            let telegram = document.querySelector('#header-telegram')
-            let whatsapp = document.querySelector('#header-whatsapp')
-            let managerTel = document.querySelector('.contact-manager .companyTel')
-            let managerWhatsapp = document.querySelector('.contact-manager .btn-chat')
-            let managerForm = document.querySelector('.contact-manager .btn-question')
-
-            if (phone1) phone1.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-CALLS-2')
-            })
-            if (phone2) phone2.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-CALLS-3')
-            })
-            if (phone3) phone3.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-CALLS-4')
-            })
-            if (email) email.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-EMAIL')
-            })
-            if (telegram) telegram.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-MESSENGER')
-            })
-            if (whatsapp) whatsapp.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-MESSENGER-2')
-            })
-            if (managerTel) managerTel.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-CALLS-4')
-            })
-            if (managerWhatsapp) managerWhatsapp.addEventListener('click', function () {
-                ym(91868462, 'reachGoal', 'OPEN-CALLS-2')
-            })
-        }, 7000)
-    });
-</script>
-
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <div id="preloader" class="preloader"></div>
-
 
 <div class="header-block">
 
@@ -319,7 +195,8 @@ if (array_key_exists($path, $redirectsMap)) {
                     г. Екатеринбург, <br>
                     ул. Маневровая, д. 31
                 </p>
-                <a href="#" class="nav-bar-mobile_button-call" onclick="yaCounter47702209.reachGoal('zakazat-zvonok');" data-call="callback">Заказать звонок</a>
+                <a href="#" class="nav-bar-mobile_button-call" onclick="yaCounter47702209.reachGoal('zakazat-zvonok');"
+                   data-call="callback">Заказать звонок</a>
             </div>
         </div>
     </div>
@@ -327,7 +204,6 @@ if (array_key_exists($path, $redirectsMap)) {
 </div>
 
 
-<script src="/wp-content/themes/psm-theme/js/home.js"></script>
 
 <!---->
 <!--<div id="header">-->

@@ -1,4 +1,31 @@
-<?
+<?php
+
+add_action('wp_enqueue_scripts', 'add_scripts_and_styles');
+function add_scripts_and_styles()
+{
+    wp_enqueue_style('style', get_stylesheet_uri());
+    wp_enqueue_style('slick.', '/wp-content/js/slick.css');
+
+    wp_enqueue_style('style-swiper-slider', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/cp-cars-you-will-need/cars-you-will-need.css');
+    wp_enqueue_style('style-company', get_template_directory_uri() . '/company/company.css');
+    wp_enqueue_style('style-prices', get_template_directory_uri() . '/prices/prices.css');
+    wp_enqueue_style('style-contacts', get_template_directory_uri() . '/contacts/contacts.css');
+    wp_enqueue_style('style-promotion', get_template_directory_uri() . '/promotion/promotion.css');
+
+    wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js');
+    wp_enqueue_script('home', get_template_directory_uri() . '/js/home.js');
+    wp_enqueue_script('jquery', '/wp-content/js/jquery.js');
+    wp_enqueue_script('lazysizes', '/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js');
+    wp_enqueue_script('slick', '/wp-content/js/slick.min.js');
+    wp_enqueue_script('magnific-popup', '/wp-content/themes/psm-theme/jquery.magnific-popup.js');
+    wp_enqueue_script('swiper-bundle', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js');
+}
+
+?>
+
+<?php
+
 register_nav_menus(array(
     'top' => 'top menu',    //Название месторасположения меню в шаблоне
     'footer-menu1' => 'footer 1st column',
@@ -808,7 +835,6 @@ function add_map()
     if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false):
         return '<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A348a0927ae0668a65e36f3b50454940061a1401427de5208dea2b9a777869f54&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=true"></script>';
     endif;
-
 }
 
 
@@ -1176,18 +1202,7 @@ function delivery_rent_func()
 
 
 
-<?php
 
-add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
-    wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('style-swiper-slider', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-    wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/cp-cars-you-will-need/cars-you-will-need.css');
-    wp_enqueue_style('style-company', get_template_directory_uri() . '/company/company.css');
-
-});
-
-?>
 
 <?php
 add_shortcode('aerial_platform_list', function ($atts) {
@@ -1253,7 +1268,7 @@ add_shortcode('aerial_platform_list', function ($atts) {
 ?>
 
 <?php
-add_shortcode('work_steps', function ($atts) {
+add_shortcode('work_steps', function () {
     ?>
     <div class="work-steps-block width-block">
         <div class="header-box">
@@ -1281,23 +1296,23 @@ add_shortcode('work_steps', function ($atts) {
                 <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
             </div>
         </div>
-        <div class="button-box">
-            <button class="button-red">Смотреть каталог автовышек</button>
-        </div>
+        <!--        <div class="button-box">-->
+        <!--            <a href="">-->
+        <!--                <button class="button-red">Смотреть каталог автовышек</button>-->
+        <!--            </a>-->
+        <!--        </div>-->
     </div>
 <?php }) ?>
 
+
 <?php
-add_shortcode('cat', function () {
+function component_get_cat($args)
+{
+    global $post;
+    $categories = get_categories($args);
 
-    $categories = get_categories(array(
-        'taxonomy' => 'arenda-autovyshek',
-        'type' => 'uslugi-autovyshki',
-        'orderby' => 'name',
-        'order' => 'ASC'
-    )); ?>
-
-    <div class="category-box">
+    $result =
+        '<div class="category-box">
         <div class="category-swiper-button-prev swiper-button">
             <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 9L1 5L5 1" stroke="white"/>
@@ -1305,16 +1320,16 @@ add_shortcode('cat', function () {
         </div>
 
         <div class="category-swiper">
-            <div class="swiper-wrapper category-swiper-wrapper">
+            <div class="swiper-wrapper category-swiper-wrapper">';
 
-                <?php foreach ($categories as $category) { ?>
-                    <div class="swiper-slide">
+    foreach ($categories as $category) {
+        $result = $result . '<div class="swiper-slide">
                         <a class="category_swiper-slide_item"
-                           href="<?php echo get_category_link($category->term_id) ?>"> <?php echo $category->name ?> </a>
-                    </div>
-                <?php } ?>
+                           href="' . get_category_link($category->term_id) . '">' . $category->name . '</a>
+                    </div>';
+    }
 
-            </div>
+    $result = $result . '</div>
         </div>
 
         <div class="category-swiper-button-next swiper-button">
@@ -1322,24 +1337,22 @@ add_shortcode('cat', function () {
                 <path d="M1 1L5 5L1 9" stroke="white"/>
             </svg>
         </div>
-    </div>
+    </div>';
 
-<?php }) ?>
+    echo $result;
 
+} ?>
 
 <?php
-add_shortcode('auto', function () {
+function component_get_auto($args)
+{
     global $post;
-    $args = array(
-        'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
-        'posts_per_page' => 10,
-    );
-
     $p = get_posts($args);
     ?>
     <div class="products-box">
 
         <?php foreach ($p as $post) {
+            setup_postdata($post);
             $url = get_permalink($post->ID);
             ?>
             <div class="product-card-box">
@@ -1360,13 +1373,13 @@ add_shortcode('auto', function () {
                     <a class="product-description button-blue" href="<?php echo $url ?>">Условия аренды</a>
                 </div>
             </div>
-        <?php } ?>
+        <?php }
+        wp_reset_postdata(); ?>
 
     </div>
 
     <?php
-    wp_reset_postdata();
-}) ?>
+} ?>
 
 
 <?php
@@ -1388,21 +1401,25 @@ add_shortcode('help_block', function () {
             </div>
             <div class="part-4">
                 <div class="icon-messenger">
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.3 26.7C7.5 26.2 3.6 29.1 3 28.4C2.4 27.8 5 23.7 4.5 23C2.9 20.8 2 18.1 2 15.2C2 7.80001 8 1.70001 15.5 1.70001C23 1.70001 29 7.80001 29 15.2C29 22.6 23 28.7 15.5 28.7C14.5 28.7 13.6 28.6 12.7 28.4"
-                              stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M12.7 8.40003L13.9 11.4C14 11.6 13.9 11.8 13.7 11.9C13.2 12.2 12.5 12.9 13.3 14C14.3 15.4 17 18.9 19.2 16.6C19.3 16.5 19.5 16.4 19.7 16.5L22.9 17.9C23.1 18 23.2 18.3 23.1 18.5C22.4 19.9 19.7 23.6 13 17.8C6.20003 11.9 10.6 9.00004 12.1 8.30004C12.3 8.00004 12.6 8.10003 12.7 8.40003Z"
-                              stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                    <a href="https://wa.me/+78003017391">
+                        <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.3 26.7C7.5 26.2 3.6 29.1 3 28.4C2.4 27.8 5 23.7 4.5 23C2.9 20.8 2 18.1 2 15.2C2 7.80001 8 1.70001 15.5 1.70001C23 1.70001 29 7.80001 29 15.2C29 22.6 23 28.7 15.5 28.7C14.5 28.7 13.6 28.6 12.7 28.4"
+                                  stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                            <path d="M12.7 8.40003L13.9 11.4C14 11.6 13.9 11.8 13.7 11.9C13.2 12.2 12.5 12.9 13.3 14C14.3 15.4 17 18.9 19.2 16.6C19.3 16.5 19.5 16.4 19.7 16.5L22.9 17.9C23.1 18 23.2 18.3 23.1 18.5C22.4 19.9 19.7 23.6 13 17.8C6.20003 11.9 10.6 9.00004 12.1 8.30004C12.3 8.00004 12.6 8.10003 12.7 8.40003Z"
+                                  stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
                 <div class="telegram-icon-box icon-messenger">
-                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.10093 14.6C8.90093 12 28.5009 4 28.5009 4L24.6009 26.6C24.4009 27.7 23.1009 28.1 22.3009 27.4L16.2009 22.3L11.9009 26.3L12.6009 19.6L25.6009 7.3L9.60093 17.3L10.6009 23L7.30093 17.7L2.30093 16.1C1.50093 15.8 1.40093 14.8 2.10093 14.6Z"
-                              stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                    <a href="tg://resolve?domain=+78003017391">
+                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.10093 14.6C8.90093 12 28.5009 4 28.5009 4L24.6009 26.6C24.4009 27.7 23.1009 28.1 22.3009 27.4L16.2009 22.3L11.9009 26.3L12.6009 19.6L25.6009 7.3L9.60093 17.3L10.6009 23L7.30093 17.7L2.30093 16.1C1.50093 15.8 1.40093 14.8 2.10093 14.6Z"
+                                  stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -1426,34 +1443,87 @@ add_shortcode('help_block', function () {
                     <img src="/wp-content/uploads/2023/07/Ellipse%2086.png" alt=""/>
                 </div>
                 <div>
-                    <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.3 26.7C7.5 26.2 3.6 29.1 3 28.4C2.4 27.8 5 23.7 4.5 23C2.9 20.8 2 18.1 2 15.2C2 7.80001 8 1.70001 15.5 1.70001C23 1.70001 29 7.80001 29 15.2C29 22.6 23 28.7 15.5 28.7C14.5 28.7 13.6 28.6 12.7 28.4"
-                              stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M12.7 8.40003L13.9 11.4C14 11.6 13.9 11.8 13.7 11.9C13.2 12.2 12.5 12.9 13.3 14C14.3 15.4 17 18.9 19.2 16.6C19.3 16.5 19.5 16.4 19.7 16.5L22.9 17.9C23.1 18 23.2 18.3 23.1 18.5C22.4 19.9 19.7 23.6 13 17.8C6.20003 11.9 10.6 9.00004 12.1 8.30004C12.3 8.00004 12.6 8.10003 12.7 8.40003Z"
-                              stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                    <a href="https://wa.me/+78003017391">
+                        <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.3 26.7C7.5 26.2 3.6 29.1 3 28.4C2.4 27.8 5 23.7 4.5 23C2.9 20.8 2 18.1 2 15.2C2 7.80001 8 1.70001 15.5 1.70001C23 1.70001 29 7.80001 29 15.2C29 22.6 23 28.7 15.5 28.7C14.5 28.7 13.6 28.6 12.7 28.4"
+                                  stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                            <path d="M12.7 8.40003L13.9 11.4C14 11.6 13.9 11.8 13.7 11.9C13.2 12.2 12.5 12.9 13.3 14C14.3 15.4 17 18.9 19.2 16.6C19.3 16.5 19.5 16.4 19.7 16.5L22.9 17.9C23.1 18 23.2 18.3 23.1 18.5C22.4 19.9 19.7 23.6 13 17.8C6.20003 11.9 10.6 9.00004 12.1 8.30004C12.3 8.00004 12.6 8.10003 12.7 8.40003Z"
+                                  stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
                 <div class="telegram-icon-box">
-                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.10093 14.6C8.90093 12 28.5009 4 28.5009 4L24.6009 26.6C24.4009 27.7 23.1009 28.1 22.3009 27.4L16.2009 22.3L11.9009 26.3L12.6009 19.6L25.6009 7.3L9.60093 17.3L10.6009 23L7.30093 17.7L2.30093 16.1C1.50093 15.8 1.40093 14.8 2.10093 14.6Z"
-                              stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                    <a href="tg://resolve?domain=+78003017391">
+                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.10093 14.6C8.90093 12 28.5009 4 28.5009 4L24.6009 26.6C24.4009 27.7 23.1009 28.1 22.3009 27.4L16.2009 22.3L11.9009 26.3L12.6009 19.6L25.6009 7.3L9.60093 17.3L10.6009 23L7.30093 17.7L2.30093 16.1C1.50093 15.8 1.40093 14.8 2.10093 14.6Z"
+                                  stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-
 <?php }) ?>
+
+
+<?php function component_get_prices()
+{ ?>
+
+    <div class="container-width1110">
+
+        <div class="prices">
+            <p class="prices_header">цены</p>
+
+            <div class="prices_content">
+
+                <?php for ($i = 0; $i < 3; $i++) { ?>
+
+                    <div class="prices_content_item-wrapper">
+                        <div class="prices_content_headers">
+                            <p>Тип автовышки</p>
+                            <p>Срок аренды</p>
+                            <p>Цена без НДС</p>
+                            <p>Цена с НДС 20%</p>
+                            <p>Минимальный заказ</p>
+                        </div>
+
+
+                        <div class="prices_content_item prices_content_item-color">
+                            <p class="prices_params prices_meter">Автовышка <br> 15 метров</p>
+                            <div class="prices_params">
+                                <p class="prices_params_item prices_border-line">Цена за час</p>
+                                <p class="prices_params_item prices_border-line">Цена за смену</p>
+                                <p class="prices_params_item ">Неделя/месяц</p>
+                            </div>
+                            <div class="prices_params">
+                                <p class="prices_params_item prices_border-line">1300 руб.</p>
+                                <p class="prices_params_item prices_border-line">11 200 руб.</p>
+                                <p class="prices_params_item ">Индивидуально</p>
+                            </div>
+                            <div class="prices_params">
+                                <p class="prices_params_item prices_border-line">1500 руб.</p>
+                                <p class="prices_params_item prices_border-line">12800 руб.</p>
+                            </div>
+                            <p class="prices_time prices_time-background-without-color">4 часа</p>
+                        </div>
+                    </div>
+
+                <?php } ?>
+            </div>
+        </div>
+
+    </div>
+
+<?php } ?>
 
 
 <?php
 add_shortcode('help_in_different_ways', function () {
     ?>
     <link rel="stylesheet" href="/wp-content/themes/psm-theme/promotion/promotion.css">
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/style.css">
 
     <div class="help-block width-block">
         <div class="left-box">
@@ -1542,12 +1612,14 @@ add_shortcode('question_and_answer', function () {
                             <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
                         </div>
                         <div class="telegram-box">
-                            <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
-                                      stroke="white" stroke-miterlimit="10" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
+                            <a href="tg://resolve?domain=+79089060719">
+                                <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
+                                          stroke="white" stroke-miterlimit="10" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+                            </a>
                         </div>
                     </DIV>
                     <P>Не любите говорить по телефону? Пишите в ватсап</P>
@@ -1644,6 +1716,150 @@ add_shortcode('question_and_answer', function () {
     </div>
 
 <?php }) ?>
+
+
+<?php
+add_shortcode('our-advantages', function () {
+    ?>
+    <div class="advantages-block width-block">
+        <div class="first-item">
+            <p>Мы работаем с <span>2006 года</span></p>
+        </div>
+        <div class="item">
+            <div>
+                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-operativno.png" alt="Оперативная доставка" />-->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_321_366)">
+                        <path d="M16 2.66675C10.84 2.66675 6.66666 6.84008 6.66666 12.0001C6.66666 19.0001 16 29.3334 16 29.3334C16 29.3334 25.3333 19.0001 25.3333 12.0001C25.3333 6.84008 21.16 2.66675 16 2.66675ZM16 15.3334C14.16 15.3334 12.6667 13.8401 12.6667 12.0001C12.6667 10.1601 14.16 8.66675 16 8.66675C17.84 8.66675 19.3333 10.1601 19.3333 12.0001C19.3333 13.8401 17.84 15.3334 16 15.3334Z"
+                              fill="white"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_321_366">
+                            <rect width="32" height="32" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <p>Оперативная доставка. Всегда вовремя.</p>
+        </div>
+        <div class="item">
+            <div>
+                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-24.png" alt="Работа в круглосуточном режиме" />-->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_321_369)">
+                        <path d="M28 13.4933H18.96L22.6133 9.73333C18.9733 6.13333 13.08 6 9.44 9.6C5.8 13.2133 5.8 19.04 9.44 22.6533C13.08 26.2667 18.9733 26.2667 22.6133 22.6533C24.4267 20.8667 25.3333 18.7733 25.3333 16.1333H28C28 18.7733 26.8267 22.2 24.48 24.52C19.8 29.16 12.2 29.16 7.52 24.52C2.85333 19.8933 2.81333 12.3733 7.49333 7.74667C12.1733 3.12 19.68 3.12 24.36 7.74667L28 4V13.4933ZM16.6667 10.6667V16.3333L21.3333 19.1067L20.3733 20.72L14.6667 17.3333V10.6667H16.6667Z"
+                              fill="white"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_321_369">
+                            <rect width="32" height="32" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <p>Работа в круглосуточном режиме <span>24 часа</span></p>
+        </div>
+        <div class="item">
+            <div>
+                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-sale.png" alt="Собственный автопарк" />-->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_321_379)">
+                        <path d="M26.6667 10.6667H22.6667V5.33337H4.00001C2.53334 5.33337 1.33334 6.53337 1.33334 8.00004V22.6667H4.00001C4.00001 24.88 5.78668 26.6667 8.00001 26.6667C10.2133 26.6667 12 24.88 12 22.6667H20C20 24.88 21.7867 26.6667 24 26.6667C26.2133 26.6667 28 24.88 28 22.6667H30.6667V16L26.6667 10.6667ZM8.00001 24.6667C6.89334 24.6667 6.00001 23.7734 6.00001 22.6667C6.00001 21.56 6.89334 20.6667 8.00001 20.6667C9.10668 20.6667 10 21.56 10 22.6667C10 23.7734 9.10668 24.6667 8.00001 24.6667ZM26 12.6667L28.6133 16H22.6667V12.6667H26ZM24 24.6667C22.8933 24.6667 22 23.7734 22 22.6667C22 21.56 22.8933 20.6667 24 20.6667C25.1067 20.6667 26 21.56 26 22.6667C26 23.7734 25.1067 24.6667 24 24.6667Z"
+                              fill="white"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_321_379">
+                            <rect width="32" height="32" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <p>Собственный автопарк</p>
+        </div>
+        <div class="item">
+            <div>
+                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-voditeli.png" alt="Современная техника в отличном состоянии" />-->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_321_376)">
+                        <path d="M16 1.33337L4 6.66671V14.6667C4 22.0667 9.12 28.9867 16 30.6667C22.88 28.9867 28 22.0667 28 14.6667V6.66671L16 1.33337Z"
+                              fill="white"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_321_376">
+                            <rect width="32" height="32" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+            <p>Разрешения РосТехНадзора</p>
+        </div>
+        <div class="item-contact">
+            <p class="part-1">Если у вас есть вопрос, то звоните нам по номеру <a href="tel:88003017391">8 800 301 73
+                    91</a>
+            </p>
+            <div>
+                <div class="icon-box">
+                    <div>
+                        <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
+                    </div>
+                    <a href="tg://resolve?domain=+78003017391">
+                        <div class="telegram-icon">
+                            <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
+                                      stroke="#303030" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <p class="part-2">Не любите говорить по телефону? Пишите в ватсап</p>
+            </div>
+        </div>
+    </div>
+
+<?php }) ?>
+
+
+<?php
+add_shortcode('get_contacts', function () {
+    $my_posts = get_posts(array(
+        'numberposts' => -1,
+        'category_name' => 'kontakti',
+        'orderby' => 'date',
+        'order' => 'ASC',
+        'include' => array(),
+        'exclude' => array(),
+        'meta_key' => '',
+        'meta_value' => '',
+        'post_type' => 'post',
+        'suppress_filters' => true,
+    ));
+
+    $result = '';
+    foreach ($my_posts as $post) {
+        setup_postdata($post);
+
+        $result = $result . '
+             <div class="contacts-page_item">
+                <p class="contacts-page_city">' . $post->post_title . '</p>
+                <a class="contacts-page_tel" href="' . $post->post_content . '">' . $post->post_content . '</a>
+                <div class="contacts-page_item_messengers-wrapper"> ';
+        if (get_field('imeet_li_vatsap', $post->ID)) {
+            $result = $result . '<a class="contacts-page_telegram contacts-page_messengers-icons" href="tg://resolve?domain=' . $post->post_content . '"></a>';
+        }
+        if (get_field('imeet_li_telegram', $post->ID)) {
+            $result = $result . '<a class="contacts-page_whatsapp contacts-page_messengers-icons" href="https://api.whatsapp.com/send?phone=' . $post->post_content . '"></a>';
+        }
+        $result = $result . '</div>
+            </div>
+            ';
+    }
+    wp_reset_postdata();
+
+    return $result;
+})
+?>
 
 
 

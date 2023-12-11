@@ -237,9 +237,28 @@ if($term) {
     <div class="product-showcase width-block">
         <h2>другая спец техника</h2>
 
-        <?php do_shortcode('[cat]') ?>
+        <?php
+            $categories = [
+                'id' => $post->id,
+                'taxonomy' => 'arenda-autovyshek',
+                'type' => 'uslugi-autovyshki',
+                'orderby' => 'name',
+                'order' => 'ASC',
+                //'include' => $tax
+            ];
 
-        <?php do_shortcode('[auto]') ?>
+            component_get_cat($categories)
+        ?>
+
+        <?php
+            $args = [
+                'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
+                'posts_per_page' => 3,
+                'exclude' => get_the_ID()
+            ];
+
+            component_get_auto($args)
+        ?>
 
         <div class="product-showcase_button-show-more-wrapper">
             <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>

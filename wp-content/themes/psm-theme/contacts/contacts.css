@@ -132,6 +132,10 @@ a {
     justify-content: space-between;
 }
 
+.requisites_header-wrapper a {
+    color: unset;
+}
+
 .requisites_header {
     font-size: 24px;
     font-weight: 700;
@@ -290,6 +294,7 @@ a {
         flex-direction: column;
         gap: 24px;
     }
+
 
     .requisites_header {
         font-size: 24px;

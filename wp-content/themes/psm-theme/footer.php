@@ -1,4 +1,27 @@
-<?php wp_footer(); ?>
+<?
+if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false):
+    echo '<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer></script>';
+endif;
+?>
+
+
+<? if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false): ?>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript"> (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(47702209, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/47702209" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript> <!-- /Yandex.Metrika counter -->
+
+<? endif; ?>
+
 
 <div class="footer-block">
     <div class="footer-width-block">
@@ -20,21 +43,29 @@
                         Предприятие Строительных Машин
                     </p>
                 </div>
-                <a class="tel-box" href="tel:70002421482">+ 7 (000) 242-14-82</a>
+                <a class="tel-box" href="tel:+70002421482">+ 7 (000) 242-14-82</a>
                 <a class="email-box" href="mailto:info@psm-ekb96.ru">info@psm-ekb96.ru</a>
                 <div class="icon-box">
-                    <div>
-                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="22" cy="22" r="22" fill="white"/>
-                            <path d="M16.5396 31.7778C15.8878 31.3704 12.71 33.7334 12.2211 33.163C11.7322 32.6741 13.8508 29.3334 13.4433 28.763C12.1396 26.9704 11.4063 24.7704 11.4063 22.4075C11.4063 16.3778 16.2952 11.4075 22.4063 11.4075C28.5174 11.4075 33.4063 16.3778 33.4063 22.4075C33.4063 28.4371 28.5174 33.4075 22.4063 33.4075C21.5915 33.4075 20.8582 33.326 20.1248 33.163" stroke="#303030" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M20.1237 16.8665L21.1014 19.311C21.1829 19.4739 21.1014 19.6369 20.9385 19.7184C20.5311 19.9628 19.9607 20.5332 20.6125 21.4295C21.4274 22.5702 23.6274 25.4221 25.4199 23.548C25.5014 23.4665 25.6644 23.385 25.8274 23.4665L28.4348 24.6073C28.5977 24.6887 28.6792 24.9332 28.5977 25.0962C28.0274 26.2369 25.8274 29.2517 20.3681 24.5258C14.8274 19.7184 18.4125 17.3554 19.6348 16.785C19.7977 16.5406 20.0422 16.6221 20.1237 16.8665Z" stroke="#303030" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                    <div class="icon-messenger">
+                        <a href="https://wa.me/+78003017391">
+                            <svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.3 26.7C7.5 26.2 3.6 29.1 3 28.4C2.4 27.8 5 23.7 4.5 23C2.9 20.8 2 18.1 2 15.2C2 7.80001 8 1.70001 15.5 1.70001C23 1.70001 29 7.80001 29 15.2C29 22.6 23 28.7 15.5 28.7C14.5 28.7 13.6 28.6 12.7 28.4"
+                                      stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M12.7 8.40003L13.9 11.4C14 11.6 13.9 11.8 13.7 11.9C13.2 12.2 12.5 12.9 13.3 14C14.3 15.4 17 18.9 19.2 16.6C19.3 16.5 19.5 16.4 19.7 16.5L22.9 17.9C23.1 18 23.2 18.3 23.1 18.5C22.4 19.9 19.7 23.6 13 17.8C6.20003 11.9 10.6 9.00004 12.1 8.30004C12.3 8.00004 12.6 8.10003 12.7 8.40003Z"
+                                      stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </div>
-                    <div>
-                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="22" cy="22" r="22" fill="white"/>
-                            <path d="M11.4888 20.8592C17.0296 18.7407 33 12.2222 33 12.2222L29.8222 30.637C29.6592 31.5333 28.6 31.8592 27.9481 31.2888L22.9777 27.1333L19.474 30.3925L20.0444 24.9333L30.637 14.9111L17.6 23.0592L18.4148 27.7036L15.7259 23.3851L11.6518 22.0814C11 21.837 10.9185 21.0222 11.4888 20.8592Z" stroke="#303030" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                    <div class="telegram-icon-box icon-messenger">
+                        <a href="tg://resolve?domain=+78003017391">
+                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.10093 14.6C8.90093 12 28.5009 4 28.5009 4L24.6009 26.6C24.4009 27.7 23.1009 28.1 22.3009 27.4L16.2009 22.3L11.9009 26.3L12.6009 19.6L25.6009 7.3L9.60093 17.3L10.6009 23L7.30093 17.7L2.30093 16.1C1.50093 15.8 1.40093 14.8 2.10093 14.6Z"
+                                      stroke="#414042" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -74,8 +105,6 @@
     </div>
 </div>
 
-<script src="/wp-content/themes/psm-theme/js/footer.js"></script>
-
 
 <!--<div class="box contact-manager">-->
 <!--    <div class="text">-->
@@ -89,17 +118,11 @@
 <!--    </div>-->
 <!--</div>-->
 
-<style media="screen">
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-</style>
 
 <!--<div class="footer">-->
 <!--    <div class="container">-->
 <!--        <div class="col-sm-6 col-md-4">-->
-<!--           --><?//// wp_nav_menu(array(
+<!--           --><? //// wp_nav_menu(array(
 ////                'menu_class' => 'menu',
 ////                'theme_location' => 'footer-menu1',
 ////                'after' => '',
@@ -107,7 +130,7 @@
 ////            )); ?>
 <!--        </div>-->
 <!--        <div class="col-sm-6 col-md-4">-->
-<!--           --><?////
+<!--           --><? ////
 ////            wp_nav_menu(array(
 ////                'menu_class' => 'menu',
 ////                'theme_location' => 'footer-menu2',
@@ -117,7 +140,7 @@
 ////            ?>
 <!--        </div>-->
 <!--        <div class="col-sm-6 col-md-4">-->
-<!--           --><?////
+<!--           --><? ////
 ////            wp_nav_menu(array(
 ////                'menu_class' => 'menu',
 ////                'theme_location' => 'footer-menu3',
@@ -185,9 +208,11 @@
                 Номер телефона
                 <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
             </label>
-            <div  class="modalwindow_button-wrapper">
+            <div class="modalwindow_button-wrapper">
                 <button class="modalwindow_button button-red" type="submit"> Отправить</button>
-                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных данных</div>
+                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных
+                    данных
+                </div>
             </div>
         </form>
     </div>
@@ -207,9 +232,11 @@
                 Номер телефона
                 <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
             </label>
-            <div  class="modalwindow_button-wrapper">
+            <div class="modalwindow_button-wrapper">
                 <button class="modalwindow_button button-red" type="submit"> Отправить</button>
-                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных данных</div>
+                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных
+                    данных
+                </div>
             </div>
         </form>
     </div>
@@ -228,7 +255,8 @@
             <input type="text" name="name" placeholder="Ваш E-mail">
             <input type="text" name="tel" placeholder="Телефон">
             <input placeholder="Ваш вопрос" name="descr" type="text">
-            <div><input type="checkbox" name="policy"><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span></div>
+            <div><input type="checkbox" name="policy"><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span>
+            </div>
             <br>
             <button type="submit"> Отправить</button>
             <div class="output-form"></div>
@@ -250,9 +278,11 @@
                 Номер телефона
                 <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
             </label>
-            <div  class="modalwindow_button-wrapper">
+            <div class="modalwindow_button-wrapper">
                 <button class="modalwindow_button button-red" type="submit"> Отправить</button>
-                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных данных</div>
+                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных
+                    данных
+                </div>
             </div>
         </form>
     </div>
@@ -268,7 +298,8 @@
 
             <input type="text" name="name" placeholder="Ваше имя">
             <input type="text" name="tel" placeholder="Телефон">
-            <div><input type="checkbox" name="policy"><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span></div>
+            <div><input type="checkbox" name="policy"><span>Я принимаю <a href="/policy">соглашение сайта об обработке персональных данных.</a></span>
+            </div>
             <br>
             <button type="submit"> Отправить</button>
             <div class="output-form"></div>
@@ -276,485 +307,8 @@
     </div>
 </div>
 
-<div id="top-but"> ↑</div>
-<script type="text/javascript" src="/wp-content/js/jquery.js"></script>
-<script type="text/javascript" src="/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js"></script>
-<script type="text/javascript" src="/wp-content/js/slick.min.js"></script>
-<script type="text/javascript" src="/wp-content/themes/psm-theme/jquery.magnific-popup.js"></script>
+<div id="top-but">↑</div>
 
-<?
-if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false):
-    echo '<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-    async defer></script>';
-endif;
-?>
-
-<script>
-
-    document.addEventListener('DOMContentLoaded', function () {
-        jQuery('.mob-button').click(function () {
-            jQuery('.mobile-menu1').addClass('mobile-menu-active')
-        })
-        jQuery('.mobile-menu-close').click(function () {
-            jQuery('.mobile-menu1').removeClass('mobile-menu-active')
-        })
-    }, false)
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-
-
-        jQuery("a[data-call='callback']").click(function () {
-            jQuery("div[data-modal='callback']").fadeIn();
-        })
-
-        jQuery("a[data-call='answer']").click(function () {
-            jQuery("div[data-modal='answer']").fadeIn();
-        })
-
-        jQuery("a[data-call='singleauto']").click(function () {
-            jQuery("div[data-modal='singleauto']").fadeIn();
-        })
-
-        jQuery("a[data-call='callautosend']").click(function () {
-            jQuery("div[data-modal='callautosend']").fadeIn();
-        })
-
-        jQuery('.show-all').click(function () {
-            jQuery('.all-hidden').removeClass('all-hidden');
-            jQuery('.show-all').css('display', 'none');
-            jQuery('.hide-all').css('display', 'inherit');
-        })
-
-        //all-cat
-        jQuery('.hide-all').click(function () {
-            jQuery('.all-cat').addClass('all-hidden');
-            jQuery('.show-all').css('display', 'inherit');
-            jQuery('.hide-all').css('display', 'none');
-        });
-
-
-        jQuery("a[data-call='auto']").click(function () {
-            var auto = jQuery(this).attr('data-auto');
-            jQuery("div[data-modal='auto']").attr('data-value', '' + auto + '')
-            jQuery("div[data-modal='auto']").fadeIn();
-        })
-
-
-        jQuery('.modal-close').click(function () {
-            jQuery(".modalwindow").fadeOut()
-        })
-
-        jQuery('.logo__wrapper').slick({
-            arrows: true,
-            adaptiveHeight: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 5,
-            respondTo: 'slider',
-            prevArrow: jQuery('.logo__button_left'),
-            nextArrow: jQuery('.logo__button_right')
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            jQuery('.offer-img').addClass('img-fadein');
-            jQuery('.preloader').fadeOut();
-        }, false)
-
-
-    }, false)
-
-
-    var onloadCallback = function () {
-        mysitekey = '6LfnFMEUAAAAAGOEN8494EZ-HUlPQkzBKkpG2eCf';
-
-        grecaptcha.render('recaptcha1', {
-            'sitekey': mysitekey,
-            'callback': sendform
-        });
-
-        grecaptcha.render('recaptcha2', {
-            'sitekey': mysitekey,
-            'callback': sendform
-        });
-
-        grecaptcha.render('recaptcha3', {
-            'sitekey': mysitekey,
-            'callback': sendform
-        });
-
-        grecaptcha.render('recaptcha4', {
-            'sitekey': mysitekey,
-            'callback': sendform
-        });
-
-        grecaptcha.render('recaptcha5', {
-            'sitekey': mysitekey,
-            'callback': sendform
-        });
-
-        if (jQuery("div").is("#recaptcha6")) {
-            grecaptcha.render('recaptcha6', {
-                'sitekey': mysitekey,
-                'callback': sendform
-            });
-        }
-
-    };
-
-
-    function callbacksend() {
-        // отменим стандартную отправку формы на сервер
-        event.preventDefault();
-        // если форма прошла валидацию, то вызовем invisible reCaptcha
-        grecaptcha.execute();
-
-        ym(91868462, 'reachGoal', 'OPEN-CALLS')
-
-        window.dataform = {
-            "form": 'callbackForm',
-            "name": jQuery(".callbackform input[name='name']").val(),
-            "tel": jQuery(".callbackform input[name='tel']").val(),
-            "policy": jQuery(".callbackform input[name='policy']").prop("checked"),
-        };
-    }
-
-
-    function answersend() {
-        // отменим стандартную отправку формы на сервер
-        event.preventDefault();
-        // если форма прошла валидацию, то вызовем invisible reCaptcha
-        grecaptcha.execute();
-
-        var name = jQuery("div[data-modal='answer'] .callbackform input[name='name']").val();
-        var tel = jQuery("div[data-modal='answer'] .callbackform input[name='tel']").val();
-        var descr = jQuery("div[data-modal='answer'] .callbackform input[name='descr']").val();
-        var policy = jQuery("div[data-modal='answer'] .callbackform input[name='policy']").prop("checked");
-
-        window.dataform = {
-            "form": 'answerForm',
-            "name": name,
-            "tel": tel,
-            "descr": descr,
-            "policy": policy,
-        };
-
-    }
-
-    function singleautosend() {
-        // отменим стандартную отправку формы на сервер
-        event.preventDefault();
-        // если форма прошла валидацию, то вызовем invisible reCaptcha
-        grecaptcha.execute();
-
-        var auto = jQuery("h1").html();
-        var name = jQuery("div[data-modal='singleauto'] .callbackform-singleauto input[name='name']").val();
-        var email = jQuery("div[data-modal='singleauto'] .callbackform-singleauto input[name='descr']").val();
-        var tel = jQuery("div[data-modal='singleauto'] .callbackform-singleauto input[name='tel']").val();
-        var descr = jQuery("div[data-modal='singleauto'] .callbackform-singleauto input[name='descr']").val();
-        var policy = jQuery("div[data-modal='singleauto'] .callbackform-singleauto input[name='policy']").prop("checked");
-
-
-        window.dataform = {
-            "form": 'singleautoForm',
-            "auto": auto,
-            "name": name,
-            "email": email,
-            "tel": tel,
-            "descr": descr,
-            "policy": policy,
-        };
-    }
-
-    function callautosend() {
-        // отменим стандартную отправку формы на сервер
-        event.preventDefault();
-        // если форма прошла валидацию, то вызовем invisible reCaptcha
-        grecaptcha.execute();
-
-        var name = jQuery("div[data-modal='callautosend'] .callbackform input[name='name']").val();
-        var tel = jQuery("div[data-modal='callautosend'] .callbackform input[name='tel']").val();
-        var auto = jQuery("div[data-modal='callautosend']").attr('data-value');
-        var policy = jQuery("div[data-modal='callautosend'] .callbackform input[name='policy']").prop("checked");
-
-
-        window.dataform = {
-            "form": 'callautosendForm',
-            "auto": auto,
-            "name": name,
-            "tel": tel,
-            "policy": policy,
-        };
-    }
-
-    function ordersend() {
-        yaCounter47702209.reachGoal('zakazat-zvonok');
-        // отменим стандартную отправку формы на сервер
-        event.preventDefault();
-        // если форма прошла валидацию, то вызовем invisible reCaptcha
-        grecaptcha.execute();
-
-        var name = jQuery(".order-form input[name='name']").val();
-        var tel = jQuery(".order-form input[name='tel']").val();
-        var addr = jQuery(".order-form input[name='addr']").val();
-        var descr = jQuery(".order-form input[name='descr']").val();
-        var policy = jQuery(".order-form input[name='policy']").prop("checked");
-
-        window.dataform = {
-            "form": 'orderForm',
-            "name": name,
-            "tel": tel,
-            "addr": addr,
-            "descr": descr,
-            "policy": policy,
-        };
-    }
-
-    function autosend() {
-
-        // отменим стандартную отправку формы на сервер
-        event.preventDefault();
-        // если форма прошла валидацию, то вызовем invisible reCaptcha
-        grecaptcha.execute();
-
-        var name = jQuery("div[data-modal='auto'] .callbackform input[name='name']").val();
-        var tel = jQuery("div[data-modal='auto'] .callbackform input[name='tel']").val();
-        var auto = jQuery("div[data-modal='auto']").attr('data-value');
-        var policy = jQuery("div[data-modal='auto'] .callbackform input[name='policy']").prop("checked");
-
-        window.dataform = {
-            "form": 'autosendForm',
-            "auto": auto,
-            "name": name,
-            "tel": tel,
-            "policy": policy,
-        };
-    }
-
-    function sendform(token, dataform) {
-        if (window.dataform.form == 'callbackForm') {
-            console.log(window.dataform.policy)
-            jQuery.ajax({
-                url: "/wp-content/themes/psm-theme/sendmail.php", // куда отправляем
-                type: "post", // метод передачи
-                dataType: "json", // тип передачи данных
-                data: { // что отправляем
-                    "name": window.dataform.name,
-                    "g-recaptcha-response": token,
-                    "policy": window.dataform.policy,
-                    "tel": window.dataform.tel
-                },
-                // после получения ответа сервера
-                success: function (data) {
-                    yaCounter47702209.reachGoal('telefon');
-                    //jQuery('.messages').html(data.result); // выводим ответ сервера
-                    if (data) {
-                        jQuery('div[data-modal="callback"] .output-form').html(data);
-                    }
-
-                }
-            });
-        }
-
-        if (window.dataform.form == 'answerForm') {
-            console.log(window.dataform.policy)
-            jQuery.ajax({
-                url: "/wp-content/themes/psm-theme/sendmail.php", // куда отправляем
-                type: "post", // метод передачи
-                dataType: "json", // тип передачи данных
-                data: { // что отправляем
-                    "name": window.dataform.name,
-                    "tel": window.dataform.tel,
-                    "descr": window.dataform.descr,
-                    "g-recaptcha-response": token,
-                    "policy": window.dataform.policy,
-                },
-                // после получения ответа сервера
-                success: function (data) {
-                    //jQuery('.messages').html(data.result); // выводим ответ сервера
-                    if (data) {
-                        jQuery("div[data-modal='answer'] .output-form").html(data);
-                    }
-
-                }
-            });
-        }
-
-        if (window.dataform.form == 'singleautoForm') {
-            console.log(window.dataform.policy)
-            jQuery.ajax({
-                url: "/wp-content/themes/psm-theme/sendmail.php", // куда отправляем
-                type: "post", // метод передачи
-                dataType: "json", // тип передачи данных
-                data: { // что отправляем
-                    "auto": window.dataform.auto,
-                    "name": window.dataform.name,
-                    "tel": window.dataform.tel,
-                    "email": window.dataform.email,
-                    "descr": window.dataform.descr,
-                    "g-recaptcha-response": token,
-                    "policy": window.dataform.policy,
-                },
-                // после получения ответа сервера
-                success: function (data) {
-                    //jQuery('.messages').html(data.result); // выводим ответ сервера
-                    if (data) {
-                        jQuery(".callbackform-singleauto .output-form").html(data);
-                    }
-
-                }
-            });
-        }
-
-        if (window.dataform.form == 'callautosendForm') {
-            console.log(window.dataform.policy)
-            jQuery.ajax({
-                url: "/wp-content/themes/psm-theme/sendmail.php", // куда отправляем
-                type: "post", // метод передачи
-                dataType: "json", // тип передачи данных
-                data: { // что отправляем
-                    "auto": window.dataform.auto,
-                    "name": window.dataform.name,
-                    "policy": window.dataform.policy,
-                    "tel": window.dataform.tel,
-                    "g-recaptcha-response": token,
-                },
-                // после получения ответа сервера
-                success: function (data) {
-                    //jQuery('.messages').html(data.result); // выводим ответ сервера
-                    if (data) {
-                        jQuery("div[data-modal='callautosend'] .callbackform .output-form").html(data);
-                    }
-
-                }
-            });
-        }
-
-        if (window.dataform.form == 'autosendForm') {
-            console.log(window.dataform.policy)
-            jQuery.ajax({
-                url: "/wp-content/themes/psm-theme/sendmail.php", // куда отправляем
-                type: "post", // метод передачи
-                dataType: "json", // тип передачи данных
-                data: { // что отправляем
-                    "auto": window.dataform.auto,
-                    "name": window.dataform.name,
-                    "policy": window.dataform.policy,
-                    "tel": window.dataform.tel,
-                    "g-recaptcha-response": token,
-                },
-                // после получения ответа сервера
-                success: function (data) {
-                    //jQuery('.messages').html(data.result); // выводим ответ сервера
-                    if (data) {
-                        jQuery("div[data-modal='auto'] .output-form").html(data);
-                    }
-
-                }
-            });
-        }
-
-        if (window.dataform.form == 'orderForm') {
-            jQuery.ajax({
-                url: "/wp-content/themes/psm-theme/sendmail.php", // куда отправляем
-                type: "post", // метод передачи
-                dataType: "json", // тип передачи данных
-                data: { // что отправляем
-                    "addr": window.dataform.addr,
-                    "name": window.dataform.name,
-                    "policy": window.dataform.policy,
-                    "tel": window.dataform.tel,
-                    "descr": window.dataform.descr,
-                    "g-recaptcha-response": token,
-                },
-                // после получения ответа сервера
-                success: function (data) {
-                    //jQuery('.messages').html(data.result); // выводим ответ сервера
-                    if (data) {
-                        jQuery(".order-form .output-form").html(data);
-                    }
-
-                }
-            });
-        }
-
-
-    }
-</script>
-
-<script type='text/javascript'>
-    (function () {
-        window['yandexChatWidgetCallback'] = function () {
-            try {
-                window.yandexChatWidget = new Ya.ChatWidget({
-                    guid: 'cbc3ae1a-cf8d-4c36-8e1a-da99a8d5aff8',
-                    buttonText: '',
-                    title: 'Чат',
-                    theme: 'light',
-                    collapsedDesktop: 'never',
-                    collapsedTouch: 'never'
-                });
-            } catch (e) {
-            }
-        };
-        var n = document.getElementsByTagName('script')[0],
-            s = document.createElement('script');
-        s.async = true;
-        s.charset = 'UTF-8';
-        s.src = 'https://chat.s3.yandex.net/widget.js';
-        n.parentNode.insertBefore(s, n);
-    })();
-
-    document.addEventListener('DOMContentLoaded', function () {
-
-        jQuery(function () {
-            jQuery(window).scroll(function () {
-                if (jQuery(this).scrollTop() != 0) {
-                    jQuery('#top-but').fadeIn();
-                } else {
-                    jQuery('#top-but').fadeOut();
-                }
-            });
-            jQuery('#top-but').click(function () {
-                jQuery('body,html').animate({scrollTop: 0}, 800);
-            });
-        });
-
-        jQuery("input[name='policy']").attr('checked', 'checked')
-
-    }, false);
-</script>
-
-<script>
-    //document.addEventListener('DOMContentLoaded',function(){
-    //    jQuery('.preloader').fadeOut();
-    //},false)
-
-    var el = document.getElementById('preloader');
-    el.parentNode.removeChild(el);
-
-
-</script>
-
-
-<? if (!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'], 'Chrome-Lighthouse') === false): ?>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript"> (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-        ym(47702209, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/47702209" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript> <!-- /Yandex.Metrika counter -->
-
-<? endif; ?>
-
-<link rel="stylesheet" href="/wp-content/js/slick.css" type="text/css">
-<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/style.css">
-
+<?php wp_footer(); ?>
 </body>
 </html>

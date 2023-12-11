@@ -7,9 +7,6 @@
 get_header();
 ?>
 
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/promotion/promotion.css">
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/style.css">
 
 <div class="container-width1110">
 
@@ -24,7 +21,7 @@ get_header();
             <p class="promotion-page_offer"><span>Предложение от 29-01-2020 г.</span>При аренде автовышки от 14 дней
                 перебазировка в любой регион России бесплатно! Подробности по телефону:</p>
             <a class="promotion-page_tel" href="tel:+79022627066">+7 (902) 262-70-66</a>
-            <a class="promotion-page_leave-review button-blue" href="">Оставить заявку</a>
+            <a class="promotion-page_leave-review button-blue" onclick="yaCounter47702209.reachGoal('astavit-zayavok');" data-call="callback" href="">Оставить заявку</a>
         </div>
     </div>
 
@@ -34,11 +31,27 @@ get_header();
 
 
     <div class="product-showcase width-block">
-        <h2>другая спец техника</h2>
+        <h2>Наши машины</h2>
 
-        <?= do_shortcode('[cat]'); ?>
+        <?php
+        $categories = [
+            'taxonomy' => 'arenda-autovyshek',
+            'type' => 'uslugi-autovyshki',
+            'orderby' => 'name',
+            'order' => 'ASC'
+        ];
 
-        <?= do_shortcode('[auto]'); ?>
+        component_get_cat($categories);
+        ?>
+
+        <?php
+        $args = [
+            'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
+            'posts_per_page' => 3,
+        ];
+
+        component_get_auto($args);
+        ?>
 
         <div class="product-showcase_button-show-more-wrapper">
             <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>
@@ -94,5 +107,4 @@ get_header();
     </div>
 </div>
 
-<script src="/wp-content/themes/psm-theme/js/home.js"></script>
 <? get_footer(); ?>

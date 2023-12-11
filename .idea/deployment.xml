@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="On explicit save action" promptOnRemoteOverwrite="CHECK_TIMESTAMP" serverName="psm-ekb96" overwriteAll="false" preserveTimestamps="false" promptOnLocalOverwrite="false" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" confirmBeforeDeletion="false" autoUploadExternalChanges="true" notifyRemoteChanges="true">
+    <option name="confirmBeforeDeletion" value="false" />
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="psm-ekb96">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/wp-content/themes/psm-theme/" local="$PROJECT_DIR$/wp-content/themes/psm-theme/" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/phpMyAdmin-5.2.1" />
+            <excludedPath path="/wp-admin" />
+            <excludedPath path="/wp-includes" />
+            <excludedPath path="/.htaccess" />
+            <excludedPath path="/index2.html" />
+            <excludedPath path="/wp-links-opml.php" />
+            <excludedPath path="/google46d8abbeb65c05d8.html" />
+            <excludedPath path="/xmlrpc.php" />
+            <excludedPath path="/wp-config-sample.php" />
+            <excludedPath path="/robots.txt" />
+            <excludedPath path="/wp-config.php" />
+            <excludedPath path="/readme.html" />
+            <excludedPath path="/wp-load.php" />
+            <excludedPath path="/index.php" />
+            <excludedPath path="/wp-login.php" />
+            <excludedPath path="/wp-cron.php" />
+            <excludedPath path="/wp-mail.php" />
+            <excludedPath path="/wp-activate.php" />
+            <excludedPath path="/wp-blog-header.php" />
+            <excludedPath path="/license.txt" />
+            <excludedPath path="/wp-settings.php" />
+            <excludedPath path="/wp-signup.php" />
+            <excludedPath path="/yandex_ba02d5775160388a.html" />
+            <excludedPath path="/grep.php" />
+            <excludedPath path="/sitemap.xml" />
+            <excludedPath path="/wp-trackback.php" />
+            <excludedPath path="/wp-comments-post.php" />
+            <excludedPath path="/favicon.ico" />
+            <excludedPath path="/wp-content/uploads" />
+            <excludedPath path="/wp-content/index.php" />
+            <excludedPath path="/wp-content/upgrade" />
+            <excludedPath path="/wp-content/plugins" />
+            <excludedPath path="/wp-content/languages" />
+            <excludedPath path="/wp-content/js" />
+            <excludedPath path="/wp-content/img" />
+            <excludedPath path="/wp-content/cache" />
+            <excludedPath path="/wp-content/themes/twentysixteen" />
+            <excludedPath path="/wp-content/themes/index.php" />
+            <excludedPath path="/wp-content/themes/twentyseventeen" />
+            <excludedPath path="/wp-content/themes/twentynineteen" />
+            <excludedPath path="/old/cache" />
+            <excludedPath path="/old/components" />
+            <excludedPath path="/old/css" />
+            <excludedPath path="/old/downloads" />
+            <excludedPath path="/old/files" />
+            <excludedPath path="/old/fonts" />
+            <excludedPath path="/old/images" />
+            <excludedPath path="/old/img" />
+            <excludedPath path="/old/img1" />
+            <excludedPath path="/old/js" />
+            <excludedPath path="/old/less" />
+            <excludedPath path="/old/sessions" />
+            <excludedPath path="/old/spectechnika" />
+            <excludedPath path="/old/system" />
+            <excludedPath path="/old/themes" />
+            <excludedPath path="/old/tools" />
+            <excludedPath path="/old/uploads" />
+            <excludedPath path="/old/.hgignore" />
+            <excludedPath path="/old/.htaccess" />
+            <excludedPath path="/old/AI-BOLIT-REPORT-_hosting_users_h3019059_www_19059_mesto_biz-893070-03-12-2018_10-39.html" />
+            <excludedPath path="/old/ai-bolit.php" />
+            <excludedPath path="/old/AIBOLIT-WHITELIST.db" />
+            <excludedPath path="/old/favicon.ico" />
+            <excludedPath path="/old/google1412edc9af21919d.html" />
+            <excludedPath path="/old/gulpfile.js" />
+            <excludedPath path="/old/index.php" />
+            <excludedPath path="/old/package.json" />
+            <excludedPath path="/old/page-404.html" />
+            <excludedPath path="/old/phpinfo.php" />
+            <excludedPath path="/old/readme" />
+            <excludedPath path="/old/robots.tpl" />
+            <excludedPath path="/old/robots.txt" />
+            <excludedPath path="/old/services_template.php~base.ne3pnM" />
+            <excludedPath path="/old/services_template.php~other.FKuqpw" />
+            <excludedPath path="/old/sitemap.xml" />
+            <excludedPath path="/old/style.min.css" />
+            <excludedPath path="/old/yandex_f411a9392c81e74b.html" />
+            <excludedPath path="/old/.well-known" />
+            <excludedPath path="/old/adm" />
+            <excludedPath path="/old/application/models" />
+            <excludedPath path="/old/application/cache" />
+            <excludedPath path="/old/application/helpers" />
+            <excludedPath path="/old/application/language" />
+            <excludedPath path="/old/application/hooks" />
+            <excludedPath path="/old/application/components" />
+            <excludedPath path="/old/application/database" />
+            <excludedPath path="/old/application/config" />
+            <excludedPath path="/old/application/libraries" />
+            <excludedPath path="/old/application/logs" />
+            <excludedPath path="/old/application/controllers" />
+            <excludedPath path="/old/application/core" />
+            <excludedPath path="/old/application/errors" />
+            <excludedPath path="/old" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
+  </component>
+</project>
