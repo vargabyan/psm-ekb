@@ -33,16 +33,16 @@ if (array_key_exists($path, $redirectsMap)) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--    <meta name="viewport"-->
 <!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
 <!--    <meta property="og:image" content="/wp-content/uploads/2019/10/arenda-avtovyshki.png"/>-->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/swiper-bundle.min.css">
-    <script src="/wp-content/themes/psm-theme/js/swiper-bundle.min.js"></script>
-    <? wp_head(); ?>
+<!--    <link rel="icon" type="image/x-icon" href="/favicon.ico">-->
+<!--    <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/swiper-bundle.min.css">-->
+<!--    <script src="/wp-content/themes/psm-theme/js/swiper-bundle.min.js"></script>-->
+    <?php wp_head(); ?>
 </head>
 <body>
 

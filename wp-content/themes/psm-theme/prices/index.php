@@ -9,7 +9,10 @@
 
         <div class="prices_content">
 
-            <?php for ($i = 0; $i < 3; $i++) {?>
+            <?php
+            $tables = get_field('tablicy_dlya_stranica_ceny');
+
+            foreach ($tables as $item) {?>
 
                 <div class="prices_content_item-wrapper">
                     <div class="prices_content_headers">
@@ -22,32 +25,31 @@
 
 
                     <div class="prices_content_item prices_content_item-color">
-                        <p class="prices_params prices_meter">Автовышка <br> 15 метров</p>
+                        <p class="prices_params prices_meter"><?= $item['tip_avtovyshki'] ?></p>
                         <div class="prices_params">
-                            <p class="prices_params_item prices_border-line">Цена за час</p>
-                            <p class="prices_params_item prices_border-line">Цена за смену</p>
-                            <p class="prices_params_item ">Неделя/месяц</p>
+                            <p class="prices_params_item prices_border-line"><?= $item['srok_arendy']['1'] ?></p>
+                            <p class="prices_params_item prices_border-line"><?= $item['srok_arendy']['2'] ?></p>
+                            <p class="prices_params_item prices_border-line"><?= $item['srok_arendy']['3'] ?></p>
+                            <p class="prices_params_item "><?= $item['srok_arendy']['4'] ?></p>
                         </div>
                         <div class="prices_params">
-                            <p class="prices_params_item prices_border-line">1300 руб.</p>
-                            <p class="prices_params_item prices_border-line">11 200 руб.</p>
-                            <p class="prices_params_item ">Индивидуально</p>
+                            <p class="prices_params_item prices_border-line"><?= $item['cena_bez_nds']['1'] ?></p>
+                            <p class="prices_params_item prices_border-line"><?= $item['cena_bez_nds']['2'] ?></p>
+                            <p class="prices_params_item prices_border-line"><?= $item['cena_bez_nds']['3'] ?></p>
+                            <p class="prices_params_item "><?= $item['cena_bez_nds']['4'] ?></p>
                         </div>
                         <div class="prices_params">
-                            <p class="prices_params_item prices_border-line">1500 руб.</p>
-                            <p class="prices_params_item prices_border-line">12800 руб.</p>
+                            <p class="prices_params_item prices_border-line"><?= $item['cena_s_nds_20']['1'] ?></p>
+                            <p class="prices_params_item prices_border-line"><?= $item['cena_s_nds_20']['2'] ?></p>
+                            <p class="prices_params_item prices_border-line"><?= $item['cena_s_nds_20']['3'] ?></p>
+                            <p class="prices_params_item "><?= $item['cena_s_nds_20']['4'] ?></p>
                         </div>
-                        <p class="prices_time prices_time-background-without-color">4 часа</p>
+                        <p class="prices_time prices_time-background-without-color"><?= $item['minimalnyj_zakaz'] ?></p>
                     </div>
                 </div>
 
-            <?php }?>
+            <?php } ?>
         </div>
     </div>
 
 </div>
-
-
-<?php
-    require __DIR__ . "/../cp-help-block/index.php";
-?>

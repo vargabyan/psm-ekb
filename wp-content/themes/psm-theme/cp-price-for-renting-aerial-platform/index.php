@@ -8,7 +8,7 @@
     <section class="price-for-renting">
         <div class="price-for-renting_description-wrapper">
             <div class="price-for-renting_description">
-                <p class="price-for-renting_header">Цены на аренду автовышек в&nbsp;Екатеринбурге</p>
+                <p class="price-for-renting_header"><?php the_title(); ?></p>
                 <div class="price-for-renting_author-wrapper">
                     <img class="price-for-renting_avatar" src="/wp-content/themes/psm-theme/cp-price-for-renting-aerial-platform/images/Ellipse%201.png" alt="">
                     <p class="price-for-renting_author">
@@ -17,7 +17,8 @@
                     </p>
                 </div>
             </div>
-            <img class="price-for-renting_img" src="/wp-content/themes/psm-theme/cp-price-for-renting-aerial-platform/images/Rectangle%205183.png" alt="">
+<!--            <img class="price-for-renting_img" src="/wp-content/themes/psm-theme/cp-price-for-renting-aerial-platform/images/Rectangle%205183.png" alt="">-->
+            <?php the_post_thumbnail(); ?>
         </div>
         <div class="price-for-renting_following-wrapper">
             <p class="price-for-renting_date">

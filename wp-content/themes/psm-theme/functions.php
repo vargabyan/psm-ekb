@@ -8,10 +8,15 @@ function add_scripts_and_styles()
 
     wp_enqueue_style('style-swiper-slider', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
     wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/cp-cars-you-will-need/cars-you-will-need.css');
-    wp_enqueue_style('style-company', get_template_directory_uri() . '/company/company.css');
+    wp_enqueue_style('style-company', get_template_directory_uri() . '/assets/css/company.css');
     wp_enqueue_style('style-prices', get_template_directory_uri() . '/prices/prices.css');
-    wp_enqueue_style('style-contacts', get_template_directory_uri() . '/contacts/contacts.css');
+    wp_enqueue_style('style-contacts', get_template_directory_uri() . '/assets/css/contacts.css');
     wp_enqueue_style('style-promotion', get_template_directory_uri() . '/promotion/promotion.css');
+    wp_enqueue_style('style-article', get_template_directory_uri() . '/assets/css/article.css');
+    wp_enqueue_style('style-our-works', get_template_directory_uri() . '/assets/css/our-works.css');
+    wp_enqueue_style('style-elevator', get_template_directory_uri() . '/assets/css/elevator.css');
+    wp_enqueue_style('style-elevator-services', get_template_directory_uri() . '/assets/css/elevator-services.css');
+    wp_enqueue_style('style-magnific-popup', get_template_directory_uri() . '/magnific-popup.css');
 
     wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js');
     wp_enqueue_script('home', get_template_directory_uri() . '/js/home.js');
@@ -1197,112 +1202,52 @@ function delivery_rent_func()
     </div>
 </div>';
 }
-
 ?>
 
-
-
-
-
-<?php
-add_shortcode('aerial_platform_list', function ($atts) {
-    $pages = get_field('uslugi', get_the_ID());
-    if (empty($pages)) {
-        $pages = get_pages([
-            'child_of' => 351,
-            'post_type' => 'page',
-            'post_status' => 'publish',
-        ]);
-    }
-
-    if (!empty($pages)) { ?>
-
-        <div class="container-width1110">
-            <div class="cars-you-will-need">
-                <p class="cars-you-will-need_header">Вам также может <br> понадобиться автовышка</p>
-                <div class="cars-you-will-need_items-wrapper">
-
-                    <?php foreach ($pages as $page) {
-                        $page_url = get_permalink($page->ID); ?>
-                        <div class="cars-you-will-need_item">
-                            <img class="cars-you-will-need_img"
-                                 src="<?php echo get_the_post_thumbnail_url($page->ID) ?>"
-                                 alt="<?php echo $page->post_title ?>">
-                            <a class="cars-you-will-need_description"
-                               href="<?php echo $page_url ?>"><?php echo $page->post_title ?></a>
-                        </div>
-                    <?php } ?>
-
-                </div>
-
-                <div class="swiper cars-you-will-need_swiper">
-                    <div class="swiper-wrapper">
-
-                        <?php foreach ($pages as $page) {
-                            $page_url = get_permalink($page->ID); ?>
-                            <div class="swiper-slide">
-                                <div class="cars-you-will-need_item">
-                                    <img class="cars-you-will-need_img"
-                                         src="<?php echo get_the_post_thumbnail_url($page->ID) ?>"
-                                         alt="<?php echo $page->post_title ?>">
-                                    <a class="cars-you-will-need_description"
-                                       href="<?php echo $page_url ?>"><?php echo $page->post_title ?></a>
-                                </div>
-                            </div>
-                        <?php } ?>
-
-                    </div>
-                    <div class="cars-you-will-need_swiper-buttons">
-                        <div class="cars-you-will-need-swiper_swiper-button-prev"></div>
-                        <div class="cars-you-will-need-swiper_swiper-button-next"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script src="/wp-content/themes/psm-theme/cp-cars-you-will-need/scripts.js"></script>
-
-    <?php }
-})
-?>
 
 <?php
 add_shortcode('work_steps', function () {
-    ?>
-    <div class="work-steps-block width-block">
+    $post = get_post(1600);
+    $vash_zvanok = get_field('vash_zvanok', $post->ID);
+    $otvet_dispetchera = get_field('otvet_dispetchera', $post->ID);
+    $podpisyvaem_dogovor = get_field('podpisyvaem_dogovor', $post->ID);
+    $otlichnyj_rezultat = get_field('otlichnyj_rezultat', $post->ID);
+
+    return '<div class="work-steps-block width-block">
         <div class="header-box">
-            <p>Как мы <span>работаем</span></p>
-        </div>
+            <!--<p>Как мы <span>работаем</span></p>--> ' .
+        $post->post_content
+        . '</div>
         <div class="work-steps-box">
             <div>
-                <p class="part-1">/01</p>
-                <p class="part-2">Ваш звонок</p>
-                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+                <p class="part-1">' . $vash_zvanok['shag'] . '</p>
+                <p class="part-2">' . $vash_zvanok['zagolovok'] . '</p>
+                <p class="part-3">' . $vash_zvanok['soderzhanie'] . '</p>
             </div>
             <div>
-                <p class="part-1">/02</p>
-                <p class="part-2">ответ диспетчера</p>
-                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+                <p class="part-1">' . $otvet_dispetchera['shag'] . '</p>
+                <p class="part-2">' . $otvet_dispetchera['zagolovok'] . '</p>
+                <p class="part-3">' . $otvet_dispetchera['soderzhanie'] . '</p>
             </div>
             <div>
-                <p class="part-1">/03</p>
-                <p class="part-2">подписываем договор</p>
-                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+                <p class="part-1">' . $podpisyvaem_dogovor['shag'] . '</p>
+                <p class="part-2">' . $podpisyvaem_dogovor['zagolovok'] . '</p>
+                <p class="part-3">' . $podpisyvaem_dogovor['soderzhanie'] . '</p>
             </div>
             <div>
-                <p class="part-1">/04</p>
-                <p class="part-2">отличный результат!</p>
-                <p class="part-3">Рыбныыыыыыый текст который покорит сердца ваших клиентов</p>
+                <p class="part-1">' . $otlichnyj_rezultat['shag'] . '</p>
+                <p class="part-2">' . $otlichnyj_rezultat['zagolovok'] . '</p>
+                <p class="part-3">' . $otlichnyj_rezultat['soderzhanie'] . '</p>
             </div>
+
         </div>
-        <!--        <div class="button-box">-->
-        <!--            <a href="">-->
-        <!--                <button class="button-red">Смотреть каталог автовышек</button>-->
-        <!--            </a>-->
-        <!--        </div>-->
-    </div>
-<?php }) ?>
+            <div class="button-box">
+                <a href="">
+                    <button class="button-red">Смотреть каталог автовышек</button>
+                </a>
+            </div>
+    </div>';
+}) ?>
 
 
 <?php
@@ -1383,9 +1328,9 @@ function component_get_auto($args)
 
 
 <?php
-add_shortcode('help_block', function () {
-    ?>
-    <div class="help-block width-block">
+add_shortcode('pomojem_podobrat_oborudovanie', function () {
+
+    return '<div class="help-block width-block">
         <div class="left-box">
             <div class="part-1">
                 <p>Поможем подобрать оборудование</p>
@@ -1465,8 +1410,8 @@ add_shortcode('help_block', function () {
                 </div>
             </div>
         </div>
-    </div>
-<?php }) ?>
+    </div>';
+ }) ?>
 
 
 <?php function component_get_prices()
@@ -1528,7 +1473,7 @@ add_shortcode('help_in_different_ways', function () {
     <div class="help-block width-block">
         <div class="left-box">
             <div class="part-1">
-                <p>Поможем подобрать оборудование</p>
+                <p>нужна помощь или остались вопросы?</p>
             </div>
             <div class="part-2">
                 <div>
@@ -1855,6 +1800,97 @@ add_shortcode('get_contacts', function () {
             </div>
             ';
     }
+    wp_reset_postdata();
+
+    return $result;
+})
+?>
+
+
+<?php
+
+add_shortcode('uslugi-avtovishki', function () {
+    $image = get_field('foto_nashi_uslugi');
+    $post = get_post();
+    $result = '
+    <div class="container-width1110">
+
+        <div class="elevator-services">
+            <div class="elevator-services_text">
+                <p class="elevator-services_header">' . get_field('zagolovok_uslugi') . '</p>
+                <p class="elevator-services_description">' . $post->post_content . '</p>
+            </div>
+            <img class="elevator-services_img" src="' . $image['url'] . '" alt="' . $post->post_title . '">
+        </div>
+
+    </div>
+        ';
+
+    return $result;
+})
+
+?>
+
+
+<?php
+add_shortcode('uslugi-avtovishki-vse', function () {
+    global $post;
+    $current_post = get_post();
+    $p = get_posts([
+        'posts_per_page' => -1,
+        'category_name' => 'uslugi',
+        'post_type' => 'post',
+        'exclude' => $current_post->ID . ', 1634',
+    ]);
+
+    $result = '
+            <div class="container-width1110">
+                <div class="cars-you-will-need">
+                    <p class="cars-you-will-need_header">Вам также может <br> понадобиться автовышка</p>
+                    <div class="cars-you-will-need_items-wrapper">';
+
+    foreach ($p as $post) {
+        setup_postdata($post);
+        $image = get_field('foto_nashi_uslugi');
+
+        $result = $result . '<div class="cars-you-will-need_item">
+                                <img class="cars-you-will-need_img"
+                                     src="' . $image['url'] . '"
+                                     alt="<?php echo $page->post_title ?>">
+                                <a class="cars-you-will-need_description"
+                                   href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>
+                            </div>';
+    }
+
+    $result = $result . '</div>
+    
+                    <div class="swiper cars-you-will-need_swiper">
+                        <div class="swiper-wrapper">';
+
+    foreach ($p as $post) {
+        setup_postdata($post);
+        $image = get_field('foto_nashi_uslugi');
+
+        $result = $result . '<div class="swiper-slide">
+                                    <div class="cars-you-will-need_item">
+                                        <img class="cars-you-will-need_img"
+                                             src="' . $image['url'] . '"
+                                             alt="<?php echo $page->post_title ?>">
+                                        <a class="cars-you-will-need_description"
+                                           href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>
+                                    </div>
+                                </div>';
+    }
+
+    $result = $result . '</div>
+                        <div class="cars-you-will-need_swiper-buttons">
+                            <div class="cars-you-will-need-swiper_swiper-button-prev"></div>
+                            <div class="cars-you-will-need-swiper_swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        ';
     wp_reset_postdata();
 
     return $result;

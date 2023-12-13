@@ -1,15 +1,12 @@
 <?php
+
 /*
 Template Name: Как заказать
+Template Post Type: post, page, product
 */
 
 get_header();
 ?>
-
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/how-to-order/how-to-order.css">
 
     <div class="container-width1110">
         <div class="breadcrumb_block how-to-order_breadcrumb">
@@ -17,9 +14,9 @@ get_header();
         </div>
     </div>
 
-<?php require __DIR__ . '/cp-elevator-services/index.php' ?>
+<?= do_shortcode('[uslugi-avtovishki]') ?>
 
-<?php do_shortcode('[work_steps]'); ?>
+<?= do_shortcode('[work_steps]'); ?>
 
     <div class="product-showcase width-block">
         <h2>Наши машины</h2>
@@ -51,7 +48,5 @@ get_header();
 
 
 <?php require __DIR__ . '/cp-help-block/index.php' ?>
-
-    <script src="/wp-content/themes/psm-theme/js/home.js"></script>
 
 <?php get_footer(); ?>

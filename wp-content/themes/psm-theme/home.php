@@ -85,7 +85,7 @@ get_header();
 
 <?php do_shortcode('[our-advantages]') ?>
 
-<?php do_shortcode('[work_steps]') ?>
+<?= do_shortcode('[work_steps]') ?>
 
     <DIV class="our-truck-crane-block width-block">
 

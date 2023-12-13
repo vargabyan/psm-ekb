@@ -1,33 +1,15 @@
 <?php
-/**
- * Template Name: О компании
- * Template Post Type: page
- */
 get_header();
 ?>
-
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/company/company.css">
 
 
 <div class="container-width1110">
     <div class="about-company">
         <div class="about-company_text-wrapper">
-            <p class="about-company_header">О компании</p>
-            <p class="about-company_text">Ориентир в нашей работе – клиент. Поэтому в парке ООО «ПСМ» есть АГП от 15 до
-                45 метров – с их помощью проводятся практически любые виды строительно-монтажных работ. Наши специалисты
-                сориентируют вас не только по ценам, но и помогут подобрать подходящий вариант в зависимости от
-                специфики работ. Правильный выбор не только обеспечивает быстрое, удобное и безопасное решение задачи,
-                но и поможет сэкономить на аренде.</p>
-            <p class="about-company_text">За более чем 11 лет работы мы поняли, что бывают непредвиденные и экстренные
-                ситуации, поэтому даже если автовышка понадобиться в полночь – звоните. Мы работаем 24 часа и
-                территориально расширяем свою деятельность – услуги доступны практически по всему Уралу и России.</p>
-            <p class="about-company_text">Все наши водители подтверждают квалификацию и имеют удостоверение машиниста
-                автогидроподъемника. В совокупности с немалым опытом, это дает уверенность в безопасном выполнении самых
-                сложных работ. Но безопасность зависит не только от людей, но и от техники. Весь парк зарегистрирован в
-                Ростехнадзоре и проходит регулярные проверки – при работе ничего не сломается и не потечет.</p>
-
+            <p class="about-company_header"><?php the_title() ?></p>
+            <p class="about-company_text"><?php the_content() ?></p>
         </div>
-        <img class="about-company_img" src="/wp-content/uploads/2019/12/avtovyshki-o-kompanii.jpg"
+        <img class="about-company_img" src="<?= wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0]; ?>"
              alt="О компании ПСМ - аренда автовышек в Екатеринбурге"/>
 
     </div>
@@ -95,6 +77,5 @@ get_header();
 
 <?php do_shortcode('[help_in_different_ways]'); ?>
 
-<script src="/wp-content/themes/psm-theme/js/home.js"></script>
 
 <?php get_footer() ?>

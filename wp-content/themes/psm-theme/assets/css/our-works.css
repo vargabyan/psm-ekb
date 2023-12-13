@@ -48,6 +48,7 @@ a {
 
 .our-works_item {
     max-width: 350px;
+    height: auto;
     border-radius: 20px;
     background: #F5F5F5;
 }

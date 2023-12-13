@@ -150,7 +150,7 @@ a {
     }
 
     .prices_content_item-wrapper {
-        width: 491px;
+        width: max-content;
     }
 
     .prices_content_headers {
