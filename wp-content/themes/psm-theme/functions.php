@@ -9,17 +9,20 @@ function add_scripts_and_styles()
     wp_enqueue_style('style-swiper-slider', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
     wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/cp-cars-you-will-need/cars-you-will-need.css');
     wp_enqueue_style('style-company', get_template_directory_uri() . '/assets/css/company.css');
-    wp_enqueue_style('style-prices', get_template_directory_uri() . '/prices/prices.css');
+    wp_enqueue_style('style-prices', get_template_directory_uri() . '/assets/css/prices.css');
     wp_enqueue_style('style-contacts', get_template_directory_uri() . '/assets/css/contacts.css');
-    wp_enqueue_style('style-promotion', get_template_directory_uri() . '/promotion/promotion.css');
+    wp_enqueue_style('style-promotion', get_template_directory_uri() . '/assets/css/promotion.css');
     wp_enqueue_style('style-article', get_template_directory_uri() . '/assets/css/article.css');
     wp_enqueue_style('style-our-works', get_template_directory_uri() . '/assets/css/our-works.css');
     wp_enqueue_style('style-elevator', get_template_directory_uri() . '/assets/css/elevator.css');
+    wp_enqueue_style('style-review', get_template_directory_uri() . '/assets/css/review.css');
     wp_enqueue_style('style-elevator-services', get_template_directory_uri() . '/assets/css/elevator-services.css');
+    wp_enqueue_style('style-price-for-renting-aerial-platform', get_template_directory_uri() . '/assets/css/price-for-renting-aerial-platform.css');
     wp_enqueue_style('style-magnific-popup', get_template_directory_uri() . '/magnific-popup.css');
 
     wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js');
     wp_enqueue_script('home', get_template_directory_uri() . '/js/home.js');
+    wp_enqueue_script('price-for-renting-aerial-platform', get_template_directory_uri() . '/js/price-for-renting-aerial-platform.js');
     wp_enqueue_script('jquery', '/wp-content/js/jquery.js');
     wp_enqueue_script('lazysizes', '/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js');
     wp_enqueue_script('slick', '/wp-content/js/slick.min.js');
@@ -633,7 +636,7 @@ function register_post_auto()
         'show_in_rest' => false,
         // Базовый ярлык данного типа записи когда доступно использование REST API.
         //  По умолчанию: значение $post_type.
-        'rest_base' => $post_type,
+//        'rest_base' => $post_type,
         // Является ли этот тип записи собственным или встроенным.
         //  Рекомендация: не использовать этот аргумент при регистрации собственного типа сообщения. По умолчанию: false.
         '_builtin' => false,
@@ -1043,11 +1046,14 @@ function mytheme_remove_title($title)
     return $title;
 }
 
-wp_deregister_style('wp-block-library');
+
+add_action('wp_enqueue_scripts', function () {
+    wp_deregister_style('wp-block-library');
+});
 
 
 add_shortcode('aerial_platform_form', 'aerial_platform_form_func');
-function aerial_platform_form_func($atts)
+function aerial_platform_form_func()
 {
     return '<div class="col-xs-12 order-form">
         <div class="h2">Нужна автовышка для мойки окон?</div>
@@ -1069,121 +1075,6 @@ function aerial_platform_form_func($atts)
 }
 
 
-add_shortcode('reviews', 'reviews_func');
-function reviews_func()
-{
-    $result = '';
-    $reviews = get_field('reviews', get_the_ID());
-    if (!$reviews) {
-        $reviews = get_field('reviews', 7);
-    }
-    if ($reviews) {
-        $result = '
-        <div class="top-box">
-            <p>Что о нас говорят клиенты</p>
-            <div class="button-box">
-                <div class="review-swiper-prev swiper-button-prev-white"></div>
-                <div class="review-swiper-next next-box swiper-button-next-red"></div>
-            </div>
-        </div>
-
-        <div class="bottom-box">
-            <div class="review-swiper">
-              <div class="swiper-wrapper">';
-        foreach ($reviews as $review) {
-            $result .= '
-                    <div class="swiper-slide">
-                        <div class="person-box">
-                            <div>
-                                <img loading="lazy" src="' . wp_get_attachment_url($review['img']) . '" alt="' . htmlspecialchars($review['name']) . '" />
-                                <p class="person-name">' . $review['name'] . '</p>
-                            </div>
-                            <div class="person-comment">' . $review['txt'] . '</div>
-                        </div>
-                    </div>';
-        }
-        unset($review);
-        $result .= '          
-              </div>
-                 <div class="hidden-button-box">
-                    <div class="review-swiper-prev">
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.70508 11.4121L1.29331 6.00035L6.70508 0.58858" stroke="#ED4646" stroke-width="1.35294"/>
-                        </svg>
-                    </div>
-                    <div class="review-swiper-next next-box">
-                        <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.29492 0.587891L6.70669 5.99965L1.29492 11.4114" stroke="white" stroke-width="1.35294"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>';
-    }
-    return $result;
-
-
-//    $result = '';
-//    $reviews = get_field('reviews', get_the_ID());
-//    if (!$reviews){
-//        $reviews = get_field('reviews', 7);
-//    }
-//    if ($reviews){
-//        $result = '<section class="reviews-section">
-//        <div class="container">
-//            <div class="text-center h2">Отзывы наших клиентов</div>
-//            <div class="reviews_list">';
-//        foreach ($reviews as $review) {
-//            $result .= '<div class="review">
-//                <img loading="lazy" class="review_img" src="'.wp_get_attachment_url($review['img']).'" alt="'.htmlspecialchars($review['name']).'" />
-//                <div class="review_title">'.$review['name'].'</div>
-//                '.$review['txt'].'
-//            </div>';
-//        }
-//        unset($review);
-//        $result .= '</div></div></section>';
-//    }
-//    return $result;
-    /* return '<div class="reviews-section">
-         <div class="container">
-             <div class="row">
-                 <div class="text-center h2" style="visibility: visible;">Отзывы наших клиентов</div>
-                 <div class="col-sm-6 col-md-3">
-                 <div class="reviews-card">
-                     <p><noscript><img loading="lazy" src="/wp-content/uploads/2019/10/s1-1.png" alt="Рустем М., 45 лет" /></noscript><img loading="lazy" class=" lazyloaded" src="/wp-content/uploads/2019/10/s1-1.png" data-src="/wp-content/uploads/2019/10/s1-1.png" alt="Рустем М., 45 лет"></p>
-                     <div class="h3">Рустем М., 45 лет</div>
-                     <p>Мы занимаемся наружной рекламой – баннеры, растяжки и все прочее. Поэтому необходимость в спецтехнике возникает постоянно. Арендовали автовышки и у частников, с которыми вечно были проблемы, а один раз и водитель даже был нетрезв, и у вроде солидных компаний. Но и тут не всегда все гладко было, то вышка опоздает, то еще что-то. Были мысли даже свою купить, чтобы все самим делать, но бухгалтер твердое нет сказал – невыгодно. Это надо и водителя обучать, и вышку регистрировать в РосТехНадзоре, а потом еще и расходы на текущее содержание. Приятель работает в строительной фирме, посоветовал ПСМ. Решили позвонить, узнать о ценах на вышку в 15 м – как раз срочный заказ был. Сумма устроила, но всегда ждешь подвоха, поэтому сильно не обольщались. Но автовышка приехала вовремя, даже с небольшим запасом по времени. Водитель хороший – баннер вешали недалеко от высоковольтки, но все грамотно сделал, что лучше и не надо. В общем, что я, что мои рабочие остались довольны. Теперь мы каждый раз берем в аренду автовышки у «Предприятия строительных машин». Спасибо им за избавление от головной боли, потому что на ПСМ можно положиться – в срок приедут, быстро все сделают и все живы- здоровы останутся. Ну и цена, разумеется, более чем адекватная.</p>
-                 </div>
-                 </div>
-                 <div class="col-sm-6 col-md-3">
-                     <div class="reviews-card">
-                         <p><noscript><img loading="lazy" src="/wp-content/uploads/2019/10/s2-1.png" alt="Юлия М., 32 года" /></noscript><img loading="lazy" class=" lazyloaded" src="/wp-content/uploads/2019/10/s2-1.png" data-src="/wp-content/uploads/2019/10/s2-1.png" alt="Юлия М., 32 года"></p>
-                         <div class="h3">Юлия М., 32 года</div>
-                         <p>Долго не могла найти для своего директора компанию, которая дала бы вышку в аренду. Честно говоря, не вызывают доверия эти многочисленные фирмы-однодневки. В общем, когда обнаружила фирму Предприятие строительных машин, все проблемы решились – и с поиском водителя, и с самой вышкой, которая была очень высокой производительности. Начальство выразило мне благодарность, что я нашла такого надежного исполнителя.</p>
-                     </div>
-                 </div>
-                 <div class="col-sm-6 col-md-3">
-                     <div class="reviews-card">
-                         <p><noscript><img loading="lazy" src="/wp-content/uploads/2019/10/s4.png" alt="Валерий К., 37 лет" /></noscript><img loading="lazy" class=" lazyloaded" src="/wp-content/uploads/2019/10/s4.png" data-src="/wp-content/uploads/2019/10/s4.png" alt="Валерий К., 37 лет"></p>
-                         <div class="h3">Валерий К., 37 лет</div>
-                         <p>Недавно заказывали маленькую автовышку на 15 метров для установки кондиционеров. Проехала в очень узкую арку,<br>
-                         места для работы было очень мало, но благодаря небольшим габаритам машины и опыту машиниста, работу сделали<br>
-                         качественно и быстро. Работой машиниста довольны на все 100%. Будем обращаться еще.</p>
-                     </div>
-                 </div>
-                 <div class="col-sm-6 col-md-3">
-                     <div class="reviews-card">
-                         <p><noscript><img loading="lazy" src="/wp-content/uploads/2019/10/s3.png" alt="Артём, 28 лет" /></noscript><img loading="lazy" class=" lazyloaded" src="/wp-content/uploads/2019/10/s3.png" data-src="/wp-content/uploads/2019/10/s3.png" alt="Артём, 28 лет"></p>
-                         <div class="h3">Артём, 28 лет</div>
-                         <p>Мы долго искали, у кого арендовать вышку. Нужно было, чтобы и цена была хорошая, и уверенность в том, что она во время работы не сломается. Мы рады, что нашли Предприятие строительных машин. Отличный сервис, который прекрасно подойдет тем, кто не пользуется автовышкой постоянно. Очень быстро мы завершили весь объем работ. Если бы не они, сроки были бы сорваны. Достаточно сделать звонок – и менеджер сразу же примет заказ.</p>
-                     </div>
-                 </div>
-             </div>
-             <p><a class="order-but" href="/otzyvy">Все отзывы</a></p>
-         </div>
-     </div>';*/
-}
-
 add_shortcode('delivery_rent', 'delivery_rent_func');
 function delivery_rent_func()
 {
@@ -1202,6 +1093,7 @@ function delivery_rent_func()
     </div>
 </div>';
 }
+
 ?>
 
 
@@ -1329,7 +1221,8 @@ function component_get_auto($args)
 
 <?php
 add_shortcode('pomojem_podobrat_oborudovanie', function () {
-
+    $post = get_post();
+    $shortkod_form = get_field('shortkod_form', $post->ID);
     return '<div class="help-block width-block">
         <div class="left-box">
             <div class="part-1">
@@ -1369,17 +1262,9 @@ add_shortcode('pomojem_podobrat_oborudovanie', function () {
             </div>
         </div>
         <div class="line"></div>
-        <div class="right-box">
-            <label>
-                Имя
-                <input type="text" placeholder="Иван">
-            </label>
-            <label class="number-label">
-                Номер телефона
-                <input type="text" placeholder="8 900 000 00 00">
-            </label>
-            <button class="button-black">Заказать дом мечты</button>
-            <p>Я даю свое согласие на <span>обработку персональных данных</span></p>
+        <div class="right-box">' .
+        do_shortcode($shortkod_form)
+            . '<p>Я даю свое согласие на <span>обработку персональных данных</span></p>
         </div>
         <div class="hidden-part">
             <p>Не любите говорить по телефону? Пишите в месенджеры</p>
@@ -1411,7 +1296,7 @@ add_shortcode('pomojem_podobrat_oborudovanie', function () {
             </div>
         </div>
     </div>';
- }) ?>
+}) ?>
 
 
 <?php function component_get_prices()
@@ -1664,109 +1549,6 @@ add_shortcode('question_and_answer', function () {
 
 
 <?php
-add_shortcode('our-advantages', function () {
-    ?>
-    <div class="advantages-block width-block">
-        <div class="first-item">
-            <p>Мы работаем с <span>2006 года</span></p>
-        </div>
-        <div class="item">
-            <div>
-                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-operativno.png" alt="Оперативная доставка" />-->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_321_366)">
-                        <path d="M16 2.66675C10.84 2.66675 6.66666 6.84008 6.66666 12.0001C6.66666 19.0001 16 29.3334 16 29.3334C16 29.3334 25.3333 19.0001 25.3333 12.0001C25.3333 6.84008 21.16 2.66675 16 2.66675ZM16 15.3334C14.16 15.3334 12.6667 13.8401 12.6667 12.0001C12.6667 10.1601 14.16 8.66675 16 8.66675C17.84 8.66675 19.3333 10.1601 19.3333 12.0001C19.3333 13.8401 17.84 15.3334 16 15.3334Z"
-                              fill="white"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_321_366">
-                            <rect width="32" height="32" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
-            </div>
-            <p>Оперативная доставка. Всегда вовремя.</p>
-        </div>
-        <div class="item">
-            <div>
-                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-24.png" alt="Работа в круглосуточном режиме" />-->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_321_369)">
-                        <path d="M28 13.4933H18.96L22.6133 9.73333C18.9733 6.13333 13.08 6 9.44 9.6C5.8 13.2133 5.8 19.04 9.44 22.6533C13.08 26.2667 18.9733 26.2667 22.6133 22.6533C24.4267 20.8667 25.3333 18.7733 25.3333 16.1333H28C28 18.7733 26.8267 22.2 24.48 24.52C19.8 29.16 12.2 29.16 7.52 24.52C2.85333 19.8933 2.81333 12.3733 7.49333 7.74667C12.1733 3.12 19.68 3.12 24.36 7.74667L28 4V13.4933ZM16.6667 10.6667V16.3333L21.3333 19.1067L20.3733 20.72L14.6667 17.3333V10.6667H16.6667Z"
-                              fill="white"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_321_369">
-                            <rect width="32" height="32" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
-            </div>
-            <p>Работа в круглосуточном режиме <span>24 часа</span></p>
-        </div>
-        <div class="item">
-            <div>
-                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-sale.png" alt="Собственный автопарк" />-->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_321_379)">
-                        <path d="M26.6667 10.6667H22.6667V5.33337H4.00001C2.53334 5.33337 1.33334 6.53337 1.33334 8.00004V22.6667H4.00001C4.00001 24.88 5.78668 26.6667 8.00001 26.6667C10.2133 26.6667 12 24.88 12 22.6667H20C20 24.88 21.7867 26.6667 24 26.6667C26.2133 26.6667 28 24.88 28 22.6667H30.6667V16L26.6667 10.6667ZM8.00001 24.6667C6.89334 24.6667 6.00001 23.7734 6.00001 22.6667C6.00001 21.56 6.89334 20.6667 8.00001 20.6667C9.10668 20.6667 10 21.56 10 22.6667C10 23.7734 9.10668 24.6667 8.00001 24.6667ZM26 12.6667L28.6133 16H22.6667V12.6667H26ZM24 24.6667C22.8933 24.6667 22 23.7734 22 22.6667C22 21.56 22.8933 20.6667 24 20.6667C25.1067 20.6667 26 21.56 26 22.6667C26 23.7734 25.1067 24.6667 24 24.6667Z"
-                              fill="white"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_321_379">
-                            <rect width="32" height="32" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
-            </div>
-            <p>Собственный автопарк</p>
-        </div>
-        <div class="item">
-            <div>
-                <!--            <img src="/wp-content/uploads/2019/10/arenda-avtovyshki-voditeli.png" alt="Современная техника в отличном состоянии" />-->
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_321_376)">
-                        <path d="M16 1.33337L4 6.66671V14.6667C4 22.0667 9.12 28.9867 16 30.6667C22.88 28.9867 28 22.0667 28 14.6667V6.66671L16 1.33337Z"
-                              fill="white"/>
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_321_376">
-                            <rect width="32" height="32" fill="white"/>
-                        </clipPath>
-                    </defs>
-                </svg>
-            </div>
-            <p>Разрешения РосТехНадзора</p>
-        </div>
-        <div class="item-contact">
-            <p class="part-1">Если у вас есть вопрос, то звоните нам по номеру <a href="tel:88003017391">8 800 301 73
-                    91</a>
-            </p>
-            <div>
-                <div class="icon-box">
-                    <div>
-                        <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
-                    </div>
-                    <a href="tg://resolve?domain=+78003017391">
-                        <div class="telegram-icon">
-                            <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
-                                      stroke="#303030" stroke-miterlimit="10" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-                <p class="part-2">Не любите говорить по телефону? Пишите в ватсап</p>
-            </div>
-        </div>
-    </div>
-
-<?php }) ?>
-
-
-<?php
 add_shortcode('get_contacts', function () {
     $my_posts = get_posts(array(
         'numberposts' => -1,
@@ -1893,6 +1675,67 @@ add_shortcode('uslugi-avtovishki-vse', function () {
         ';
     wp_reset_postdata();
 
+    return $result;
+})
+?>
+
+
+<?php
+add_shortcode('obshaya_cena', function () {
+    $tables = get_field('tablicy_dlya_stranica_ceny', 365);
+
+    $result = '
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
+    <link rel="stylesheet" href="/wp-content/themes/psm-theme/prices/prices.css">
+    
+    <div class="container-width1110">
+    
+        <div class="prices">
+            <p class="prices_header">цены</p>
+    
+            <div class="prices_content">';
+
+    foreach ($tables as $item) {
+        $result = $result . '<div class="prices_content_item-wrapper">
+                        <div class="prices_content_headers">
+                            <p>Тип автовышки</p>
+                            <p>Срок аренды</p>
+                            <p>Цена без НДС</p>
+                            <p>Цена с НДС 20%</p>
+                            <p>Минимальный заказ</p>
+                        </div>
+    
+                        <div class="prices_content_item prices_content_item-color">
+                            <p class="prices_params prices_meter">' . $item['tip_avtovyshki'] . '</p>
+                            <div class="prices_params">
+                                <p class="prices_params_item prices_border-line">' . $item['srok_arendy']['1'] . '</p>
+                                <p class="prices_params_item prices_border-line">' . $item['srok_arendy']['2'] . '</p>
+                                <p class="prices_params_item prices_border-line">' . $item['srok_arendy']['3'] . '</p>
+                                <p class="prices_params_item ">' . $item['srok_arendy']['4'] . '</p>
+                            </div>
+                            <div class="prices_params">
+                                <p class="prices_params_item prices_border-line">' . $item['cena_bez_nds']['1'] . '</p>
+                                <p class="prices_params_item prices_border-line">' . $item['cena_bez_nds']['2'] . '</p>
+                                <p class="prices_params_item prices_border-line">' . $item['cena_bez_nds']['3'] . '</p>
+                                <p class="prices_params_item ">' . $item['cena_bez_nds']['4'] . '</p>
+                            </div>
+                            <div class="prices_params">
+                                <p class="prices_params_item prices_border-line">' . $item['cena_s_nds_20']['1'] . '</p>
+                                <p class="prices_params_item prices_border-line">' . $item['cena_s_nds_20']['2'] . '</p>
+                                <p class="prices_params_item prices_border-line">' . $item['cena_s_nds_20']['3'] . '</p>
+                                <p class="prices_params_item ">' . $item['cena_s_nds_20']['4'] . '</p>
+                            </div>
+                            <p class="prices_time prices_time-background-without-color">' . $item['minimalnyj_zakaz'] . '</p>
+                        </div>
+                    </div>';
+    }
+    $result = $result . '</div>
+        </div>
+    
+    </div>
+
+    ';
     return $result;
 })
 ?>

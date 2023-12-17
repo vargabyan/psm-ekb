@@ -2,7 +2,16 @@
 
 <div class="container-width1110">
 
-    <?php breadcrumbs(); ?>
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php if (function_exists('breadcrumbs')) breadcrumbs(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div class="our-works">
         <p class="our-works_header">Наши автовышки используют <br> для <span>разнообразных работ</span></p>
@@ -25,7 +34,7 @@
                     <div class="our-works_item">
                         <img class="our-works_item_img"
                              src="<?= $image['url']; ?>"
-                             alt="<?php the_title() ?>" width="300" height="225"/>
+                             alt="<?php the_title() ?>"/>
                         <p class="our-works_item_item_description">
                             Вид АГП: <?php the_field('vid_mashini') ?>
                             <span>ОБЪЕКТ: <?php the_field('mesto_raboti') ?></span><span>ДАТА: <?php the_field('den_raboti') ?></span>

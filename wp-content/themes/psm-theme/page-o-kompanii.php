@@ -1,45 +1,50 @@
 <?php
 get_header();
+
+$mi_pridlogaem = get_field('mi_pridlogaem');
 ?>
 
-
 <div class="container-width1110">
+
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php if (function_exists('breadcrumbs')) breadcrumbs(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="about-company">
         <div class="about-company_text-wrapper">
             <p class="about-company_header"><?php the_title() ?></p>
             <p class="about-company_text"><?php the_content() ?></p>
         </div>
-        <img class="about-company_img" src="<?= wp_get_attachment_image_src( get_post_thumbnail_id(), 'full')[0]; ?>"
-             alt="О компании ПСМ - аренда автовышек в Екатеринбурге"/>
+        <img class="about-company_img" src="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; ?>"
+             alt="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[3]; ?>"/>
 
     </div>
     <div class="offer-elevator">
         <div class="offer-elevator_header-wrapper">
-            <p class="offer-elevator_header">Мы предлагаем автовышки
-                следующей высотности</p>
-            <p class="offer-elevator_price">Цены на аренду начинаются от 900 руб/час
-                за автовышку высотой 15 м.</p>
+            <p class="offer-elevator_header"><?= $mi_pridlogaem['zagalovk'] ?></p>
+            <p class="offer-elevator_price"><?= $mi_pridlogaem['predlojenia'] ?></p>
 
             <div class="offer-elevator_links-wrapper">
-
                 <a class="offer-elevator_link-watch-catalog button-red">Смотреть каталог</a>
                 <p class="offer-elevator_link-call">Или звоните нам по номеру
-                    <a class="offer-elevator_link-call_tel" href="tel:88003017391">8 800 301 73 91</a></p>
-
+                    <a class="offer-elevator_link-call_tel"
+                       href="tel:88003017391"><?= $mi_pridlogaem['ili_zvonite_nam_po_nomeru'] ?></a></p>
             </div>
         </div>
         <div class="offer-elevator_characteristics-items">
             <ul class="offer-elevator_characteristics-items-wrapper">
-                <li class="offer-elevator_characteristics-item">15 м с люлькой грузоподъемностью 200 кг.</li>
-                <li class="offer-elevator_characteristics-item">25 м с люлькой грузоподъемностью 180 кг.</li>
-                <li class="offer-elevator_characteristics-item">28 м с люлькой грузоподъемностью 200 кг.</li>
-                <li class="offer-elevator_characteristics-item">30 м с люлькой грузоподъемностью 300 кг.</li>
-                <li class="offer-elevator_characteristics-item">35 м с люлькой грузоподъемностью 300 кг.</li>
-                <li class="offer-elevator_characteristics-item">40 м с люлькой грузоподъемностью 300 кг.</li>
-                <li class="offer-elevator_characteristics-item">45 м с люлькой грузоподъемностью 300 кг.</li>
-                <li class="offer-elevator_characteristics-item">45 м с люлькой грузоподъемностью 300 кг, <br>
-                    вездеход.
-                </li>
+                <?php
+                foreach ($mi_pridlogaem['punkti_predlojenia'] as $item) { ?>
+                    <li class="offer-elevator_characteristics-item"><?= $item[1] ?></li>
+                <?php }
+                ?>
             </ul>
         </div>
     </div>

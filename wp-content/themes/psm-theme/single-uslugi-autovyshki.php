@@ -39,10 +39,14 @@ if($term) {
 
 <div class="maxwidth-1110px">
 
-    <div class="breadcrumb_block">
-
-        <?php if ( function_exists( 'breadcrumbs' ) ) breadcrumbs(); ?>
-
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php if (function_exists('breadcrumbs')) breadcrumbs(); ?>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="header-container">

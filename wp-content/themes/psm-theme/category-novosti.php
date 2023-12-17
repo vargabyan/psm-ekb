@@ -1,63 +1,52 @@
-<?php
-/**
- * Template Name: Акции
- * Template Post Type: page
- */
-
-get_header();
-?>
-
+<?php get_header(); ?>
 
 <div class="container-width1110">
 
-    <div class="promotion-page">
-        <p class="promotion-page_header">Акции</p>
-
-        <p class="promotion-page_description">
-            На этой странице вы сможете ознакомиться с текущими акциями и предложениями по аренде автовышек от компании
-            <br> ООО «Предприятие строительных машин». Обращаем ваше внимание — срок действия предложений ограничен.
-        </p>
-        <div class="promotion-page_offer-wrapper">
-            <p class="promotion-page_offer"><span>Предложение от 29-01-2020 г.</span>При аренде автовышки от 14 дней
-                перебазировка в любой регион России бесплатно! Подробности по телефону:</p>
-            <a class="promotion-page_tel" href="tel:+79022627066">+7 (902) 262-70-66</a>
-            <a class="promotion-page_leave-review button-blue" onclick="yaCounter47702209.reachGoal('astavit-zayavok');" data-call="callback" href="">Оставить заявку</a>
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php if (function_exists('breadcrumbs')) breadcrumbs(); ?>
+                </div>
+            </div>
         </div>
     </div>
 
+    <div class="article-pages">
+
+        <p class="article-pages_header">Статьи</p>
+
+        <div class="article-pages_items-wrapper">
+            <?php if (have_posts()) : while (have_posts()) :
+                the_post();
+                ?>
+
+                <div class="article-pages_item">
+                    <div class="article-pages_item_img">
+                        <?php the_post_thumbnail(); ?>
+                    </div>
+                    <div class="article-pages_item-title">
+                        <?php the_title(); ?>
+                    </div>
+                    <p class="article-pages_item_description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    </p>
+                    <a class="article-pages_item_link button-blue" href="<?= get_the_permalink(); ?>">Условия аренды</a>
+                </div>
+
+            <?php
+            endwhile;
+            else: ?>
+                <p>Sorry, no posts matched your criteria.
+
+                </p>
+
+            <?php endif; ?>
+        </div>
+    </div>
 </div>
 
-<?php do_shortcode('[work_steps]'); ?>
-
-
-    <div class="product-showcase width-block">
-        <h2>Наши машины</h2>
-
-        <?php
-        $categories = [
-            'taxonomy' => 'arenda-autovyshek',
-            'type' => 'uslugi-autovyshki',
-            'orderby' => 'name',
-            'order' => 'ASC'
-        ];
-
-        component_get_cat($categories);
-        ?>
-
-        <?php
-        $args = [
-            'post_type' => 'uslugi-autovyshki', // Указываем наш новый тип записи
-            'posts_per_page' => 3,
-        ];
-
-        component_get_auto($args);
-        ?>
-
-        <div class="product-showcase_button-show-more-wrapper">
-            <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>
-        </div>
-    </div>
-
+<?php //require __DIR__ . "/../psm-theme/cp-help-block/index.php"?>
 
 <div class="help-block width-block">
     <div class="left-box">
@@ -107,4 +96,4 @@ get_header();
     </div>
 </div>
 
-<? get_footer(); ?>
+<?php get_footer(); ?>

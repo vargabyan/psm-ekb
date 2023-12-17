@@ -14663,7 +14663,7 @@ ul.sub-menu a:hover {
 }
 
 .advantages-block .item img {
-    height: 100%;
+    height: 32px;
 }
 
 .item-contact {
@@ -14724,6 +14724,10 @@ ul.sub-menu a:hover {
 
 .item-contact .icon-box .telegram-icon:hover svg {
     fill: white;
+}
+
+.item-contact .icon-box .telegram-icon:hover img {
+    filter: invert(1);
 }
 
 .work-steps-block {
@@ -15047,7 +15051,7 @@ ul.sub-menu a:hover {
     color: black;
 }
 
-.help-block .right-box button {
+.help-block .right-box .button-black {
     width: 252px;
     height: 60px;
     border-radius: 10px;
@@ -15058,6 +15062,7 @@ ul.sub-menu a:hover {
     line-height: 18px;
     margin-top: 47px;
     border: none;
+    padding: 0;
 }
 
 

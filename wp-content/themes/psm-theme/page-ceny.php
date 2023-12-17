@@ -12,7 +12,7 @@ get_header(); ?>
     </div>
 
 
-<?php require __DIR__ . '/prices/index.php' ?>
+<?= do_shortcode('[obshaya_cena]'); ?>
 
 
 <?php

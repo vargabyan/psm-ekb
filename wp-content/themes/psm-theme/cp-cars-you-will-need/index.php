@@ -6,6 +6,16 @@
 
 <div class="container-width1110">
 
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <?php if (function_exists('breadcrumbs')) breadcrumbs(); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="cars-you-will-need">
         <p class="cars-you-will-need_header">Вам также может понадобиться <br> автовышка</p>
         <div class="cars-you-will-need_items-wrapper">

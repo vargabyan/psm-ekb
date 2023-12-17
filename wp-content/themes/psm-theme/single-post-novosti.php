@@ -1,7 +1,7 @@
 <?php
 
 /*
-Template Name: Каждый статья
+Template Name: Каждый новости
 Template Post Type: post, page, product
 */
 
