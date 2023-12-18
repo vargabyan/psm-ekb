@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", ready);
 
 function ready() {
-    let portfolioSlider = new Swiper(".portfolio-slider", {
+    new Swiper(".portfolio-slider", {
         navigation: {
             nextEl: ".portfolio-slider_nav-btn.next",
             prevEl: ".portfolio-slider_nav-btn.prev",

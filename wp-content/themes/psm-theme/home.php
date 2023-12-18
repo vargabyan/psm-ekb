@@ -82,45 +82,7 @@ $knopka_poluchit_predlozhenija = get_field('knopka_poluchit_predlozhenija');
 </div>
 
 
-<?php
-$post = get_post(1794);
-$mi_predlagaem = get_field('mi_predlagaem', $post->ID);
-$kontakt = get_field('kontakt', $post->ID);
-?>
-<div class="advantages-block width-block">
-    <div class="first-item">
-        <p><?= $post->post_content ?></p>
-    </div>
-
-    <?php foreach ($mi_predlagaem as $item) { ?>
-        <div class="item">
-            <div>
-                <img src="<?= $item['icon']['url'] ?>" alt="<?= $item['icon']['alt'] ?>">
-            </div>
-            <p><?= $item['zagalovok'] ?></p>
-        </div>
-    <?php } ?>
-
-    <div class="item-contact">
-        <p class="part-1">Если у вас есть вопрос, то звоните нам по номеру <a
-                    href="tel:<?= $kontakt['nomer_telefona'] ?>"><?= $kontakt['nomer_telefona'] ?></a>
-        </p>
-        <div>
-            <div class="icon-box">
-                <div>
-                    <img src="<?= $kontakt['avatar']['url'] ?>" alt="<?= $kontakt['avatar']['alt'] ?>"/>
-                </div>
-                <a href="<?= $kontakt['link_messendzhera'] ?>">
-                    <div class="telegram-icon">
-                        <img width="29px" height="26px" src="<?= $kontakt['svg_messendzhera']['url'] ?>"
-                             alt="<?= $kontakt['svg_messendzhera']['alt'] ?>"/>
-                    </div>
-                </a>
-            </div>
-            <p class="part-2"><?= $kontakt['uvedomlenija'] ?></p>
-        </div>
-    </div>
-</div>
+<?= do_shortcode('[our-advantages]') ?>
 
 
 <?=do_shortcode('[work_steps]') ?>
@@ -255,18 +217,61 @@ $reviews = get_field('dobavit_otzyv', 120);
     </div>
 </div>
 
-<?php do_shortcode('[question_and_answer]'); ?>
 
+<div class="question-and-answer-block">
+    <div class="left-box">
+        <p class="core-title">Ответы <span>на вопросы</span></p>
+        <div class="contact-box">
+            <p class="part-1">Не нашли ответ на свой вопрос?</p>
+            <p class="part-2">Задайте его нам напрямую! Мы свяжемся с Вами в течении 10 минут и проконсультируем
+                ;)</p>
+            <div class="item-1">
+                <a class="button-blue" href="/">Задать вопрос</a>
+                <DIV>
+                    <P class="work-schedule">пн-пт 10:00 - 19:00</P>
+                    <a class="tel-link" href="tel:+79089060719">8 908 906 07 19</a>
+                </DIV>
+            </div>
+            <div class="item-2">
+                <DIV class="icon-box">
+                    <div class="avatar">
+                        <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
+                    </div>
+                    <div class="telegram-box">
+                        <a href="tg://resolve?domain=+79089060719">
+                            <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
+                                      stroke="white" stroke-miterlimit="10" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </DIV>
+                <P>Не любите говорить по телефону? Пишите в ватсап</P>
+            </div>
+        </div>
+    </div>
+
+    <?= do_shortcode('[question_and_answer]'); ?>
+
+</div>
+
+
+<?php
+$queried_object = get_queried_object();
+$home_kontakty = get_field('home_kontakty', $queried_object->ID);
+?>
 <div class="contacts-block width-block">
     <div class="left-box">
         <p class="part-1">Контакты</p>
         <p class="part-2">Свяжитесь с нами</p>
-        <a class="left-box-tel" href="tel:70002421482">+ 7 (000) 242-14-82</a>
-        <a class="left-box-mail" href="mailto:info@psm-ekb96.ru">info@psm-ekb96.ru</a>
+        <a class="left-box-tel" href="tel:70002421482"><?= $home_kontakty['nomer_telefona'] ?></a>
+        <a class="left-box-mail" href="mailto:info@psm-ekb96.ru"><?= $home_kontakty['jelektrony_pochta'] ?></a>
     </div>
     <div class="right-box">
         <p class="part-1">Мы находимся</p>
-        <p class="part-2">Свердловская обл., г. Екатеринбург, ул. Маневровая, д. 31</p>
+        <p class="part-2"><?= $home_kontakty['adres'] ?></p>
         <div class="link-box">
             <a href="/kontakty">Посмотреть нас на карте</a>
             <svg width="41" height="8" viewBox="0 0 41 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -276,28 +281,21 @@ $reviews = get_field('dobavit_otzyv', 120);
         </div>
         <div class="box-messengers">
             <div>
-                <div>
-                    <img src="/wp-content/uploads/2023/07/Ellipse%2086.png" alt="">
+                <div class="avatar-box">
+                    <img src="<?= $home_kontakty['foto_sotrudnika']['url'] ?>" alt="<?= $home_kontakty['foto_sotrudnika']['alt'] ?>">
                 </div>
                 <div class="whatsapp-box">
-                    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.3 26C6.5 25.5 2.6 28.4 2 27.7C1.4 27.1 4 23 3.5 22.3C1.9 20.1 1 17.4 1 14.5C1 7.1 7 1 14.5 1C22 1 28 7.1 28 14.5C28 21.9 22 28 14.5 28C13.5 28 12.6 27.9 11.7 27.7"
-                              stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M11.7 7.70008L12.9 10.7001C13 10.9001 12.9 11.1001 12.7 11.2001C12.2 11.5001 11.5 12.2001 12.3 13.3001C13.3 14.7001 16 18.2001 18.2 15.9001C18.3 15.8001 18.5 15.7001 18.7 15.8001L21.9 17.2001C22.1 17.3001 22.2 17.6001 22.1 17.8001C21.4 19.2001 18.7 22.9001 12 17.1001C5.2 11.2001 9.6 8.30008 11.1 7.60008C11.3 7.30008 11.6 7.40008 11.7 7.70008Z"
-                              stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                    <a href="<?= $home_kontakty['ikonka_messendzhera_1']['kod_ssylka_messendzhera'] ?>">
+                        <img src="<?= $home_kontakty['ikonka_messendzhera_1']['ikonka']['url'] ?>" alt="<?= $home_kontakty['ikonka_messendzhera_1']['ikonka']['alt'] ?>">
+                    </a>
                 </div>
                 <div class="telegram-box">
-                    <svg width="29" height="26" viewBox="0 0 29 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.10093 11.6C7.90093 9 27.5009 1 27.5009 1L23.6009 23.6C23.4009 24.7 22.1009 25.1 21.3009 24.4L15.2009 19.3L10.9009 23.3L11.6009 16.6L24.6009 4.3L8.60093 14.3L9.60093 20L6.30093 14.7L1.30093 13.1C0.500925 12.8 0.400925 11.8 1.10093 11.6Z"
-                              stroke="white" stroke-width="1.25" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                    <a href="<?= $home_kontakty['ikonka_messendzhera_2']['kod_ssylka_messendzhera'] ?>">
+                        <img src="<?= $home_kontakty['ikonka_messendzhera_2']['ikonka']['url'] ?>" alt="<?= $home_kontakty['ikonka_messendzhera_2']['ikonka']['alt'] ?>">
+                    </a>
                 </div>
             </div>
-            <p>Ответим на все интересующие вас вопросы, предложим интересные решения</p>
+            <p><?= $home_kontakty['uvedomlenija'] ?></p>
         </div>
     </div>
 </div>

@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/magnific-popup.css">
-
 <div class="breadcrumbs">
     <div class="container">
         <div class="row">

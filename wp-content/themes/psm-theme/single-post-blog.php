@@ -83,7 +83,7 @@ $dobavit_statia = get_field('dobavit_statia');
         </section>
 
 
-        <?= do_shortcode('[obshaya_cena]'); ?>
+        <?= do_shortcode('[obshaya_cena id=365]'); ?>
 
 
         <div class="price-for-renting_swiper-block">

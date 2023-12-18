@@ -18,13 +18,13 @@ endwhile; else: ?>
 </p>
 
 <?php endif; ?>
-<script>
-document.addEventListener('DOMContentLoaded',function(){
-
-    jQuery('.product-card img').removeAttr('width');
-    jQuery('.product-card img').removeAttr('height');
-
-},false)
-</script>
+<!--<script>-->
+<!--document.addEventListener('DOMContentLoaded',function(){-->
+<!---->
+<!--    jQuery('.product-card img').removeAttr('width');-->
+<!--    jQuery('.product-card img').removeAttr('height');-->
+<!---->
+<!--},false)-->
+<!--</script>-->
 
 <? get_footer(); ?>

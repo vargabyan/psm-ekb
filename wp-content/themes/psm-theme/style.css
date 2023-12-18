@@ -11652,7 +11652,6 @@ nav {
 .main {
     color: #000;
     padding: 60px 0 0;
-    background: #f0f0f0;
 }
 
 .main h1 {
@@ -12597,10 +12596,9 @@ button:disabled {
 }
 
 .seo-section {
-    background: #e2e2e2;
     padding-top: 30px;
     padding-bottom: 30px;
-/ / margin-top: 60 px;
+    margin-top: 60px;
 }
 
 .seo-section h3 {
@@ -15086,7 +15084,7 @@ ul.sub-menu a:hover {
 
 .block-for-our-clients {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 84px;
@@ -15109,8 +15107,8 @@ ul.sub-menu a:hover {
 }
 
 .block-for-our-clients .right-box div {
-    max-width: 134px;
-    height: 66px;
+    max-width: 160px;
+    height: 70px;
     margin: 16px;
     display: flex;
     justify-content: center;
@@ -15120,6 +15118,7 @@ ul.sub-menu a:hover {
 .our-client_item_img {
     object-fit: contain;
     height: 100%;
+    max-width: inherit;
 }
 
 .block-reviews {
@@ -15529,6 +15528,11 @@ ul.sub-menu a:hover {
     display: grid;
     justify-items: center;
     align-items: center;
+}
+
+.contacts-block .right-box .box-messengers .avatar-box img {
+    width: 57px;
+    height: 57px;
 }
 
 .contacts-block .right-box .box-messengers .whatsapp-box {

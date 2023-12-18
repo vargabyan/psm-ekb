@@ -1,8 +1,3 @@
-body {
-    font-family: Gilroy;
-    color: #303030;
-}
-
 p {
     margin: 0;
 }
@@ -70,7 +65,7 @@ a {
 .cars-you-will-need_swiper {
     width: 100%;
     height: 100%;
-    display: none !important;
+    display: none;
 }
 
 .cars-you-will-need_swiper-buttons {

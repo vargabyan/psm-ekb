@@ -12,7 +12,7 @@ get_header(); ?>
     </div>
 
 
-<?= do_shortcode('[obshaya_cena]'); ?>
+<?= do_shortcode('[obshaya_cena id=365]'); ?>
 
 
 <?php

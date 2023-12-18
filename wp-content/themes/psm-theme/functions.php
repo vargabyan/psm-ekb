@@ -7,18 +7,19 @@ function add_scripts_and_styles()
     wp_enqueue_style('slick.', '/wp-content/js/slick.css');
 
     wp_enqueue_style('style-swiper-slider', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-    wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/cp-cars-you-will-need/cars-you-will-need.css');
-    wp_enqueue_style('style-company', get_template_directory_uri() . '/assets/css/company.css');
-    wp_enqueue_style('style-prices', get_template_directory_uri() . '/assets/css/prices.css');
-    wp_enqueue_style('style-contacts', get_template_directory_uri() . '/assets/css/contacts.css');
-    wp_enqueue_style('style-promotion', get_template_directory_uri() . '/assets/css/promotion.css');
-    wp_enqueue_style('style-article', get_template_directory_uri() . '/assets/css/article.css');
-    wp_enqueue_style('style-our-works', get_template_directory_uri() . '/assets/css/our-works.css');
-    wp_enqueue_style('style-elevator', get_template_directory_uri() . '/assets/css/elevator.css');
-    wp_enqueue_style('style-review', get_template_directory_uri() . '/assets/css/review.css');
-    wp_enqueue_style('style-elevator-services', get_template_directory_uri() . '/assets/css/elevator-services.css');
-    wp_enqueue_style('style-price-for-renting-aerial-platform', get_template_directory_uri() . '/assets/css/price-for-renting-aerial-platform.css');
-    wp_enqueue_style('style-magnific-popup', get_template_directory_uri() . '/magnific-popup.css');
+    wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/css/cars-you-will-need.css');
+    wp_enqueue_style('style-company', get_template_directory_uri() . '/css/company.css');
+    wp_enqueue_style('style-prices', get_template_directory_uri() . '/css/prices.css');
+    wp_enqueue_style('style-contacts', get_template_directory_uri() . '/css/contacts.css');
+    wp_enqueue_style('style-promotion', get_template_directory_uri() . '/css/promotion.css');
+    wp_enqueue_style('style-article', get_template_directory_uri() . '/css/article.css');
+    wp_enqueue_style('style-our-works', get_template_directory_uri() . '/css/our-works.css');
+    wp_enqueue_style('style-elevator', get_template_directory_uri() . '/css/elevator.css');
+    wp_enqueue_style('style-review', get_template_directory_uri() . '/css/review.css');
+    wp_enqueue_style('style-elevator-services', get_template_directory_uri() . '/css/elevator-services.css');
+    wp_enqueue_style('style-price-for-renting-aerial-platform', get_template_directory_uri() . '/css/price-for-renting-aerial-platform.css');
+    wp_enqueue_style('style-single-uslugi-autovyshki', get_template_directory_uri() . '/css/single-uslugi-autovyshki.css');
+    wp_enqueue_style('style-magnific-popup', get_template_directory_uri() . '/css/magnific-popup.css');
 
     wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js');
     wp_enqueue_script('home', get_template_directory_uri() . '/js/home.js');
@@ -26,8 +27,15 @@ function add_scripts_and_styles()
     wp_enqueue_script('jquery', '/wp-content/js/jquery.js');
     wp_enqueue_script('lazysizes', '/wp-content/plugins/autoptimize/classes/external/js/lazysizes.min.js');
     wp_enqueue_script('slick', '/wp-content/js/slick.min.js');
-    wp_enqueue_script('magnific-popup', '/wp-content/themes/psm-theme/jquery.magnific-popup.js');
+    wp_enqueue_script('magnific-popup', get_template_directory_uri() . '/js/jquery.magnific-popup.js');
     wp_enqueue_script('swiper-bundle', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js');
+
+    if (is_page_template('single-uslugi-autovyshki.php')) {
+        wp_enqueue_script('single-uslugi-autovyshki', get_template_directory_uri() . '/js/single-uslugi-autovyshki.js');
+    }
+    if (is_page_template('single-post-uslugi.php')) {
+        wp_enqueue_script('cp-cars-you-will-need', get_template_directory_uri() . '/js/cp-cars-you-will-need.js');
+    }
 }
 
 ?>
@@ -1075,26 +1083,26 @@ function aerial_platform_form_func()
 }
 
 
-add_shortcode('delivery_rent', 'delivery_rent_func');
-function delivery_rent_func()
-{
-    return '<div class="work-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-            <div class="h3">Оплата/Доставка</div>
-                <img loading="lazy" alt="Оплата/Доставка" src="/wp-content/uploads/2019/11/delivery.png">
-            </div>
-            <div class="col-sm-6">
-            <div class="h3">Условия аренды</div>
-                <img loading="lazy" alt="Условия аренды" src="/wp-content/uploads/2019/11/psm1.jpeg">
-            </div>
-        </div>
-    </div>
-</div>';
-}
-
-?>
+//add_shortcode('delivery_rent', 'delivery_rent_func');
+//function delivery_rent_func()
+//{
+//    return '<div class="work-section">
+//    <div class="container">
+//        <div class="row">
+//            <div class="col-sm-6">
+//            <div class="h3">Оплата/Доставка</div>
+//                <img loading="lazy" alt="Оплата/Доставка" src="/wp-content/uploads/2019/11/delivery.png">
+//            </div>
+//            <div class="col-sm-6">
+//            <div class="h3">Условия аренды</div>
+//                <img loading="lazy" alt="Условия аренды" src="/wp-content/uploads/2019/11/psm1.jpeg">
+//            </div>
+//        </div>
+//    </div>
+//</div>';
+//}
+//
+//?>
 
 
 <?php
@@ -1159,12 +1167,14 @@ function component_get_cat($args)
         <div class="category-swiper">
             <div class="swiper-wrapper category-swiper-wrapper">';
 
-    foreach ($categories as $category) {
+    foreach ($categories as $post) {
+        setup_postdata($post);
         $result = $result . '<div class="swiper-slide">
                         <a class="category_swiper-slide_item"
-                           href="' . get_category_link($category->term_id) . '">' . $category->name . '</a>
+                           href="' . get_category_link($post->term_id) . '">' . $post->name . '</a>
                     </div>';
     }
+    wp_reset_postdata();
 
     $result = $result . '</div>
         </div>
@@ -1264,7 +1274,7 @@ add_shortcode('pomojem_podobrat_oborudovanie', function () {
         <div class="line"></div>
         <div class="right-box">' .
         do_shortcode($shortkod_form)
-            . '<p>Я даю свое согласие на <span>обработку персональных данных</span></p>
+        . '<p>Я даю свое согласие на <span>обработку персональных данных</span></p>
         </div>
         <div class="hidden-part">
             <p>Не любите говорить по телефону? Пишите в месенджеры</p>
@@ -1298,63 +1308,9 @@ add_shortcode('pomojem_podobrat_oborudovanie', function () {
     </div>';
 }) ?>
 
-
-<?php function component_get_prices()
-{ ?>
-
-    <div class="container-width1110">
-
-        <div class="prices">
-            <p class="prices_header">цены</p>
-
-            <div class="prices_content">
-
-                <?php for ($i = 0; $i < 3; $i++) { ?>
-
-                    <div class="prices_content_item-wrapper">
-                        <div class="prices_content_headers">
-                            <p>Тип автовышки</p>
-                            <p>Срок аренды</p>
-                            <p>Цена без НДС</p>
-                            <p>Цена с НДС 20%</p>
-                            <p>Минимальный заказ</p>
-                        </div>
-
-
-                        <div class="prices_content_item prices_content_item-color">
-                            <p class="prices_params prices_meter">Автовышка <br> 15 метров</p>
-                            <div class="prices_params">
-                                <p class="prices_params_item prices_border-line">Цена за час</p>
-                                <p class="prices_params_item prices_border-line">Цена за смену</p>
-                                <p class="prices_params_item ">Неделя/месяц</p>
-                            </div>
-                            <div class="prices_params">
-                                <p class="prices_params_item prices_border-line">1300 руб.</p>
-                                <p class="prices_params_item prices_border-line">11 200 руб.</p>
-                                <p class="prices_params_item ">Индивидуально</p>
-                            </div>
-                            <div class="prices_params">
-                                <p class="prices_params_item prices_border-line">1500 руб.</p>
-                                <p class="prices_params_item prices_border-line">12800 руб.</p>
-                            </div>
-                            <p class="prices_time prices_time-background-without-color">4 часа</p>
-                        </div>
-                    </div>
-
-                <?php } ?>
-            </div>
-        </div>
-
-    </div>
-
-<?php } ?>
-
-
 <?php
 add_shortcode('help_in_different_ways', function () {
     ?>
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/promotion/promotion.css">
-
     <div class="help-block width-block">
         <div class="left-box">
             <div class="part-1">
@@ -1421,131 +1377,39 @@ add_shortcode('help_in_different_ways', function () {
 
 <?php
 add_shortcode('question_and_answer', function () {
-    ?>
-    <div class="question-and-answer-block">
-        <div class="left-box">
-            <p class="core-title">Ответы <span>на вопросы</span></p>
-            <div class="contact-box">
-                <p class="part-1">Не нашли ответ на свой вопрос?</p>
-                <p class="part-2">Задайте его нам напрямую! Мы свяжемся с Вами в течении 10 минут и проконсультируем
-                    ;)</p>
-                <div class="item-1">
-                    <a class="button-blue" href="/">Задать вопрос</a>
-                    <DIV>
-                        <P class="work-schedule">пн-пт 10:00 - 19:00</P>
-                        <a class="tel-link" href="tel:+79089060719">8 908 906 07 19</a>
-                    </DIV>
-                </div>
-                <div class="item-2">
-                    <DIV class="icon-box">
-                        <div class="avatar">
-                            <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
+    global $post;
+    $otveti_na_vaprosi_posts = get_posts( [
+        'posts_per_page' => -1,
+        'category_name' => 'otveti_na_vaprosi',
+        'post_type' => 'post',
+    ] );
+
+    $result = '<div class="right-box">
+                <p class="core-title-hidden">Ответы <span>на вопросы</span></p>
+    
+                <div class="accordion_wrapper">';
+    if ($otveti_na_vaprosi_posts) {
+        foreach ($otveti_na_vaprosi_posts as $item) {
+            setup_postdata( $post );
+            $result = $result . '<div class="accordion_item">
+                        <div class="accordion_heading">
+                            <p>' . $item->post_content . '</p>
+                            <svg class="accordion_heading_svg" width="16" height="9" viewBox="0 0 16 9" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z"
+                                      fill="#3B8AF0"/>
+                            </svg>
                         </div>
-                        <div class="telegram-box">
-                            <a href="tg://resolve?domain=+79089060719">
-                                <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
-                                          stroke="white" stroke-miterlimit="10" stroke-linecap="round"
-                                          stroke-linejoin="round"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </DIV>
-                    <P>Не любите говорить по телефону? Пишите в ватсап</P>
-                </div>
-            </div>
-        </div>
-        <div class="right-box">
-            <p class="core-title-hidden">Ответы <span>на вопросы</span></p>
+                        <p class="accordion_content close">' . get_field('otveti', $item->ID) . '</p>
+                    </div>';
+        }
+    }wp_reset_postdata();
 
-            <div class="accordion_wrapper">
+    $result = $result . '</div>
+            </div>';
 
-                <div class="accordion_item">
-                    <div class="accordion_heading">
-                        <p>
-                            Вопрос клиента, вопрос клиента, вопрос клиента?
-                        </p>
-                        <svg class="accordion_heading_svg" width="16" height="9" viewBox="0 0 16 9" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z"
-                                  fill="#3B8AF0"/>
-                        </svg>
-                    </div>
-                    <p class="accordion_content close">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                    </p>
-                </div>
-
-                <div class="accordion_item">
-                    <div class="accordion_heading">
-                        <p>
-                            Вопрос клиента, вопрос клиента, вопрос клиента?
-                        </p>
-                        <svg class="accordion_heading_svg" width="16" height="9" viewBox="0 0 16 9" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z"
-                                  fill="#3B8AF0"/>
-                        </svg>
-                    </div>
-                    <p class="accordion_content close">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                    </p>
-                </div>
-
-                <div class="accordion_item">
-                    <div class="accordion_heading">
-                        <p>
-                            Вопрос клиента, вопрос клиента, вопрос клиента?
-                        </p>
-                        <svg class="accordion_heading_svg" width="16" height="9" viewBox="0 0 16 9" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z"
-                                  fill="#3B8AF0"/>
-                        </svg>
-                    </div>
-                    <p class="accordion_content close">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                    </p>
-                </div>
-
-                <div class="accordion_item">
-                    <div class="accordion_heading">
-                        <p>
-                            Вопрос клиента, вопрос клиента, вопрос клиента?
-                        </p>
-                        <svg class="accordion_heading_svg" width="16" height="9" viewBox="0 0 16 9" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z"
-                                  fill="#3B8AF0"/>
-                        </svg>
-                    </div>
-                    <p class="accordion_content close">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                    </p>
-                </div>
-
-                <div class="accordion_item">
-                    <div class="accordion_heading">
-                        <p>
-                            Вопрос клиента, вопрос клиента, вопрос клиента?
-                        </p>
-                        <svg class="accordion_heading_svg" width="16" height="9" viewBox="0 0 16 9" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14.12 6.17205e-07L8 5.56275L1.88 8.21774e-08L-7.4858e-08 1.71255L8 9L16 1.71255L14.12 6.17205e-07Z"
-                                  fill="#3B8AF0"/>
-                        </svg>
-                    </div>
-                    <p class="accordion_content close">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, unde.
-                    </p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-<?php }) ?>
+    return $result;
+}) ?>
 
 
 <?php
@@ -1645,7 +1509,7 @@ add_shortcode('uslugi-avtovishki-vse', function () {
     }
 
     $result = $result . '</div>
-    
+   
                     <div class="swiper cars-you-will-need_swiper">
                         <div class="swiper-wrapper">';
 
@@ -1681,23 +1545,20 @@ add_shortcode('uslugi-avtovishki-vse', function () {
 
 
 <?php
-add_shortcode('obshaya_cena', function () {
-    $tables = get_field('tablicy_dlya_stranica_ceny', 365);
+add_shortcode('obshaya_cena', function ($atts) {
+    $id = $atts['id'];
+    $tables = get_field('tablicy_dlya_stranica_ceny', $id);
 
-    $result = '
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
-    <link rel="stylesheet" href="/wp-content/themes/psm-theme/prices/prices.css">
-    
+    $result = '    
     <div class="container-width1110">
     
         <div class="prices">
             <p class="prices_header">цены</p>
     
             <div class="prices_content">';
-
-    foreach ($tables as $item) {
-        $result = $result . '<div class="prices_content_item-wrapper">
+    if ($tables) {
+        foreach ($tables as $item) {
+            $result = $result . '<div class="prices_content_item-wrapper">
                         <div class="prices_content_headers">
                             <p>Тип автовышки</p>
                             <p>Срок аренды</p>
@@ -1729,6 +1590,7 @@ add_shortcode('obshaya_cena', function () {
                             <p class="prices_time prices_time-background-without-color">' . $item['minimalnyj_zakaz'] . '</p>
                         </div>
                     </div>';
+        }
     }
     $result = $result . '</div>
         </div>
@@ -1741,4 +1603,45 @@ add_shortcode('obshaya_cena', function () {
 ?>
 
 
+<?php
+add_shortcode('our-advantages', function () {
+    $post = get_post(1794);
+    $mi_predlagaem = get_field('mi_predlagaem', $post->ID);
+    $kontakt = get_field('kontakt', $post->ID);
+
+    $result = '<div class="advantages-block width-block">
+        <div class="first-item">
+            <p>' . $post->post_content . '</p>
+        </div>';
+    foreach ($mi_predlagaem as $item) {
+        $result = $result . '<div class="item">
+                <div>
+                    <img src="' . $item['icon']['url'] . '" alt="' . $item['icon']['alt'] . '">
+                </div>
+                <p>' . $item['zagalovok'] . '</p>
+            </div> ';
+    }
+    $result = $result . '<div class="item-contact">
+            <p class="part-1">Если у вас есть вопрос, то звоните нам по номеру <a
+                        href="tel:' . $kontakt['nomer_telefona'] . '">' . $kontakt['nomer_telefona'] . '</a>
+            </p>
+            <div>
+                <div class="icon-box">
+                    <div>
+                        <img src="' . $kontakt['avatar']['url'] . '" alt="' . $kontakt['avatar']['alt'] . '"/>
+                    </div>
+                    <a href="' . $kontakt['link_messendzhera'] . '">
+                        <div class="telegram-icon">
+                            <img width="29px" height="26px" src="' . $kontakt['svg_messendzhera']['url'] . '"
+                                 alt="' . $kontakt['svg_messendzhera']['alt'] . '"/>
+                        </div>
+                    </a>
+                </div>
+                <p class="part-2">' . $kontakt['uvedomlenija'] . '</p>
+            </div>
+        </div>
+    </div>';
+
+    return $result;
+}) ?>
 

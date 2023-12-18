@@ -1,3 +1,6 @@
+console.log(document.querySelector('.cars-you-will-need_swiper'), 'log');
+
+
 new Swiper('.cars-you-will-need_swiper', {
     loop: true,
 
@@ -8,5 +11,3 @@ new Swiper('.cars-you-will-need_swiper', {
 
     slidesPerView: 1,
 });
-
-console.log('++++++++')

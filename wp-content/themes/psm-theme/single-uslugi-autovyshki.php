@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/magnific-popup.css">
-
 <?php
 // Retrieves the stored value from the database
 //$meta_url = get_post_meta( get_the_ID(), 'links-news-original', true );
@@ -16,26 +14,22 @@
 <!--    </div>-->
 <!--</div>-->
 
-<?
-$term = get_the_terms($post->ID, 'arenda-autovyshek');
-if($term) {
-    $term1 = array_shift($term);
-    $tax = $term1->term_taxonomy_id;
-}
-?>
+<?//
+//$term = get_the_terms($post->ID, 'arenda-autovyshek');
+//if($term) {
+//    $term1 = array_shift($term);
+//    $tax = $term1->term_taxonomy_id;
+//}
+//?>
 
 
 <!--MY code start ************************************************-->
 
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/css/fonts.css">
 <!--<link-->
 <!--        rel="stylesheet"-->
 <!--        href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"-->
 <!--/>-->
 
-
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/single-uslugi-autovyshki.css">
-<link rel="stylesheet" href="/wp-content/themes/psm-theme/style.css">
 
 <div class="maxwidth-1110px">
 
@@ -269,12 +263,50 @@ if($term) {
         </div>
     </div>
 
-    <?php do_shortcode('[question_and_answer]'); ?>
+    <div class="question-and-answer-block">
+        <div class="left-box">
+            <p class="core-title">Ответы <span>на вопросы</span></p>
+            <div class="contact-box">
+                <p class="part-1">Не нашли ответ на свой вопрос?</p>
+                <p class="part-2">Задайте его нам напрямую! Мы свяжемся с Вами в течении 10 минут и проконсультируем
+                    ;)</p>
+                <div class="item-1">
+                    <a class="button-blue" href="/">Задать вопрос</a>
+                    <DIV>
+                        <P class="work-schedule">пн-пт 10:00 - 19:00</P>
+                        <a class="tel-link" href="tel:+79089060719">8 908 906 07 19</a>
+                    </DIV>
+                </div>
+                <div class="item-2">
+                    <DIV class="icon-box">
+                        <div class="avatar">
+                            <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
+                        </div>
+                        <div class="telegram-box">
+                            <a href="tg://resolve?domain=+79089060719">
+                                <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
+                                          stroke="white" stroke-miterlimit="10" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </DIV>
+                    <P>Не любите говорить по телефону? Пишите в ватсап</P>
+                </div>
+            </div>
+        </div>
+
+        <?= do_shortcode('[question_and_answer]'); ?>
+
+    </div>
+
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script src="/wp-content/themes/psm-theme/js/single-uslugi-autovyshki.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>-->
+<!--<script src="/wp-content/themes/psm-theme/js/single-uslugi-autovyshki.js"></script>-->
 
 
 <!--MY code end ************************************************-->

@@ -16,8 +16,8 @@ get_header();
 
 
 <div class="product-showcase width-block">
-    <h2><? the_field("tax_h1"); ?></h2>
     <? $queried_object = get_queried_object(); ?>
+        <h2><? the_field("tax_h1"); ?></h2>
     <?php
         $args = array(
             'taxonomy' => 'arenda-autovyshek',
@@ -51,35 +51,26 @@ get_header();
 </div>
 
 
-<?php do_shortcode('[our-advantages]') ?>
+<?= do_shortcode('[our-advantages]') ?>
 
-<?php component_get_prices() ?>
+<?php
+$queried_object = get_queried_object();
+$cat_id = $queried_object->taxonomy . '_' . $queried_object->term_id;
 
+echo do_shortcode('[obshaya_cena id=' . $cat_id .']' );
+?>
 
-<?
+<?php
 if (category_description()) { ?>
     <div class="seo-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center"><img src="/wp-content/uploads/2019/10/p2.jpg"></div>
-                <div class="col-md-6">
+                <div class="col">
                     <?= category_description(); ?>
                 </div>
             </div>
         </div>
     </div>
-<? } ?>
-
-<!--    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>-->
-<!--    <script>-->
-<!--        document.addEventListener('DOMContentLoaded', function () {-->
-<!---->
-<!--            jQuery('.product-card img').removeAttr('width');-->
-<!--            jQuery('.product-card img').removeAttr('height');-->
-<!---->
-<!--        }, false)-->
-<!--    </script>-->
-<!---->
-<!--    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>-->
+<?php } ?>
 
 <? get_footer(); ?>
