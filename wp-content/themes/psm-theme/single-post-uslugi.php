@@ -19,7 +19,7 @@ get_header(); ?>
 
 <?= do_shortcode('[uslugi-avtovishki]') ?>
 
-<?php require __DIR__ . '/cp-help-block/index.php' ?>
+<?= do_shortcode('[help_block id=2052]') ?>
 
 <?= do_shortcode('[uslugi-avtovishki-vse]') ?>
 
@@ -54,6 +54,6 @@ get_header(); ?>
 
 <?= do_shortcode('[work_steps]'); ?>
 
-<?php require __DIR__ . '/cp-help-block/index.php' ?>
+<?= do_shortcode('[help_block id=2052]') ?>
 
 <?php get_footer(); ?>

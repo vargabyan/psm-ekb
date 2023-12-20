@@ -570,6 +570,46 @@ document.addEventListener('click', (e) => {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, "script");
 
+
+document.addEventListener('DOMContentLoaded',function(){
+
+    jQuery('.product-card img').removeAttr('width');
+    jQuery('.product-card img').removeAttr('height');
+
+    jQuery('.single-product-card .photo-gal').click(function(){
+        var src = jQuery(this).attr('src')
+        jQuery('.photo-gal-c .attachment-post-thumbnail').attr('src',src)
+        jQuery('.photo-gal-c .attachment-post-thumbnail').attr('srcset',src)
+    })
+
+    jQuery('.photo-gal-c').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        closeOnContentClick: false,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+            verticalFit: true,
+            titleSrc: function(item) {
+                return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.el.attr('data-source')+'" target="_blank">image source</a>';
+            }
+        },
+        gallery: {
+            enabled: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300, // don't foget to change the duration also in CSS
+            opener: function(element) {
+                return element.find('img');
+            }
+        }
+
+    });
+
+
+},false)
+
 // flamp widget -----------end
 
 

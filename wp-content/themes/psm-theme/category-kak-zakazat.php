@@ -45,6 +45,6 @@ get_header();
     </div>
 
 
-<?php require __DIR__ . '/cp-help-block/index.php' ?>
+<?= do_shortcode('[help_block id=2047]') ?>
 
 <?php get_footer(); ?>

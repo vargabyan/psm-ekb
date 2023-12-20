@@ -15,9 +15,7 @@ get_header(); ?>
 <?= do_shortcode('[obshaya_cena id=365]'); ?>
 
 
-<?php
-require __DIR__ . "/cp-help-block/index.php";
-?>
+<?= do_shortcode('[help_block id=365]'); ?>
 
 
 <? get_footer();

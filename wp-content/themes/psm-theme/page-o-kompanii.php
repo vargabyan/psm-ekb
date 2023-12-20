@@ -80,7 +80,7 @@ $mi_pridlogaem = get_field('mi_pridlogaem');
     </div>
 </div>
 
-<?php do_shortcode('[help_in_different_ways]'); ?>
+<?= do_shortcode('[help_block id=343]') ?>
 
 
 <?php get_footer() ?>

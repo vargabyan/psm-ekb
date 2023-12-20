@@ -18,7 +18,7 @@ $knopka_poluchit_predlozhenija = get_field('knopka_poluchit_predlozhenija');
                 <div class="left-block">
                     <div class="box-1">
                         <?php foreach ($nasha_preimushhestva as $item) { ?>
-                            <button><?= $item?></button>
+                            <button><?= $item ?></button>
                         <?php } ?>
                     </div>
                     <div class="box-2">
@@ -46,7 +46,8 @@ $knopka_poluchit_predlozhenija = get_field('knopka_poluchit_predlozhenija');
             </div>
             <div class="col-xs-12 col-md-4 col-md-5 padding-0">
                 <div class="right-block">
-                    <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; ?>" alt="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[3]; ?>">
+                    <img src="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; ?>"
+                         alt="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[3]; ?>">
                 </div>
             </div>
         </div>
@@ -85,7 +86,7 @@ $knopka_poluchit_predlozhenija = get_field('knopka_poluchit_predlozhenija');
 <?= do_shortcode('[our-advantages]') ?>
 
 
-<?=do_shortcode('[work_steps]') ?>
+<?= do_shortcode('[work_steps]') ?>
 
 <?php
 global $post;
@@ -135,28 +136,84 @@ $nashi_raboty = get_posts([
     </div>
 
     <div class="hidden-bottom-button">
-        <div class="our-truck-crane-swiper-button-prev swiper-button-prev-white">
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.70508 11.4119L1.29331 6.0001L6.70508 0.588336" stroke="#ED4646" stroke-width="1.35294"/>
-            </svg>
-        </div>
-        <div class="our-truck-crane-swiper-button-next swiper-button-next-red">
-            <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.29492 0.588135L6.70669 5.9999L1.29492 11.4117" stroke="white" stroke-width="1.35294"/>
-            </svg>
-        </div>
+        <div class="our-truck-crane-swiper-button-prev swiper-button-prev-white"></div>
+        <div class="our-truck-crane-swiper-button-next swiper-button-next-red"></div>
     </div>
 
 </DIV>
 
 
-<?= do_shortcode('[pomojem_podobrat_oborudovanie]'); ?>
+<?php
+$post = get_post();
+$shortkod_form = get_post(2044);
+$pomosh = get_field('pomosh', $post->ID);
+?>
+<div class="help-block width-block">
+    <div class="left-box">
+        <div class="part-1">
+            <p><?= $pomosh['zagalovok'] ?></p>
+        </div>
+        <div class="part-2">
+            <div>
+                <img src="<?= $pomosh['foto_shatrudnika']['url'] ?>"
+                     alt="<?= $pomosh['foto_shatrudnika']['alt'] ?>"/>
+            </div>
+            <p><?= $pomosh['soobshenia'] ?></p>
+        </div>
+        <div class="part-3-part-4-wrapper">
+            <div class="part-3">
+                <p><?= $pomosh['uvedomlenia'] ?></p>
+            </div>
+            <div class="part-4">
+                <div class="icon-messenger">
+                    <a href="<?= $pomosh['messengers_1']['link'] ?>">
+                        <img src="<?= $pomosh['messengers_1']['ikonka']['url'] ?>"
+                             alt="<?= $pomosh['messengers_1']['ikonka']['alt'] ?>">
+                    </a>
+                </div>
+                <div class="telegram-icon-box icon-messenger">
+                    <a href="<?= $pomosh['messengers_2']['link'] ?>">
+                        <img src="<?= $pomosh['messengers_2']['ikonka']['url'] ?>"
+                             alt="<?= $pomosh['messengers_2']['ikonka']['alt'] ?>">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="right-box">
+        <?= do_shortcode($shortkod_form->post_content) ?>
+        <p>Я даю свое согласие на <span>обработку персональных данных</span></p>
+    </div>
+    <div class="hidden-part">
+        <p><?= $pomosh['uvedomlenia'] ?></p>
+        <div class="icon-box">
+            <div>
+                <img src="<?= $pomosh['foto_shatrudnika']['url'] ?>"
+                     alt="<?= $pomosh['foto_shatrudnika']['alt'] ?>"/>
+            </div>
+            <div class="messengers-box">
+                <a href="<?= $pomosh['messengers_1']['link'] ?>">
+                    <img src="<?= $pomosh['messengers_1']['ikonka']['url'] ?>"
+                         alt="<?= $pomosh['messengers_1']['ikonka']['alt'] ?>">
+                </a>
+            </div>
+            <div class="messengers-box">
+                <a href="<?= $pomosh['messengers_2']['link'] ?>">
+                    <img src="<?= $pomosh['messengers_2']['ikonka']['url'] ?>"
+                         alt="<?= $pomosh['messengers_2']['ikonka']['alt'] ?>">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?php
 $post = get_post(1823);
 $logotipi_companiy = get_field('logotipi_companiy', $post->ID);
 ?>
-<div class="block-for-our-clients">
+<div class="block-for-our-clients width-block">
     <div class="left-box">
         <p><?= $post->post_title ?></p>
     </div>
@@ -178,8 +235,8 @@ $reviews = get_field('dobavit_otzyv', 120);
     <div class="top-box">
         <p>Что о нас говорят клиенты</p>
         <div class="button-box">
-            <div class="review-swiper-prev swiper-button-prev-white"></div>
-            <div class="review-swiper-next next-box swiper-button-next-red"></div>
+            <div class="review-swiper-prev swiper-button-prev-white" data-review></div>
+            <div class="review-swiper-next next-box swiper-button-next-red" data-review></div>
         </div>
     </div>
 
@@ -200,55 +257,44 @@ $reviews = get_field('dobavit_otzyv', 120);
                 <?php } ?>
             </div>
             <div class="hidden-button-box">
-                <div class="review-swiper-prev">
-                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.70508 11.4121L1.29331 6.00035L6.70508 0.58858" stroke="#ED4646"
-                              stroke-width="1.35294"/>
-                    </svg>
-                </div>
-                <div class="review-swiper-next next-box">
-                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.29492 0.587891L6.70669 5.99965L1.29492 11.4114" stroke="white"
-                              stroke-width="1.35294"/>
-                    </svg>
-                </div>
+                <div class="review-swiper-prev swiper-button-prev-white" data-review></div>
+                <div class="review-swiper-next next-box swiper-button-next-red" data-review></div>
             </div>
         </div>
     </div>
 </div>
 
-
-<div class="question-and-answer-block">
+<?php
+$queried_object = get_queried_object();
+$ne_nashli_otvet = get_field('ne_nashli_otvet', $queried_object->ID);
+?>
+<div class="question-and-answer-block width-block">
     <div class="left-box">
         <p class="core-title">Ответы <span>на вопросы</span></p>
         <div class="contact-box">
             <p class="part-1">Не нашли ответ на свой вопрос?</p>
-            <p class="part-2">Задайте его нам напрямую! Мы свяжемся с Вами в течении 10 минут и проконсультируем
-                ;)</p>
+            <p class="part-2"><?= $ne_nashli_otvet['chto_sdelat'] ?></p>
             <div class="item-1">
                 <a class="button-blue" href="/">Задать вопрос</a>
                 <DIV>
-                    <P class="work-schedule">пн-пт 10:00 - 19:00</P>
-                    <a class="tel-link" href="tel:+79089060719">8 908 906 07 19</a>
+                    <P class="work-schedule"><?= $ne_nashli_otvet['vremya_raboti'] ?></P>
+                    <a class="tel-link" href="tel:+79089060719"><?= $ne_nashli_otvet['nomer_telefona'] ?></a>
                 </DIV>
             </div>
             <div class="item-2">
                 <DIV class="icon-box">
                     <div class="avatar">
-                        <img src="/wp-content/uploads/2023/07/Ellipse%20645.png" alt=""/>
+                        <img src="<?= $ne_nashli_otvet['foto_satrudnika']['url'] ?>"
+                             alt="<?= $ne_nashli_otvet['foto_satrudnika']['alt'] ?>"/>
                     </div>
                     <div class="telegram-box">
-                        <a href="tg://resolve?domain=+79089060719">
-                            <svg width="29" height="26" viewBox="0 0 29 26" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.46811 11.6C8.26811 9 27.8681 1 27.8681 1L23.9681 23.6C23.7681 24.7 22.4681 25.1 21.6681 24.4L15.5681 19.3L11.2681 23.3L11.9681 16.6L24.9681 4.3L8.96811 14.3L9.96811 20L6.66811 14.7L1.66811 13.1C0.868113 12.8 0.768113 11.8 1.46811 11.6Z"
-                                      stroke="white" stroke-miterlimit="10" stroke-linecap="round"
-                                      stroke-linejoin="round"/>
-                            </svg>
+                        <a href="<?= $ne_nashli_otvet['messenger']['link_messengera'] ?>">
+                            <img src="<?= $ne_nashli_otvet['messenger']['iconka']['url'] ?>"
+                                 alt="<?= $ne_nashli_otvet['messenger']['iconka']['alt'] ?>"/>
                         </a>
                     </div>
                 </DIV>
-                <P>Не любите говорить по телефону? Пишите в ватсап</P>
+                <P><?= $ne_nashli_otvet['messenger']['uvedomlenia'] ?></P>
             </div>
         </div>
     </div>
@@ -259,7 +305,6 @@ $reviews = get_field('dobavit_otzyv', 120);
 
 
 <?php
-$queried_object = get_queried_object();
 $home_kontakty = get_field('home_kontakty', $queried_object->ID);
 ?>
 <div class="contacts-block width-block">
@@ -282,16 +327,19 @@ $home_kontakty = get_field('home_kontakty', $queried_object->ID);
         <div class="box-messengers">
             <div>
                 <div class="avatar-box">
-                    <img src="<?= $home_kontakty['foto_sotrudnika']['url'] ?>" alt="<?= $home_kontakty['foto_sotrudnika']['alt'] ?>">
+                    <img src="<?= $home_kontakty['foto_sotrudnika']['url'] ?>"
+                         alt="<?= $home_kontakty['foto_sotrudnika']['alt'] ?>">
                 </div>
                 <div class="whatsapp-box">
                     <a href="<?= $home_kontakty['ikonka_messendzhera_1']['kod_ssylka_messendzhera'] ?>">
-                        <img src="<?= $home_kontakty['ikonka_messendzhera_1']['ikonka']['url'] ?>" alt="<?= $home_kontakty['ikonka_messendzhera_1']['ikonka']['alt'] ?>">
+                        <img src="<?= $home_kontakty['ikonka_messendzhera_1']['ikonka']['url'] ?>"
+                             alt="<?= $home_kontakty['ikonka_messendzhera_1']['ikonka']['alt'] ?>">
                     </a>
                 </div>
                 <div class="telegram-box">
                     <a href="<?= $home_kontakty['ikonka_messendzhera_2']['kod_ssylka_messendzhera'] ?>">
-                        <img src="<?= $home_kontakty['ikonka_messendzhera_2']['ikonka']['url'] ?>" alt="<?= $home_kontakty['ikonka_messendzhera_2']['ikonka']['alt'] ?>">
+                        <img src="<?= $home_kontakty['ikonka_messendzhera_2']['ikonka']['url'] ?>"
+                             alt="<?= $home_kontakty['ikonka_messendzhera_2']['ikonka']['alt'] ?>">
                     </a>
                 </div>
             </div>

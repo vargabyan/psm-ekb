@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", ready);
+window.addEventListener("load", ready);
 
 function ready() {
     new Swiper(".portfolio-slider", {
@@ -49,8 +49,8 @@ function ready() {
 
     });
 
-    const review_swiper_button_next = document.getElementsByClassName('review-swiper-next');
-    const review_swiper_button_prev = document.getElementsByClassName('review-swiper-prev');
+    const review_swiper_button_next = document.querySelectorAll('.review-swiper-next[data-review]');
+    const review_swiper_button_prev = document.querySelectorAll('.review-swiper-prev[data-review]');
 
     actions();
     window.addEventListener('resize', actions);
@@ -92,6 +92,7 @@ function ready() {
 
     });
 }
+
 
 document.addEventListener('click', (e) => {
     const toggle = e.target.closest('[data-naw-menu-mobile_toggle]');
