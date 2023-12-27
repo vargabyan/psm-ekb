@@ -99,7 +99,7 @@ endif;
             </div>
         </div>
         <div class="bottom-box">
-            <a>Политика конфиденциальности</a>
+            <a href="policy">Политика конфиденциальности</a>
             <p>© 2008-2019 ООО "Предприятие Строительных Машин"</p>
         </div>
     </div>
@@ -198,54 +198,24 @@ endif;
     <div class="modal-overflow"></div>
     <div class="modal-content">
         <div class="modal-close"></div>
-        <form class="callbackform" onsubmit="return callbacksend()">
-            <p class="modalwindow_header">Заказать звонок</p>
-            <label class="modalwindow_label">
-                Имя
-                <input class="modalwindow_input" type="text" name="name" placeholder="Иван Иванов Иванович">
-            </label>
-            <label class="modalwindow_label">
-                Номер телефона
-                <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
-            </label>
-            <div class="modalwindow_button-wrapper">
-                <button class="modalwindow_button button-red" type="submit"> Отправить</button>
-                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных
-                    данных
-                </div>
-            </div>
-        </form>
+        <p class="modalwindow_header">Заказать звонок</p>
+        <?= do_shortcode('[contact-form-7 id="2057" title="for modal"]') ?>
     </div>
 </div>
 
 <div data-modal="answer" class="modalwindow">
     <div class="modal-overflow"></div>
     <div class="modal-content">
-        <div class="modal-close">X</div>
-        <form class="callbackform" onsubmit="return answersend();">
+        <div class="modal-close"></div>
             <p class="modalwindow_header">помощь менеджера</p>
-            <label class="modalwindow_label">
-                Имя
-                <input class="modalwindow_input" type="text" name="name" placeholder="Иван Иванов Иванович">
-            </label>
-            <label class="modalwindow_label">
-                Номер телефона
-                <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
-            </label>
-            <div class="modalwindow_button-wrapper">
-                <button class="modalwindow_button button-red" type="submit"> Отправить</button>
-                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных
-                    данных
-                </div>
-            </div>
-        </form>
+        <?= do_shortcode('[contact-form-7 id="2057" title="for modal"]') ?>
     </div>
 </div>
 
 <div data-modal="singleauto" class="modalwindow">
     <div class="modal-overflow"></div>
     <div class="modal-content">
-        <div class="modal-close">X</div>
+        <div class="modal-close"></div>
         <form class="callbackform-singleauto" onsubmit="return singleautosend()">
 
             <div class="g-recaptcha" id="recaptcha3" data-size="invisible"></div>
@@ -267,31 +237,16 @@ endif;
 <div data-modal="auto" class="modalwindow">
     <div class="modal-overflow"></div>
     <div class="modal-content">
-        <div class="modal-close">X</div>
-        <form class="callbackform" onsubmit="return autosend()">
+        <div class="modal-close"></div>
             <p class="modalwindow_header">Оставить заявку</p>
-            <label class="modalwindow_label">
-                Имя
-                <input class="modalwindow_input" type="text" name="name" placeholder="Иван Иванов Иванович">
-            </label>
-            <label class="modalwindow_label">
-                Номер телефона
-                <input class="modalwindow_input" type="text" name="tel" placeholder="8 900 000 00 00">
-            </label>
-            <div class="modalwindow_button-wrapper">
-                <button class="modalwindow_button button-red" type="submit"> Отправить</button>
-                <div class="modalwindow_policy">Отправляя данные, вы даете согласие на&nbsp;обработку своих пероснальных
-                    данных
-                </div>
-            </div>
-        </form>
+        <?= do_shortcode('[contact-form-7 id="2057" title="for modal"]') ?>
     </div>
 </div>
 
 <div data-modal="callautosend" class="modalwindow">
     <div class="modal-overflow"></div>
     <div class="modal-content">
-        <div class="modal-close">X</div>
+        <div class="modal-close"></div>
         <form class="callbackform" onsubmit="return callautosend()">
 
             <div class="g-recaptcha" id="recaptcha5" data-size="invisible"></div>

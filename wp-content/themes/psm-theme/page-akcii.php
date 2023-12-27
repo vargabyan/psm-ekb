@@ -32,7 +32,7 @@ $predlozhenija_akcij = get_field('predlozhenija_akcij');
 
 </div>
 
-<?php do_shortcode('[work_steps]'); ?>
+<?= do_shortcode('[work_steps]'); ?>
 
 
     <div class="product-showcase width-block">

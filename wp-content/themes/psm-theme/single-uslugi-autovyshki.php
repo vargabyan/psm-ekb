@@ -248,7 +248,7 @@ $post = get_post();
                 <img class="not-found_avatar" src="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[0]; ?>" alt="<?= wp_get_attachment_image_src(get_post_thumbnail_id(), 'full')[3]; ?>">
                 <p class="not-found_message"><?= $post->post_content ?></p>
             </div>
-            <button class="not-found_leave-request button-black">Оставить заявку</button>
+            <a href="#" class="not-found_leave-request button-black" onclick="yaCounter47702209.reachGoal('zakazat-zvonok');" data-call="callback">Оставить заявку</a>
             <p class="not-found_notice">
                 <?= $ne_nashli_to_chto_iskali['uvedomlenia'] ?>
             </p>
