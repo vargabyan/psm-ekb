@@ -20,6 +20,7 @@ function add_scripts_and_styles($context)
     wp_enqueue_style('style-price-for-renting-aerial-platform', get_template_directory_uri() . '/css/price-for-renting-aerial-platform.css');
     wp_enqueue_style('style-single-uslugi-autovyshki', get_template_directory_uri() . '/css/single-uslugi-autovyshki.css');
     wp_enqueue_style('style-magnific-popup', get_template_directory_uri() . '/css/magnific-popup.css');
+    wp_enqueue_style('style-single-post-category-uslugi', get_template_directory_uri() . '/css/single-post-category-uslugi.css');
 
     wp_enqueue_script('scripts', get_template_directory_uri() . '/js/scripts.js');
     wp_enqueue_script('home', get_template_directory_uri() . '/js/home.js');
