@@ -40,7 +40,7 @@ get_header();
         ?>
 
         <div class="product-showcase_button-show-more-wrapper">
-            <button class="product-showcase_button-show-more button-blue">Перейти в каталог автовышек</button>
+            <a class="product-showcase_button-show-more button-blue" href="/katalog">Перейти в каталог автовышек</a>
         </div>
     </div>
 
