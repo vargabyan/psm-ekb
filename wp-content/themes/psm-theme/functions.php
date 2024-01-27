@@ -10,6 +10,7 @@ function add_scripts_and_styles($context)
     wp_enqueue_style('style-cars-you-will-need', get_template_directory_uri() . '/css/cars-you-will-need.css');
     wp_enqueue_style('style-company', get_template_directory_uri() . '/css/company.css');
     wp_enqueue_style('style-prices', get_template_directory_uri() . '/css/prices.css');
+    wp_enqueue_style('style-katalog', get_template_directory_uri() . '/css/katalog.css');
     wp_enqueue_style('style-contacts', get_template_directory_uri() . '/css/contacts.css');
     wp_enqueue_style('style-promotion', get_template_directory_uri() . '/css/promotion.css');
     wp_enqueue_style('style-article', get_template_directory_uri() . '/css/article.css');
@@ -1081,28 +1082,7 @@ function aerial_platform_form_func()
         </form>
     </div>';
 }
-
-
-//add_shortcode('delivery_rent', 'delivery_rent_func');
-//function delivery_rent_func()
-//{
-//    return '<div class="work-section">
-//    <div class="container">
-//        <div class="row">
-//            <div class="col-sm-6">
-//            <div class="h3">Оплата/Доставка</div>
-//                <img loading="lazy" alt="Оплата/Доставка" src="/wp-content/uploads/2019/11/delivery.png">
-//            </div>
-//            <div class="col-sm-6">
-//            <div class="h3">Условия аренды</div>
-//                <img loading="lazy" alt="Условия аренды" src="/wp-content/uploads/2019/11/psm1.jpeg">
-//            </div>
-//        </div>
-//    </div>
-//</div>';
-//}
-//
-//?>
+?>
 
 
 <?php
