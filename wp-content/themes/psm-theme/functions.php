@@ -1122,7 +1122,7 @@ add_shortcode('work_steps', function () {
 
         </div>
             <div class="button-box">
-                <a href="">
+                <a href="/katalog">
                     <button class="button-red">Смотреть каталог автовышек</button>
                 </a>
             </div>
@@ -1184,8 +1184,10 @@ function component_get_auto($args)
             ?>
             <div class="product-card-box">
                 <div class="img-box">
-                    <img loading="lazy" src="<?php echo get_the_post_thumbnail_url($post->ID, 'medium') ?>"
-                         alt="<?php echo $post->post_title ?>"">
+                    <a href="<?php echo $url ?>">
+                        <img loading="lazy" src="<?php echo get_the_post_thumbnail_url($post->ID, 'medium') ?>"
+                             alt="<?php echo $post->post_title ?>"">
+                    </a>
                 </div>
                 <div class="description-box">
                     <div class="title-box"><a href="<?php echo $url ?>"><?php echo $post->post_title ?>"</a></div>
@@ -1397,13 +1399,14 @@ add_shortcode('uslugi-avtovishki-vse', function () {
         setup_postdata($post);
         $image = get_field('foto_nashi_uslugi');
 
-        $result = $result . '<div class="cars-you-will-need_item">
+        $result = $result . '
+                            <a class="cars-you-will-need_item" href="' . get_permalink($post->ID) . '">
                                 <img class="cars-you-will-need_img"
                                      src="' . $image['url'] . '"
                                      alt="<?php echo $page->post_title ?>">
-                                <a class="cars-you-will-need_description"
-                                   href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>
-                            </div>';
+                                <p class="cars-you-will-need_description">' . $post->post_title . '</p>
+                            </a>
+                            ';
     }
 
     $result = $result . '</div>
@@ -1416,13 +1419,14 @@ add_shortcode('uslugi-avtovishki-vse', function () {
         $image = get_field('foto_nashi_uslugi');
 
         $result = $result . '<div class="swiper-slide">
-                                    <div class="cars-you-will-need_item">
-                                        <img class="cars-you-will-need_img"
-                                             src="' . $image['url'] . '"
-                                             alt="<?php echo $page->post_title ?>">
-                                        <a class="cars-you-will-need_description"
-                                           href="' . get_permalink($post->ID) . '">' . $post->post_title . '</a>
-                                    </div>
+                                    <a href="' . get_permalink($post->ID) . '">
+                                        <div class="cars-you-will-need_item">
+                                            <img class="cars-you-will-need_img"
+                                                 src="' . $image['url'] . '"
+                                                 alt="<?php echo $page->post_title ?>">
+                                            <p class="cars-you-will-need_description">' . $post->post_title . '</p>
+                                        </div>
+                                    </a>
                                 </div>';
     }
 

@@ -48,6 +48,10 @@ if (array_key_exists($path, $redirectsMap)) {
 </noscript>
 
 
+<?PHP
+$header_post = get_field('telefoni-shapka', 2069);
+?>
+
 <div id="preloader" class="preloader"></div>
 
 <div class="header-block">
@@ -89,34 +93,20 @@ if (array_key_exists($path, $redirectsMap)) {
                           fill="#ED4646"/>
                 </svg>
                 <a id="header-phone_1" onclick="yaCounter47702209.reachGoal('telefon');" class="phone"
-                   href="tel:+73432062630">+7 (343) 206-26-30</a>
-            </div>
-            <div class="bottom-box">
-                <a id="header-whatsapp" href="https://wa.me/79022627066">
-                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="13" cy="13" r="13" fill="#54CC61"/>
-                        <path d="M9.77338 18.7778C9.3882 18.537 7.51042 19.9333 7.22153 19.5963C6.93264 19.3074 8.1845 17.3333 7.94376 16.9963C7.17338 15.937 6.74005 14.637 6.74005 13.2407C6.74005 9.67776 9.62894 6.74072 13.2401 6.74072C16.8512 6.74072 19.7401 9.67776 19.7401 13.2407C19.7401 16.8037 16.8512 19.7407 13.2401 19.7407C12.7586 19.7407 12.3252 19.6926 11.8919 19.5963"
-                              fill="#54CC61"/>
-                        <path d="M9.77338 18.7778C9.3882 18.537 7.51042 19.9333 7.22153 19.5963C6.93264 19.3074 8.1845 17.3333 7.94376 16.9963C7.17338 15.937 6.74005 14.637 6.74005 13.2407C6.74005 9.67776 9.62894 6.74072 13.2401 6.74072C16.8512 6.74072 19.7401 9.67776 19.7401 13.2407C19.7401 16.8037 16.8512 19.7407 13.2401 19.7407C12.7586 19.7407 12.3252 19.6926 11.8919 19.5963"
-                              stroke="white" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M11.8907 9.96666L12.4685 11.4111C12.5166 11.5074 12.4685 11.6037 12.3722 11.6518C12.1314 11.7963 11.7944 12.1333 12.1796 12.663C12.661 13.337 13.961 15.0222 15.0203 13.9148C15.0685 13.8667 15.1647 13.8185 15.261 13.8667L16.8018 14.5407C16.8981 14.5889 16.9462 14.7333 16.8981 14.8296C16.561 15.5037 15.261 17.2852 12.0351 14.4926C8.76104 11.6518 10.8796 10.2556 11.6018 9.91851C11.6981 9.77407 11.8425 9.82222 11.8907 9.96666Z"
-                              fill="#54CC61" stroke="white" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
-                </a>
-                <a id="header-telegram" onclick="yaCounter47702209.reachGoal('telefon');"
-                   href="https://t.me/predpriatie_stroitelnih_mashin">
-                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="13" cy="13" r="13" fill="#3B8AF0"/>
-                        <path d="M6.78789 12.3259C10.062 11.074 19.499 7.22217 19.499 7.22217L17.6212 18.1037C17.5249 18.6333 16.899 18.8259 16.5138 18.4888L13.5768 16.0333L11.5064 17.9592L11.8434 14.7333L18.1027 8.81106L10.399 13.6259L10.8805 16.3703L9.29159 13.8185L6.88418 13.0481C6.499 12.9036 6.45085 12.4222 6.78789 12.3259Z"
-                              fill="#3B8AF0" stroke="white" stroke-miterlimit="10" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
+                   href="tel:<?= $header_post['nomer-1']['nomer'] ?>">
+                    <?= $header_post['nomer-1']['nomer'] ?>
                 </a>
             </div>
+            <div class="header_messenger-wrapper">
+                <a class="header_messenger_item" href="<?= $header_post['nomer-1']['messendzher_ikonka-1']['link_messendzhera'] ?>">
+                    <img src="<?= $header_post['nomer-1']['messendzher_ikonka-1']['ikonka-1']['url'] ?>" alt="icon">
+                </a>
+                <a class="header_messenger_item" onclick="yaCounter47702209.reachGoal('telefon');"
+                   href="<?= $header_post['nomer-1']['messendzher_ikonka-2']['link_messendzhera'] ?>">
+                    <img src="<?= $header_post['nomer-1']['messendzher_ikonka-2']['ikonka-2']['url'] ?>" alt="icon">
+                </a>
+            </div>
+
         </div>
         <div class="contacts part-2">
             <div class="top-box">
@@ -125,9 +115,11 @@ if (array_key_exists($path, $redirectsMap)) {
                           fill="#ED4646"/>
                 </svg>
                 <a id="header-phone_3" onclick="yaCounter47702209.reachGoal('telefon');" class="phone"
-                   href="tel:+79089060719"> +7 (908) 906-07-19</a>
+                   href="tel:<?= $header_post['nomer-2']['nomer'] ?>">
+                    <?= $header_post['nomer-2']['nomer'] ?>
+                </a>
             </div>
-            <p>регионов</p>
+            <p><?= $header_post['nomer-2']['tekst_pod_nomer'] ?></p>
         </div>
         <div class="contacts part-3">
             <div class="top-box">
@@ -135,9 +127,9 @@ if (array_key_exists($path, $redirectsMap)) {
                     <path d="M13.5 0H1.5C0.675 0 0.00749999 0.675 0.00749999 1.5L0 10.5C0 11.325 0.675 12 1.5 12H13.5C14.325 12 15 11.325 15 10.5V1.5C15 0.675 14.325 0 13.5 0ZM13.5 3L7.5 6.75L1.5 3V1.5L7.5 5.25L13.5 1.5V3Z"
                           fill="#ED4646"/>
                 </svg>
-                <a id="header-email" href="mailto:info@psm-ekb96.ru">info@psm-ekb96.ru</a>
+                <a id="header-email" href="mailto:<?= $header_post['email']['email'] ?>"><?= $header_post['email']['email'] ?></a>
             </div>
-            <p>электронная почта</p>
+            <p><?= $header_post['email']['tekst_pod_email'] ?></p>
         </div>
     </div>
 

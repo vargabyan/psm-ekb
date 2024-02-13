@@ -275,7 +275,7 @@ $ne_nashli_otvet = get_field('ne_nashli_otvet', $queried_object->ID);
             <p class="part-1">Не нашли ответ на свой вопрос?</p>
             <p class="part-2"><?= $ne_nashli_otvet['chto_sdelat'] ?></p>
             <div class="item-1">
-                <a class="button-blue" href="/">Задать вопрос</a>
+                <a class="button-blue" href="">Задать вопрос</a>
                 <DIV>
                     <P class="work-schedule"><?= $ne_nashli_otvet['vremya_raboti'] ?></P>
                     <a class="tel-link" href="tel:+79089060719"><?= $ne_nashli_otvet['nomer_telefona'] ?></a>

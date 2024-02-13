@@ -32,7 +32,7 @@ $mi_pridlogaem = get_field('mi_pridlogaem');
             <p class="offer-elevator_price"><?= $mi_pridlogaem['predlojenia'] ?></p>
 
             <div class="offer-elevator_links-wrapper">
-                <a class="offer-elevator_link-watch-catalog button-red">Смотреть каталог</a>
+                <a class="offer-elevator_link-watch-catalog button-red" href="/katalog">Смотреть каталог</a>
                 <p class="offer-elevator_link-call">Или звоните нам по номеру
                     <a class="offer-elevator_link-call_tel"
                        href="tel:88003017391"><?= $mi_pridlogaem['ili_zvonite_nam_po_nomeru'] ?></a></p>

@@ -103,7 +103,7 @@ $dobavit_statia = get_field('dobavit_statia');
                     $current_post = get_post();
                     $p = get_posts([
                         'posts_per_page' => -1,
-                        'category_name' => 'blog',
+                        'category_name' => 'novosti',
                         'post_type' => 'post',
                         'exclude' => $current_post->ID,
                     ]);

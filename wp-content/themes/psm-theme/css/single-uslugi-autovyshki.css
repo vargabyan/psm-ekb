@@ -644,6 +644,7 @@
 
     .product-container .left_box .col_4 .box_1 {
         flex-direction: row;
+        align-items: center;
         width: 290px;
         height: 65px;
         flex-shrink: 0;

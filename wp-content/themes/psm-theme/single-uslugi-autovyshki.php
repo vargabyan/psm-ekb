@@ -204,7 +204,7 @@ $post = get_post();
 </div>
 
 <div class="maxwidth-1110px">
-    <div class="product-showcase width-block">
+    <div class="product-showcase">
         <h2>другая спец техника</h2>
 
         <?php
@@ -214,7 +214,7 @@ $post = get_post();
                 'type' => 'uslugi-autovyshki',
                 'orderby' => 'name',
                 'order' => 'ASC',
-                //'include' => $tax
+//                'include' => $tax
             ];
 
             component_get_cat($categories)
